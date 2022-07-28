@@ -57,7 +57,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'Tikuna',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',

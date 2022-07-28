@@ -6,25 +6,13 @@ on:
     paths:
       - 'docs/**'
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v2
-      working-directory: ./docs
-      run: cd ./docs
-      with:
-        persist-credentials: false
-    - name: Install and Build 🔧
-      uses: borales/actions-yarn@v3.0.0
-      with:
-        cmd: install
-    - uses: borales/actions-yarn@v3.0.0
-      with:
-        cmd: build
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+      - uses: actions/checkout@master
+      - uses: redkubes/docusaurus-deploy-action@v1
+        with:
+          source-folder: docs
+          git-user: edenia
+          git-password: ${{ secrets.GITHUB_TOKEN }}
+          deployment-branch: gh-pages

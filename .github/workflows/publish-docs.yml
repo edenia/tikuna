@@ -11,12 +11,14 @@ jobs:
     steps:
     - name: Checkout 🛎️
       uses: actions/checkout@v2
+      working-directory: ./docs
+      run: cd ./docs
       with:
         persist-credentials: false
     - name: Install and Build 🔧
       uses: borales/actions-yarn@v3.0.0
       with:
-        cmd: cd docs && install
+        cmd: install
     - uses: borales/actions-yarn@v3.0.0
       with:
         cmd: build

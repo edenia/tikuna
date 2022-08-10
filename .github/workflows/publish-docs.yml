@@ -1,5 +1,6 @@
 name: Publish documentation when changed
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -12,6 +13,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: redkubes/docusaurus-deploy-action@v1
         with:
+          node-version: 16
           source-folder: docs
           git-user: edenia
           git-password: ${{ secrets.GITHUB_TOKEN }}

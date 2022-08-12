@@ -37,14 +37,10 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/edenia/tikuna.io/tree/master/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -59,19 +55,25 @@ const config = {
       navbar: {
         title: 'Tikuna',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Tikuna Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'research/intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Research',
+          },
+          {
+            type: 'doc',
+            docId: 'about/team',
+            position: 'left',
+            label: 'About Tikuna',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/edenia/tikuna',
             label: 'GitHub',
             position: 'right',
           },
@@ -84,8 +86,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Research',
+                to: '/docs/research/intro',
+              },
+              {
+                label: 'About Tikuna',
+                to: '/docs/about/team',
               },
             ],
           },
@@ -93,16 +99,16 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'GitHub',
+                href: 'https://github.com/edenia/tikuna',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.com/invite/YeGcF6QwhP',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/EdeniaWeb3',
               },
             ],
           },
@@ -112,15 +118,11 @@ const config = {
               {
                 label: 'Blog',
                 to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
+              }
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Tikuna | Apache-2.0 Open Source License`,
       },
       prism: {
         theme: lightCodeTheme,

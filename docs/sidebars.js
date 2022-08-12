@@ -4,7 +4,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Research',
-      items: ['research/intro'],
+      items: ['research/intro','research/references'],
     },
     {
       type: 'category',

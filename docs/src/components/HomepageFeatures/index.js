@@ -24,7 +24,7 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Powered by Blockchain',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>

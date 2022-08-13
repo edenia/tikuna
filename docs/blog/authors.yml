@@ -1,17 +1,17 @@
-endi:
-  name: Endilie Yacop Sucipto
-  title: Maintainer of Docusaurus
-  url: https://github.com/endiliey
-  image_url: https://github.com/endiliey.png
+andres:
+  name: Andres Gomez Ramirez
+  title: Ph.D. in cybersecurity from the University of Frankfurt and CERN. A blockchain security researcher at Edenia.
+  url: https://www.linkedin.com/in/andres-gomez-ramirez-bb7226156/
+  image_url: https://tikuna.io/img/team/andres.jpeg
 
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
+francis:
+  name: Francis Gomez Ramirez
+  title: Specialist in project management and computer scientist at Bancolombia.
+  url: https://www.linkedin.com/in/francis-adrian-gomez-ramirez-599598138/
+  image_url: https://tikuna.io/img/team/francis.jpeg
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
+loui:
+  name: Loui Al Sardy
+  title: Ph.D. candidate at Chair of Software Engineering at the University of Erlangen-Nuremberg.
+  url: https://www.linkedin.com/in/loui-alsardy/
+  image_url: https://tikuna.io/img/team/loui.jpeg

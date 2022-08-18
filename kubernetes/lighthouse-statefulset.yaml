@@ -40,7 +40,7 @@ spec:
         name: lighthouse
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: ethereum
+        storageClassName: ethereum-storage
         resources:
           requests:
             storage: 250Gi

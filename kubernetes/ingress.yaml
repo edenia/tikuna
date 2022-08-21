@@ -1,0 +1,31 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http
+spec:
+  entryPoints:
+    - web
+  routes:
+  - kind: Rule
+    match: Host(`eth2.edenia.cloud`)
+    services:
+    - kind: Service
+      name: lighthouse
+      port: 9000
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`eth2.edenia.cloud`)
+    services:
+    - kind: Service
+      name: lighthouse
+      port: 9000
+  tls:
+    certResolver: myresolver

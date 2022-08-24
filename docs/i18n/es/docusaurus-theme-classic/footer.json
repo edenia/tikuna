@@ -1,0 +1,42 @@
+{
+  "link.title.Docs": {
+    "message": "Documentos",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "Comunidad",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "Mas",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Research": {
+    "message": "Investigación",
+    "description": "The label of footer link with label=Research linking to /docs/research/intro"
+  },
+  "link.item.label.About Tikuna": {
+    "message": "Acerca de Tikuna",
+    "description": "The label of footer link with label=About Tikuna linking to /docs/about/team"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/edenia/tikuna"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.com/invite/YeGcF6QwhP"
+  },
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "The label of footer link with label=Twitter linking to https://twitter.com/EdeniaWeb3"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "The label of footer link with label=Blog linking to /blog"
+  },
+  "copyright": {
+    "message": "Copyright © 2022 Tikuna | Apache-2.0 Open Source License",
+    "description": "The footer copyright"
+  }
+}

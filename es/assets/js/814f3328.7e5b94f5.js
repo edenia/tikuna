@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktikuna=self.webpackChunktikuna||[]).push([[535],{5641:t=>{t.exports=JSON.parse('{"title":"Post recientes","items":[{"title":"First Blog Post","permalink":"/es/blog/first-blog-post"}]}')}}]);

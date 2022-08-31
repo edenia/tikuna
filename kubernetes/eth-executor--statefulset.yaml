@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: eth-executor
+  name: eth-executor
+spec:
+  serviceName: eth-executor
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eth-executor
+  template:
+    metadata:
+      labels:
+        app: eth-executor
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      containers:
+      - image: ethereum/client-go
+        imagePullPolicy: "Always"
+        name: eth-executor
+        envFrom:
+        ports:
+        - protocol: TCP   
+          containerPort: 8545
+        - protocol: TCP
+          containerPort: 8551
+        - protocol: TCP
+          containerPort: 30303
+        volumeMounts:
+        - mountPath: /root/.ethereum
+          name: eth-executor
+        - mountPath: /root/consensus_jwt
+          name: jwt-consensus
+        args:
+        - "--http"
+        - "--http.api"
+        - "eth,net,engine,admin"
+        - "--http.addr"
+        - "0.0.0.0"
+        - "--authrpc.addr"
+        - "0.0.0.0"
+        - "--authrpc.jwtsecret"
+        - "/root/consensus_jwt/jwt.hex"
+      volumes: 
+      - name: jwt-consensus
+        secret: 
+           secretName: secret-jwt-eth-prysm
+      restartPolicy: Always
+  volumeClaimTemplates:
+    - metadata:
+        name: eth-executor
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ethereum-storage
+        resources:
+          requests:
+            storage: 1024Gi

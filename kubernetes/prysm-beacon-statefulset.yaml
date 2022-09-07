@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: prysm-beacon
+  name: prysm-beacon
+spec:
+  serviceName: prysm-beacon
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prysm-beacon
+  template:
+    metadata:
+      labels:
+        app: prysm-beacon
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      containers:
+      - image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
+        imagePullPolicy: "Always"
+        name: prysm-beacon
+        envFrom:
+        ports:
+        - protocol: TCP   
+          containerPort: 4000
+          containerPort: 13000
+        - protocol: UDP   
+          containerPort: 12000
+        volumeMounts:
+        - mountPath: /data
+          name: prysm-beacon
+          subPath: data
+        - mountPath: /root/consensus_jwt
+          name: jwt-prysm-consensus
+        args:
+        - "--accept-terms-of-use"
+        - "--datadir"
+        - "/data"
+        - "--jwt-secret"
+        - "/root/consensus_jwt/jwt.hex"
+        - "--rpc-host"
+        - "0.0.0.0"
+        - "--monitoring-host"
+        - "0.0.0.0"
+        - "--execution-endpoint"
+        - "http://10.43.141.63:8551"
+      volumes: 
+      - name: jwt-prysm-consensus
+        secret: 
+           secretName: secret-jwt-eth-prysm
+      restartPolicy: Always
+  volumeClaimTemplates:
+    - metadata:
+        name: prysm-beacon
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ethereum-storage
+        resources:
+          requests:
+            storage: 200Gi

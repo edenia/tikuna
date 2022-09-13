@@ -66,6 +66,8 @@ If you find a bug, please report big and small bugs by [**opening an issue**](ht
 
 ## About Sakundi
 
+Sakundi is a research-based Blockchain security and privacy organization. It offers security monitoring solutions for Blockchain organizations and distributed applications based on Artificial Intelligence tools.
+
 ## About Edenia
 
 <div align="center">

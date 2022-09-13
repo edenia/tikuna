@@ -69,7 +69,7 @@ If you find a bug, please report big and small bugs by [**opening an issue**](ht
 <div align="center">
 
 [![Twitter](https://img.shields.io/twitter/follow/Sakundi_io?style=for-the-badge)](https://twitter.com/Sakundi_io)
-[![Discord](https://img.shields.io/discord/946500573677625344?color=black&label=Discord&logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/YeGcF6QwhP](https://discord.gg/Ys5f6H9DFm)
+[![Discord](https://img.shields.io/discord/946500573677625344?color=black&label=Discord&logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/Ys5f6H9DFm)
 
 </div>
 

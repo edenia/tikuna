@@ -66,6 +66,10 @@ If you find a bug, please report big and small bugs by [**opening an issue**](ht
 
 ## About Sakundi
 
+<div align="center">
+[![Twitter](https://img.shields.io/twitter/follow/Sakundi_io?style=for-the-badge)](https://twitter.com/Sakundi_io)
+</div>
+
 Sakundi is a research-based Blockchain security and privacy organization. It offers security monitoring solutions for Blockchain organizations and distributed applications based on Artificial Intelligence tools.
 
 ## About Edenia

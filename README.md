@@ -4,7 +4,8 @@
 ![](https://img.shields.io/github/license/edenia/tikuna) 
 ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) 
 ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) 
-![](https://img.shields.io/twitter/follow/edeniaweb3.svg?style=social&logo=twitter) 
+![](https://img.shields.io/twitter/follow/edeniaweb3.svg?style=social&logo=twitter)
+![](https://img.shields.io/twitter/follow/Sakundi_io.svg?style=social&logo=twitter) 
 ![](https://img.shields.io/github/forks/edenia/tikuna?style=social)
 
 </div>

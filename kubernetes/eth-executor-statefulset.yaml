@@ -22,6 +22,13 @@ spec:
       - image: ethereum/client-go
         imagePullPolicy: "Always"
         name: eth-executor
+        resources:
+          requests:
+            memory: "3G"
+            cpu: "0.5"
+          limits:
+            memory: "6G"
+            cpu: "1"
         envFrom:
         ports:
         - protocol: TCP   

@@ -1,8 +1,4 @@
 {
-  "title": {
-    "message": "Tikuna",
-    "description": "The title in the navbar"
-  },
   "item.label.Research": {
     "message": "Investigación",
     "description": "Navbar item with label Research"

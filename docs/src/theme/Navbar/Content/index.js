@@ -4,6 +4,7 @@ import {
   splitNavbarItems,
   useNavbarMobileSidebar,
 } from "@docusaurus/theme-common/internal";
+import { useLocation } from "@docusaurus/router";
 import NavbarItem from "@theme/NavbarItem";
 import NavbarColorModeToggle from "@theme/Navbar/ColorModeToggle";
 import SearchBar from "@theme/SearchBar";
@@ -14,32 +15,27 @@ import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
-function useNavbarItems() {
-  // TODO temporary casting until ThemeConfig type is improved
-  return useThemeConfig().navbar.items;
-}
+const useNavbarItems = () => useThemeConfig().navbar.items;
 
-function NavbarItems({ items }) {
-  return (
-    <>
-      {items.map((item, i) => (
-        <NavbarItem {...item} key={i} />
-      ))}
-    </>
-  );
-}
+const NavbarItems = ({ items }) => (
+  <>
+    {items.map((item, i) => (
+      <NavbarItem {...item} key={i} />
+    ))}
+  </>
+);
 
-function NavbarContentLayout({ left, right }) {
-  const pathname = window.location.pathname.split("/")[1];
+const NavbarContentLayout = ({ left, right }) => {
+  const location = useLocation();
   const [showBackground, setBackground] = useState();
 
   const showNavbarColor = (pathname) => {
-    if (pathname == "docs") setBackground(true);
+    setBackground(pathname === "docs");
   };
 
   useEffect(() => {
-    showNavbarColor(pathname);
-  }, [showBackground]);
+    showNavbarColor(location.pathname);
+  }, [showBackground, location.pathname]);
 
   return (
     <div
@@ -52,8 +48,9 @@ function NavbarContentLayout({ left, right }) {
       <div className="navbar__items navbar__items--right">{right}</div>
     </div>
   );
-}
-export default function NavbarContent() {
+};
+
+const NavbarContent = () => {
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -62,7 +59,6 @@ export default function NavbarContent() {
   return (
     <NavbarContentLayout
       left={
-        // TODO stop hardcoding items?
         <>
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
           <NavbarLogo />
@@ -70,8 +66,6 @@ export default function NavbarContent() {
         </>
       }
       right={
-        // TODO stop hardcoding items?
-        // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarItems items={rightItems} />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
@@ -84,4 +78,6 @@ export default function NavbarContent() {
       }
     />
   );
-}
+};
+
+export default NavbarContent;

@@ -52,18 +52,18 @@ const Feature = ({ Image, title, description, link }) => (
   </div>
 );
 
-export default function Homepage() {
-  return (
-    <section className={styles.features}>
-      <div className="container">
-        <div>
-          <div className={styles.cardsContainer}>
-            {FeatureList.map((props, idx) => (
-              <Feature key={idx} {...props} />
-            ))}
-          </div>
+const Homepage = () => (
+  <section className={styles.features}>
+    <div className="container">
+      <div>
+        <div className={styles.cardsContainer}>
+          {FeatureList.map((props, idx) => (
+            <Feature key={idx} {...props} />
+          ))}
         </div>
       </div>
-    </section>
-  );
-}
+    </div>
+  </section>
+);
+
+export default Homepage;

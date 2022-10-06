@@ -8,7 +8,7 @@ import Features from "@site/src/components/Features";
 
 import styles from "./index.module.css";
 
-function HomepageHero() {
+const HomepageHero = () => {
   const { siteConfig } = useDocusaurusContext();
 
   return (
@@ -31,9 +31,9 @@ function HomepageHero() {
       </div>
     </header>
   );
-}
+};
 
-export default function Home() {
+const Home = () => {
   const { siteConfig } = useDocusaurusContext();
 
   return (
@@ -47,4 +47,6 @@ export default function Home() {
       </main>
     </Layout>
   );
-}
+};
+
+export default Home;

@@ -11,16 +11,6 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 996px) {
-  .cardsContainer {
-    flex-direction: column;
-    align-items: center;
-  }
-  .features {
-    padding: 0 0 4rem;
-  }
-}
-
 .cardWrapper {
   margin: 1rem;
   color: white;
@@ -72,4 +62,14 @@
 .cardText:hover {
   text-decoration: none;
   color: black;
+}
+
+@media screen and (max-width: 996px) {
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .features {
+    padding: 0 0 4rem;
+  }
 }

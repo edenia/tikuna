@@ -1,57 +1,58 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Tikuna',
-  tagline: 'A P2P network security monitoring system for the Ethereum blockchain.',
-  url: 'https://tikuna.io',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  title: "Tikuna",
+  tagline:
+    "A P2P network security monitoring system for the Ethereum blockchain.",
+  url: "https://tikuna.io",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'edenia', // Usually your GitHub org/user name.
-  projectName: 'tikuna', // Usually your repo name.
+  organizationName: "edenia", // Usually your GitHub org/user name.
+  projectName: "tikuna", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en','es'],
+    defaultLocale: "en",
+    locales: ["en", "es"],
     localeConfigs: {
       en: {
-        label: 'English',
+        label: "EN",
       },
       es: {
-        label: 'Español',
-      }
+        label: "ES",
+      },
     },
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          breadcrumbs: false,
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/edenia/tikuna.io/tree/master/',
+          editUrl: "https://github.com/edenia/tikuna.io/tree/master/",
         },
         blog: {
           showReadingTime: true,
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -61,76 +62,83 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Tikuna',
         logo: {
-          alt: 'Tikuna Logo',
-          src: 'img/logo.svg',
+          alt: "Tikuna Logo",
+          src: "img/tikuna-dark-logo.png",
+          className: "navbar__logo",
         },
         items: [
           {
-            type: 'doc',
-            docId: 'research/intro',
-            position: 'left',
-            label: 'Research',
+            type: "doc",
+            docId: "research/intro",
+            position: "left",
+            label: "Research",
           },
           {
-            type: 'doc',
-            docId: 'about/team',
-            position: 'left',
-            label: 'About Tikuna',
+            type: "doc",
+            docId: "about/team",
+            position: "left",
+            label: "About Tikuna",
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: "/blog", label: "Blog", position: "left" },
           {
-            href: 'https://github.com/edenia/tikuna',
-            label: 'GitHub',
-            position: 'right',
-          },
-          {
-            type: 'localeDropdown',
-            position: 'right',
+            type: "localeDropdown",
+            position: "right",
           },
         ],
+        style: "primary",
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
             items: [
               {
-                label: 'Research',
-                to: '/docs/research/intro',
-              },
-              {
-                label: 'About Tikuna',
-                to: '/docs/about/team',
+                html: `
+                <a href="" target="_blank" rel="" aria-label="Tikuna Logo">
+                  <img src="/img/tikuna-dark-logo.png" alt="Tikuna Logo" class="footer__logo" />
+                </a>
+              `,
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Docs",
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/edenia/tikuna',
+                label: "Research",
+                to: "/docs/research/intro",
               },
               {
-                label: 'Discord',
-                href: 'https://discord.com/invite/YeGcF6QwhP',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/EdeniaWeb3',
+                label: "About Tikuna",
+                to: "/docs/about/team",
               },
             ],
           },
           {
-            title: 'More',
+            title: "Community",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              }
+                label: "GitHub",
+                href: "https://github.com/edenia/tikuna",
+              },
+              {
+                label: "Discord",
+                href: "https://discord.com/invite/YeGcF6QwhP",
+              },
+              {
+                label: "Twitter",
+                href: "https://twitter.com/EdeniaWeb3",
+              },
+            ],
+          },
+          {
+            title: "More",
+            items: [
+              {
+                label: "Blog",
+                to: "/blog",
+              },
             ],
           },
         ],

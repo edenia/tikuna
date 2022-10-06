@@ -1,0 +1,19 @@
+/*
+Hide color mode toggle in small viewports
+ */
+.customNavbar {
+  padding: 0 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.showRedBackground {
+  background-color: #020912;
+}
+.showTransparentBackground {
+  --ifm-navbar-background-color: var(--ifm-color-primary);
+}
+@media (max-width: 996px) {
+  .colorModeToggle {
+    display: none;
+  }
+}

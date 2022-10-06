@@ -3,7 +3,8 @@ id: references
 title: Project References
 sidebar_label: References
 description: Project References
-keywords: [ tikuna, ethereum , research grant ]
+keywords: [tikuna, ethereum, research grant]
+custom_edit_url: null
 ---
 
 - [https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md](https://github.com/ethereum/devp2p/blob/master/discv5/discv5.md)

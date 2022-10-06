@@ -3,10 +3,14 @@ id: intro
 title: Welcome to Tikuna
 sidebar_label: Project Intro
 description: Tikuna - an Ethereum blockchain network security monitoring system
-keywords: [ tikuna, ethereum , research grant ]
+keywords: [tikuna, ethereum, research grant]
+hide_table_of_contents: true
+custom_edit_url: null
 ---
 
-Tikuna, a proof-of-concept P2P network security monitoring system for the Ethereum blockchain. By leveraging Machine Learning techniques, it will extract security and performance insights for early detection of relevant incidents. Tikuna will bring improved visibility to the security state of the P2P network. 
+---
+
+Tikuna, a proof-of-concept P2P network security monitoring system for the Ethereum blockchain. By leveraging Machine Learning techniques, it will extract security and performance insights for early detection of relevant incidents. Tikuna will bring improved visibility to the security state of the P2P network.
 
 ## About the Project
 

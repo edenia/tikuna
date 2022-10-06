@@ -253,7 +253,25 @@
   "Project Intro": {
     "message": "Introducción al proyecto"
   },
-  "A P2P network security monitoring system for the Ethereum blockchain.": {
-    "message": "Un sistema de monitoreo de seguridad de red P2P para el blockchain Ethereum."
+  "An AI-based Blockchain security monitoring system.": {
+    "message": "Un sistema de monitoreo de seguridad Blockchain basado en IA."
+  },
+  "Research": {
+    "message": "Investigación"
+  },
+  "Take a look at the main purposes behind the project": {
+    "message": "Echa un vistazo a los propósitos principales detrás del proyecto."
+  },
+  "About Tikuna": {
+    "message": "Sobre Tikuna"
+  },
+  "Get to know about our team and involved companies": {
+    "message": "Conozca a nuestro equipo y empresas involucradas"
+  },
+  "Go and read contents written by our team": {
+    "message": "Ve y lee los contenidos escritos por nuestro equipo"
+  },
+  "More here": {
+    "message": "Ver más"
   }
 }

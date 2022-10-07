@@ -1,6 +1,6 @@
 ---
 slug: first-blog-post
-title: First Blog Post
+title: "Tikuna: a blockchain security monitoring system supported by the Ethereum Foundation."
 authors: [andres, francis, loui]
 ---
 

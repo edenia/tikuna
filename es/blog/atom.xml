@@ -8,7 +8,7 @@
     <subtitle>Tikuna Blog</subtitle>
     <icon>https://tikuna.io/es/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[First Blog Post]]></title>
+        <title type="html"><![CDATA[Tikuna: Seguridad en Blockchain usando IA - Soportado por Ethereum Foundation.]]></title>
         <id>first-blog-post</id>
         <link href="https://tikuna.io/es/blog/first-blog-post"/>
         <updated>2022-08-01T00:00:00.000Z</updated>
@@ -18,6 +18,10 @@ Un entregable que se pretende desarrollar es un dashboard en el que los usuarios
         <author>
             <name>Andres Gomez Ramirez</name>
             <uri>https://www.linkedin.com/in/andres-gomez-ramirez-bb7226156/</uri>
+        </author>
+        <author>
+            <name>Francis Gomez Ramirez</name>
+            <uri>https://www.linkedin.com/in/francis-adrian-gomez-ramirez-599598138/</uri>
         </author>
         <author>
             <name>Loui Al Sardy</name>

@@ -14,10 +14,11 @@
 .cardWrapper {
   margin: 1rem;
   color: white;
-  background-color: #020e15;
+  background-color: var(--ifm-card-background);
   max-width: 300px;
   border-radius: 6px;
   border-bottom: 2px solid #f49912;
+  border-top: 2px solid #f49912;
 }
 
 .cardImage {

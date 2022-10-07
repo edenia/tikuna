@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktikuna=self.webpackChunktikuna||[]).push([[954],{3222:a=>{a.exports=JSON.parse('[{"label":"hola","permalink":"/es/blog/tags/hola","count":1},{"label":"docusaurus","permalink":"/es/blog/tags/docusaurus","count":1}]')}}]);

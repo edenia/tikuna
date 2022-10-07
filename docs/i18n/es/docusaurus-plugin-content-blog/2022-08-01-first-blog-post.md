@@ -1,6 +1,6 @@
 ---
 slug: first-blog-post
-title: "Tikuna: Seguridad en Blockchain usando IA - Soportada por Ethereum Foundation"
+title: "Tikuna: Seguridad en Blockchain usando IA - Soportado por Ethereum Foundation."
 authors: [andres, francis, loui]
 ---
 

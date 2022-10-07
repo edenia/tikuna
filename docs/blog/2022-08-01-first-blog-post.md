@@ -1,7 +1,7 @@
 ---
 slug: first-blog-post
 title: First Blog Post
-authors: [andres, loui]
+authors: [andres, francis, loui]
 ---
 
 Cybersecurity systems are complex and play a fundamental role in various applications. Even in highly secure and decentralized systems like blockchain networks, there are cases in which the dApps, average users, or the network itself are exposed to many daily risks. Due to certain vulnerabilities, numerous businesses are interested in fostering research and development of security-focused solutions, which is precisely why our team is developing Tikuna.

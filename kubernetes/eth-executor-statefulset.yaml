@@ -31,7 +31,7 @@ spec:
             cpu: "1"
         envFrom:
         ports:
-        - protocol: TCP   
+        - protocol: TCP
           containerPort: 8545
         - protocol: TCP
           containerPort: 8551
@@ -52,9 +52,9 @@ spec:
         - "0.0.0.0"
         - "--authrpc.jwtsecret"
         - "/root/consensus_jwt/jwt.hex"
-      volumes: 
+      volumes:
       - name: jwt-consensus
-        secret: 
+        secret:
            secretName: secret-jwt-eth-prysm
       restartPolicy: Always
   volumeClaimTemplates:

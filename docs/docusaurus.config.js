@@ -121,12 +121,17 @@ const config = {
             ],
           },
           {
-            title: "Community",
+            title: "Community Tikuna",
             items: [
               {
                 label: "GitHub",
                 href: "https://github.com/edenia/tikuna",
               },
+            ],
+          },
+          {
+            title: "Community Edenia",
+            items: [
               {
                 label: "Discord",
                 href: "https://discord.com/invite/YeGcF6QwhP",
@@ -134,6 +139,27 @@ const config = {
               {
                 label: "Twitter",
                 href: "https://twitter.com/EdeniaWeb3",
+              },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/company/edeniaweb3/",
+              },
+            ],
+          },
+          {
+            title: "Community Sakundi",
+            items: [
+              {
+                label: "Discord",
+                href: "https://discord.gg/Ys5f6H9DFm",
+              },
+              {
+                label: "Twitter",
+                href: "https://twitter.com/Sakundi_io",
+              },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/company/sakundi/",
               },
             ],
           },

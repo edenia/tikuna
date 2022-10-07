@@ -18,7 +18,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-footer-link-hover-color: white;
   --ifm-pagination-nav-color-hover: #f49912;
-  --ifm-card-background: #112949;
+  --ifm-card-background: white;
+  --ifm-card-text-color: black;
+  --logo-sakundi: url("/img/sakundi-logo-light.png");
+  --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -38,6 +41,8 @@
   --ifm-background-main-page: url("/img/main-bg.webp") !important;
   --ifm-link-color: white;
   --ifm-card-background: #020e15;
+  --ifm-card-text-color: white;
+  --logo-sakundi: url("/img/sakundi-logo.webp");
 }
 
 .main-wrapper {
@@ -127,10 +132,29 @@ hr {
   width: 2.25rem;
 }
 
+.sakundiLogo {
+  background-image: var(--logo-sakundi);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 110px;
+  max-width: 400px;
+  margin-top: 2rem !important;
+}
+
+.edeniaLogo {
+  background-image: url("https://raw.githubusercontent.com/edenia/.github/master/.github/workflows/images/edenia-logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 110px;
+  max-width: 400px;
+  margin-top: 2rem !important;
+}
+
 @media screen and (max-width: 996px) {
   .footer__logo {
     margin-right: 0;
   }
+
   footer {
     text-align: center;
   }

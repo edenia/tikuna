@@ -7,7 +7,7 @@ keywords: [edenia, web3 developers, blockchain developers, sistemas edenia]
 custom_edit_url: null
 ---
 
-![edenia logo](https://raw.githubusercontent.com/edenia/.github/master/.github/workflows/images/edenia-logo.png)
+<div className="edeniaLogo logo"></div>
 
 Edenia runs independent blockchain infrastructure and develops web3 solutions. Our team of technology-agnostic builders has been operating since 1987, leveraging the newest technologies to make the internet safer, more efficient, and more transparent.
 

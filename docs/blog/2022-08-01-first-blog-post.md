@@ -1,6 +1,6 @@
 ---
 slug: first-blog-post
-title: "Tikuna: a blockchain security monitoring system supported by the Ethereum Foundation."
+title: "Tikuna: Blockchain Security Using AI - Supported by the Ethereum Foundation."
 authors: [andres, francis, loui]
 ---
 

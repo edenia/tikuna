@@ -1,7 +1,7 @@
 ---
 slug: first-blog-post
-title: First Blog Post
-authors: [andres, loui]
+title: "Tikuna: Seguridad en Blockchain usando IA - Soportada por Ethereum Foundation"
+authors: [andres, francis, loui]
 ---
 
 Los sistemas de seguridad informática son complejos y juegan un papel importante en el desarrollo de aplicaciones. En sistemas tan seguros y descentralizados como redes blockchain, también existen casos en que las dApps, personas usuarias e incluso la misma red se encuentran expuestas a muchos riesgos todos los días, riesgos que pueden vulnerar elementos importantes de manera individual o colectiva. Es por esto que muchas organizaciones se encuentran interesadas en promover la investigación y el desarrollo en soluciones que velen por la seguridad, por lo que precisamente estamos desarrollando Tikuna.

@@ -16,6 +16,9 @@
   --ifm-code-font-size: 95%;
   --ifm-navbar-height: 5rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-footer-link-hover-color: white;
+  --ifm-pagination-nav-color-hover: #f49912;
+  --ifm-card-background: #112949;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -34,6 +37,7 @@
   --ifm-toc-border-color: #2d3648 !important;
   --ifm-background-main-page: url("/img/main-bg.webp") !important;
   --ifm-link-color: white;
+  --ifm-card-background: #020e15;
 }
 
 .main-wrapper {

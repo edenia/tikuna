@@ -13,7 +13,7 @@
 
 .cardWrapper {
   margin: 1rem;
-  color: white;
+  color: var(--ifm-card-text-color);
   background-color: var(--ifm-card-background);
   max-width: 300px;
   border-radius: 6px;

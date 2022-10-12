@@ -4,7 +4,7 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 1.5rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -13,10 +13,10 @@
       rgba(0, 0, 0, 0.69) 40.51%,
       rgba(6, 11, 20, 0) 64.55%
     ),
-    url("/img/hero-bg.webp");
+    url("/img/Diagrama azul.png");
   background-size: cover;
   height: fit-content;
-  bottom: 100px;
+  bottom: 40px;
   color: white;
   border-bottom: 2px solid #f49912;
 }

@@ -1,13 +1,14 @@
- ## Tikuna
-<div align="center">
 
+<div align="center">
+<a href="https://tikuna.io">
+	<img src="/docs/static/img/tikuna-white-logo.png" width="400">
+</a>
 ![](https://img.shields.io/github/license/edenia/tikuna) 
 ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) 
 ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) 
 ![](https://img.shields.io/twitter/follow/edeniaweb3.svg?style=social&logo=twitter)
 ![](https://img.shields.io/twitter/follow/Sakundi_io.svg?style=social&logo=twitter) 
 ![](https://img.shields.io/github/forks/edenia/tikuna?style=social)
-
 </div>
 
 Tikuna, a proof-of-concept P2P network security monitoring system for the Ethereum blockchain. By leveraging Machine Learning techniques, it will extract security and performance insights for early detection of relevant incidents. Tikuna will bring improved visibility to the security state of the P2P network. 
@@ -68,6 +69,11 @@ If you find a bug, please report big and small bugs by [**opening an issue**](ht
 ## About Sakundi
 
 <div align="center">
+
+<a href="https://sakundi.io">
+	<img src="/docs/static/img/sakundi-logo-light.png" width="300">
+</a> 
+<br/>
 
 [![Twitter](https://img.shields.io/twitter/follow/Sakundi_io?style=for-the-badge)](https://twitter.com/Sakundi_io)
 [![Discord](https://img.shields.io/discord/946500573677625344?color=black&label=Discord&logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/Ys5f6H9DFm)

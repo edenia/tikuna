@@ -7,6 +7,10 @@
     "message": "Acerca Tikuna",
     "description": "Navbar item with label About Tikuna"
   },
+  "item.label.Monitoring": {
+    "message": "Monitoreo",
+    "description": "Navbar item with label Monitoring"
+  },
   "item.label.Blog": {
     "message": "Blog",
     "description": "Navbar item with label Blog"

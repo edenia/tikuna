@@ -15,6 +15,10 @@
     "message": "Investigación",
     "description": "The label of footer link with label=Research linking to /docs/research/intro"
   },
+  "link.item.label.Monitoring": {
+    "message": "Monitoreo",
+    "description": "The label of footer link with label=Research linking to /docs/research/intro"
+  },
   "link.item.label.About Tikuna": {
     "message": "Acerca de Tikuna",
     "description": "The label of footer link with label=About Tikuna linking to /docs/about/team"

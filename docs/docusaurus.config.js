@@ -46,7 +46,6 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/edenia/tikuna.io/tree/master/",
         },
         blog: {
           showReadingTime: true,
@@ -85,6 +84,12 @@ const config = {
             position: "left",
             label: "About Tikuna",
           },
+          {
+            type: "doc",
+            docId: "monitoring/beacon-node",
+            position: "left",
+            label: "Monitoring",
+          },
           { to: "/blog", label: "Blog", position: "left" },
           {
             type: "localeDropdown",
@@ -117,6 +122,10 @@ const config = {
               {
                 label: "About Tikuna",
                 to: "/docs/about/team",
+              },
+              {
+                label: "Monitoring",
+                to: "docs/monitoring/beacon-node",
               },
             ],
           },

@@ -10,6 +10,11 @@ const sidebars = {
       label: "About",
       items: ["about/team", "about/sakundi", "about/edenia"],
     },
+    {
+      type: "category",
+      label: "Monitoring",
+      items: ["monitoring/beacon-node"],
+    },
   ],
 };
 

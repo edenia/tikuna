@@ -10,5 +10,9 @@
   "sidebar.tutorialSidebar.category.About": {
     "message": "Acerca de",
     "description": "The label for category About in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Monitoring": {
+    "message": "Monitoreo",
+    "description": "The label for category Monitoring in sidebar tutorialSidebar"
   }
 }

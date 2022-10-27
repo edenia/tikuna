@@ -1,12 +1,13 @@
 ---
 id: beacon-node
-title: Infrastructure Consensus Beacon Node
-sidebar_label: Monitoring Infrastructure Consensus Beacon Node
-description: Monitoring Default Metrics Consensus Beacon Node
+title: Beacon Node Monitor
+sidebar_label: Beacon Node Monitor
+description: Monitoring Default Beacon Node metrics
 keywords: [tikuna, team, scientists]
 custom_edit_url: null
 ---
+---
 
-Here you can find a dashboard for available metrics for the infrastructure for the consensus node:
+Here you can find a monitoring dashboard with available metrics for our beacon node infrastructure:
 
-[Grafana Dashboard](https://dash.tikuna.io/public-dashboards/ca0ff8d66a7c49948a0d20339555bade?orgId=0)
+- [** Grafana Dashboard **](https://dash.tikuna.io/public-dashboards/d7322b0297754a82bdff153e74c5d2c0?orgId=0)

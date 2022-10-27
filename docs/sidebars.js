@@ -13,7 +13,7 @@ const sidebars = {
     {
       type: "category",
       label: "Monitoring",
-      items: ["monitoring/beacon-node", "monitoring/network-eth2"],
+      items: ["monitoring/network-eth2", "monitoring/beacon-node"],
     },
   ],
 };

@@ -6,4 +6,6 @@ description: Meet the team of scientist and developers and engineers at Tikuna
 keywords: [tikuna, team, scientists]
 custom_edit_url: null
 ---
+---
+
 ![edenia logo](/img/second-card.webp)

@@ -7,6 +7,8 @@ keywords: [tikuna, ethereum, research grant]
 hide_table_of_contents: true
 custom_edit_url: null
 ---
+---
+
 Tikuna, a proof-of-concept P2P network security monitoring system for the Ethereum blockchain. By leveraging Machine Learning techniques, it will extract security and performance insights for early detection of relevant incidents. Tikuna will bring improved visibility to the security state of the P2P network.
 
 ## About the Project

@@ -10,3 +10,5 @@ custom_edit_url: null
 <div className="sakundiLogo logo"></div>
 
 Sakundi is a research-based Blockchain security and privacy organization. It offers security monitoring solutions for Blockchain organizations and distributed applications based on Artificial Intelligence tools.
+
+[sakundi.io](https://sakundi.io/)

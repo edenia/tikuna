@@ -20,7 +20,4 @@ El objetivo general del proyecto es apoyar a la comunidad Ethereum brindándoles
 
 ## Hoja de ruta del proyecto
 
-1. Investigar el estado del arte de la seguridad de la red Ethereum P2P.
-2. Configurar nodos ETH para recopilar y analizar datos, definir algoritmos de ML y desarrollar/adaptar algoritmos seleccionados para el análisis de datos.
-3. Obtener información del análisis de datos para desarrollar o adaptar un tablero y alertas.
-4. Los entregables incluyen un informe científico sobre los hallazgos, el código fuente (open source) de las herramientas de seguridad desarrolladas y un tablero con información relacionada con la seguridad.
+![edenia logo](/img/roadmap.png)

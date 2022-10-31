@@ -21,7 +21,4 @@ The overall goal of the project is to support the Ethereum community by providin
 
 ## Project Roadmap
 
-1. Research state of the art of Ethereum P2P network security.
-2. Set up ETH nodes for collecting + analyzing data, defining ML algorithms & developing/adapting selected algorithms for data analysis.
-3. Find insights from the data analysis to develop or adapt a dashboard and alerts.
-4. Deliverables include a scientific report about the findings, open-source code of the developed security tools, and a proof-of-concept dashboard with security-related insights.
+![edenia logo](/img/roadmap.png)

@@ -10,4 +10,6 @@ custom_edit_url: null
 
 We have created a monitoring dashboard with our available metrics for the ETH 2 peer-to-peer network:
 
-- [**Grafana Dashboard**](https://dash.tikuna.io/public-dashboards/d7322b0297754a82bdff153e74c5d2c0?orgId=0)
+<a href="https://dash.tikuna.io/public-dashboards/d7322b0297754a82bdff153e74c5d2c0?orgId=0">
+<div className="buttonDashboard"></div>
+</a>

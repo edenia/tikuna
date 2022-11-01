@@ -150,6 +150,24 @@ hr {
   margin-top: 2rem !important;
 }
 
+.buttonDashboard {
+  background-image: url(/img/ButtontoGrafana.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 70px;
+  max-width: 400px;
+  margin-top: 2rem !important;
+}
+
+.buttonSpanishDashboard {
+  background-image: url(/img/ButtontoGrafanaEspañol.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 80px;
+  max-width: 400px;
+  margin-top: 2rem !important;
+}
+
 @media screen and (max-width: 996px) {
   .footer__logo {
     margin-right: 0;

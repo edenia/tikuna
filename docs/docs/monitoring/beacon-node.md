@@ -10,4 +10,6 @@ custom_edit_url: null
 
 Here you can find a monitoring dashboard with available metrics for our beacon node infrastructure:
 
-- [** Grafana Dashboard **](https://dash.tikuna.io/public-dashboards/d7322b0297754a82bdff153e74c5d2c0?orgId=0)
+<a href="https://dash.tikuna.io/public-dashboards/ca0ff8d66a7c49948a0d20339555bade?orgId=0">
+<div className="buttonDashboard"></div>
+</a>

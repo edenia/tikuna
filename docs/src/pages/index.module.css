@@ -4,48 +4,49 @@
  */
 
 .heroBanner {
-  padding: 1.5rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(
-      35.15deg,
-      rgba(0, 0, 0, 0.69) 40.51%,
-      rgba(6, 11, 20, 0) 64.55%
-    ),
-    url("/img/Diagrama azul.png");
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 690px;
+  background-image: var(--ifm-background-hero);
+  background-position: bottom;
+  background-repeat: no-repeat;
   background-size: cover;
-  height: fit-content;
-  bottom: 40px;
-  color: white;
   border-bottom: 2px solid #f49912;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding-top: 15rem;
+  padding-top: 4rem !important;
 }
 
 .image {
-  width: 400px;
+  width: 340px;
   height: auto;
+  min-height: 150px;
+  background-image: var(--ifm-logo-hero);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .subtitle {
-  text-align: start;
-  width: 50%;
+  text-align: center;
+  width: 100% !important;
   margin: 1rem;
+  font-size: large !important;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eab82f;
+  background-color: #EAB82F;
   border-radius: 6px;
-  margin: 0 1rem;
+  margin: 2rem 1rem;
   padding: 10px 24px 12px;
   font-weight: 700;
   font-size: 18px;
@@ -59,18 +60,25 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 996px) {
+@media screen and (min-width: 996px) {
   .heroBanner {
-    display: flex;
-    align-items: center;
-    padding: 2rem;
-    height: 690px;
+    height: 1000px;
   }
   .container {
     padding-top: 4rem !important;
   }
   .subtitle {
-    width: 100% !important;
     font-size: x-large !important;
+    width: 40% !important;
+  }
+  .image {
+    width: 540px;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .heroBanner {
+    height: 1200px;
   }
 }

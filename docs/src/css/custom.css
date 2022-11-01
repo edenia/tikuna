@@ -22,6 +22,8 @@
   --ifm-card-text-color: black;
   --logo-sakundi: url("/img/sakundi-logo-light.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
+  --ifm-background-hero: url('/img/hero-bg-light.png') !important;
+  --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -43,6 +45,8 @@
   --ifm-card-background: #020e15;
   --ifm-card-text-color: white;
   --logo-sakundi: url("/img/sakundi-logo.webp");
+  --ifm-background-hero: url('/img/hero-bg.png') !important;
+  --ifm-logo-hero: url('/img/tikuna-white-logo.png') !important;
 }
 
 .main-wrapper {

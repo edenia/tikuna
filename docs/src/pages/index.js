@@ -14,7 +14,7 @@ const HomepageHero = () => {
   return (
     <header className={styles.heroBanner}>
       <div className={clsx("container", styles.container)}>
-        <img className={styles.image} src="img/tikuna-white-logo.png"></img>
+        <div className={styles.image}></div>
         <h1 className={styles.subtitle}>
           <Translate>
             An AI-based Blockchain security monitoring system.

@@ -3,7 +3,7 @@ slug: first-blog-post
 title: "Tikuna: Seguridad en Blockchain usando IA - Soportado por Ethereum Foundation."
 authors: [andres, francis, loui]
 ---
-
+---
 Los sistemas de seguridad informática son complejos y juegan un papel importante en el desarrollo de aplicaciones. En sistemas tan seguros y descentralizados como redes blockchain, también existen casos en que las dApps, personas usuarias e incluso la misma red se encuentran expuestas a muchos riesgos todos los días, riesgos que pueden vulnerar elementos importantes de manera individual o colectiva. Es por esto que muchas organizaciones se encuentran interesadas en promover la investigación y el desarrollo en soluciones que velen por la seguridad, por lo que precisamente estamos desarrollando Tikuna.
 
 Tikuna es una prueba de concepto de un sistema de monitorización de la seguridad de la red P2P para el blockchain de Ethereum. Al implementar técnicas de machine learning, Tikuna extraerá información sobre seguridad y rendimiento para la detección temprana de incidentes desafortunados. Y mejorando la visibilidad al estado de seguridad de la red P2P. Este proyecto de investigación propuesto ha sido aprobado y apoyado por la [Ethereum Foundation](http://ethereum.org) con una donación de USD 102.200 para iniciar el proceso de desarrollo.

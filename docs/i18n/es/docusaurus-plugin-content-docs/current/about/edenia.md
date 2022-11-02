@@ -5,6 +5,7 @@ sidebar_label: Acerca Edenia
 description: About Sistemas Edenia Web3 Development Firm
 keywords: [ edenia, web3 developers, blockchain developers, sistemas edenia ]
 ---
+---
 
 ![edenia logo](https://raw.githubusercontent.com/edenia/.github/master/.github/workflows/images/edenia-logo.png)
 

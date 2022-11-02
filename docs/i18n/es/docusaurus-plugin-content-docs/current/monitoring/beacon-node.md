@@ -6,6 +6,7 @@ description: Monitoreo del Nodo Beacon
 keywords: [tikuna, team, scientists]
 custom_edit_url: null
 ---
+---
 
 Aquí puede encontrar un tablero para las métricas disponibles para la infraestructura del nodo de consenso:
 

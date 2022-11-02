@@ -130,7 +130,7 @@ const config = {
             ],
           },
           {
-            title: "Community Tikuna",
+            title: "Tikuna Community",
             items: [
               {
                 label: "GitHub",
@@ -139,7 +139,7 @@ const config = {
             ],
           },
           {
-            title: "Community Edenia",
+            title: "Edenia Community",
             items: [
               {
                 label: "Discord",
@@ -156,7 +156,7 @@ const config = {
             ],
           },
           {
-            title: "Community Sakundi",
+            title: "Sakundi Community",
             items: [
               {
                 label: "Discord",

@@ -7,6 +7,8 @@ keywords: [tikuna, ethereum, research grant]
 hide_table_of_contents: true
 custom_edit_url: null
 ---
+---
+
 Ethereum fue presentado formalmente por Vitalik Buterin en su whitepaper en 2014 [[2]](references.md) y lanzando en 2015; se considera una de las plataformas de blockchain públicas de criptomonedas de código abierto más conocidas que admite la funcionalidad de contratos inteligentes con Ether (ETH o Ξ) somo su criptomoneda nativa y Solidity como su lenguaje de programación. De acuerdo con [[1]](references.md), hubo un total de 105.58 millones de transacciones y 1.45 millones de contratos inteligentes creados en el primer cuarto (Q1) de 2022. Adicionalmente, sobre la capitalización de mercado, Ethereum es la segunda criptomoneda más grande después de Bitcoin, con al rededor de $234 billones en Agosto de 2022 [[3]](references.md).
 
 Por otro lado, Ethereum permite a los desarrolladores crear aplicaciones descentralizadas (dApps) en diversos sectores, como las finanzas descentralizadas (DeFi) [[4]](references.md), juegos [[5,6]](references.md), tokens no fungibles (NFTs) [[7]](references.md), e Internet de las Cosas (IoT) [[10]](references.md) que se ejecutan en una red peer-to-peer (P2P), minimizando las posibilidades de fraude, censura, tiempo de inactividad o participación de terceros y haciéndolos más confiables. Además, la red principal pública de Ethereum acaba de pasar por una actualización significativa a Ethereum 2 (oficialmente después de cambiar el nombre llamado The Merge ($ETH) [[8, 9]](references.md)) para mejorar su rendimiento, eficiencia y escalabilidad.

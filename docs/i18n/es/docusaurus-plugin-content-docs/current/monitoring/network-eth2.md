@@ -6,6 +6,7 @@ description: Estado de la red P2P (ETH2)
 keywords: [tikuna, team, scientists]
 custom_edit_url: null
 ---
+---
 
 Aquí puede encontrar un tablero de métricas disponibles para la red P2P para ETH2:
 

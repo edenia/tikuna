@@ -7,6 +7,8 @@ keywords: [tikuna, ethereum, research grant]
 hide_table_of_contents: true
 custom_edit_url: null
 ---
+---
+
 Ethereum was formally introduced by Vitalik Buterin in his whitepaper in 2014 [[2]](references.md) and launched in 2015; it is considered one of the most well-known open-source public cryptocurrency blockchain platforms that support smart contract functionality with Ether (ETH or Ξ) as it is native cryptocurrency and Solidity its programming language. According to [[1]](references.md), there were a total number of 105.58 million transactions and 1.45 million smart contracts created in the first quarter (Q1) of 2022. In addition, concerning market capitalization, Ethereum is the second largest cryptocurrency after Bitcoin, with around $234 billion as of August 2022 [[3]](references.md).
 
 Furthermore, Ethereum allows developers to create decentralized applications (dApps) in various sectors such as decentralized finance (DeFi) [[4]](references.md), gaming [[5,6]](references.md), Non-fungible tokens (NFTs) [[7]](references.md), and Internet-of-Things (IoT) [[10]](references.md) that run on a peer-to-peer (P2P) network. Therefore, minimizing the chances of fraud, censorship, downtime, or third-party involvement and making them more reliable. Additionally, the Ethereum public mainnet has just gone through a significant upgrade to Ethereum 2 (officially after renaming called The Merge ($ETH) [[8, 9]](references.md)) to improve its performance, efficiency, and scalability.

@@ -5,6 +5,7 @@ sidebar_label: Introducción al proyecto
 description: Tikuna - an Ethereum blockchain network security monitoring system
 keywords: [ tikuna, ethereum , research grant ]
 ---
+---
 
 Tikuna, una prueba de concepto de un sistema de monitoreo de seguridad de red P2P  para la cadena de bloques de Ethereum. Aprovechando las técnicas de Machine Learning, extraerá información de seguridad y rendimiento para la detección temprana de incidentes relevantes. Tikuna brindará una mejor visibilidad del estado de seguridad de la red P2P.
 

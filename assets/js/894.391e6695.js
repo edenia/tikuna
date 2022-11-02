@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktikuna=self.webpackChunktikuna||[]).push([[894],{8894:(k,u,e)=>{e.r(u)}}]);

@@ -16,7 +16,7 @@
   --ifm-code-font-size: 95%;
   --ifm-navbar-height: 5rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-footer-link-hover-color: white;
+  --ifm-footer-link-hover-color: #001123;
   --ifm-pagination-nav-color-hover: #f49912;
   --ifm-card-background: white;
   --ifm-card-text-color: black;
@@ -24,6 +24,11 @@
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
   --ifm-background-hero: url('/img/hero-bg-light.png') !important;
   --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;
+  --footer-background-color: #FFFFFF !important;
+  --ifm-color-secondary: #051d38 !important;
+  --ifm-logo: url('/img/tikuna-light-logo.png') !important;
+  --ifm-footer-title-color: #051d38 !important;
+  --navbar-background: #FFFFFF !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -47,6 +52,10 @@
   --logo-sakundi: url("/img/sakundi-logo.webp");
   --ifm-background-hero: url('/img/hero-bg.png') !important;
   --ifm-logo-hero: url('/img/tikuna-white-logo.png') !important;
+  --footer-background-color: #09294c !important;
+  --ifm-color-secondary: white !important;
+  --ifm-logo: url('/img/tikuna-dark-logo.png') !important;
+  --navbar-background: rgb(0 0 0 / 74%) !important;
 }
 
 .main-wrapper {
@@ -55,12 +64,17 @@
 }
 
 footer {
-  background-color: #09294c !important;
+  background-color: var(--footer-background-color) !important;
   border-top: 2px solid #f49912;
+}
+
+.footer__title {
+  color: var(--ifm-color-secondary) !important;
 }
 
 .navbar {
   border-bottom: 2px solid #f49912;
+  background-color: var(--navbar-background) !important;
   padding: 0;
 }
 
@@ -78,6 +92,7 @@ footer {
   padding: 6px 0;
   margin: var(--ifm-navbar-item-padding-vertical)
     var(--ifm-navbar-item-padding-horizontal);
+  color: var(--ifm-color-secondary) !important;
 }
 
 .navbar__items--right > .navbar__item {
@@ -87,7 +102,8 @@ footer {
 .dropdown > .navbar__link {
   text-align: center;
   padding: 4px 2px 6px 6px;
-  border: 1px solid white;
+  border: 1px solid var(--ifm-color-secondary);
+  color: var(--ifm-color-secondary) !important;
   border-radius: 6px;
 }
 
@@ -102,8 +118,9 @@ footer {
 }
 
 .clean-btn {
-  border: 1px solid white;
+  border: 1px solid var(--ifm-color-secondary);
   border-radius: 6px !important;
+  color: var(--ifm-color-secondary) !important;
   margin-left: 10px;
 }
 
@@ -112,8 +129,13 @@ hr {
 }
 
 .footer__logo {
-  height: 6rem;
+  height: 7rem;
+  width: 100%;
   margin-right: 4rem;
+  background-image: var(--ifm-logo);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .menu__list-item--collapsed .menu__link--sublist:after {

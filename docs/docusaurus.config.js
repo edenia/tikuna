@@ -68,8 +68,8 @@ const config = {
       navbar: {
         logo: {
           alt: "Tikuna Logo",
-          src: "img/tikuna-dark-logo.png",
-          className: "navbar__logo",
+          src: "/img/tikuna-light-logo.png",
+          srcDark: "/img/tikuna-dark-logo.png"
         },
         items: [
           {
@@ -106,10 +106,10 @@ const config = {
               {
                 html: `
                 <a href="" target="_blank" rel="" aria-label="Tikuna Logo">
-                  <img src="/img/tikuna-dark-logo.png" alt="Tikuna Logo" class="footer__logo" />
+                  <div class="footer__logo" ><div/>
                 </a>
-              `,
-              },
+              `
+              }
             ],
           },
           {

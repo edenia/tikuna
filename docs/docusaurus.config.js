@@ -7,8 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Tikuna",
-  tagline:
-    "A P2P network security monitoring system for the Ethereum blockchain.",
+  tagline: "A P2P network security monitoring system for the Ethereum blockchain.",
   url: "https://tikuna.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -187,6 +186,14 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      algolia: {
+        appId: '2JIRYUNM5C',
+        apiKey: '92706d89a3ac67750773ddb53a76193e',
+        indexName: 'tikuna',
+        contextualSearch: true,
+        searchParameters: {},
+        searchPagePath: 'search',
       },
     }),
 };

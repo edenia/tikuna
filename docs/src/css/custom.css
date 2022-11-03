@@ -21,7 +21,7 @@
   --ifm-card-background: white;
   --ifm-card-text-color: black;
   --logo-sakundi: url("/img/sakundi-logo-light.png");
-  --logo-edenia: url("https://raw.githubusercontent.com/edenia/.github/master/.github/workflows/images/edenia-logo.png");
+  --logo-edenia: url("/img/edenia-logo.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
   --ifm-background-hero: url('/img/hero-bg-light.webp') !important;
   --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;

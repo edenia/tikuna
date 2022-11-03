@@ -20,16 +20,18 @@
   --ifm-pagination-nav-color-hover: #f49912;
   --ifm-card-background: white;
   --ifm-card-text-color: black;
+  --ifm-footer-title-color: #051d38 !important;
+  --navbar-background: #FFFFFF !important;
+  --footer-background-color: #FFFFFF !important;
+  --diagram-background-color: #FFFFFF !important;
+  --hero-background-color: linear-gradient(4deg, rgba(194,211,235,1) 0%, rgba(254,254,254,1) 51%);
+  --ifm-color-secondary: #051d38 !important;
   --logo-sakundi: url("/img/sakundi-logo-light.png");
   --logo-edenia: url("/img/edenia-logo.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
-  --ifm-background-hero: url('/img/hero-bg-light.webp') !important;
+  --ifm-background-hero: url('/img/diagram-light.webp') !important;
   --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;
-  --footer-background-color: #FFFFFF !important;
-  --ifm-color-secondary: #051d38 !important;
   --ifm-logo: url('/img/tikuna-light-logo.png') !important;
-  --ifm-footer-title-color: #051d38 !important;
-  --navbar-background: #FFFFFF !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -46,18 +48,20 @@
   --ifm-menu-color-active: white;
   --ifm-menu-color-background-active: #112949;
   --ifm-toc-border-color: #2d3648 !important;
-  --ifm-background-main-page: url("/img/main-bg.webp") !important;
   --ifm-link-color: white;
   --ifm-card-background: #020e15;
   --ifm-card-text-color: white;
+  --footer-background-color: #09294c !important;
+  --diagram-background-color: #060B14 !important;
+  --hero-background-color: linear-gradient(0deg, rgba(6,11,21,1) 0%, rgba(5,37,79,1) 43%, rgba(4,45,74,1) 100%);
+  --ifm-color-secondary: white !important;
+  --navbar-background: rgb(0 0 0 / 74%) !important;
+  --ifm-background-main-page: url("/img/main-bg.webp") !important;
+  --ifm-background-hero: url('/img/diagram-dark.webp') !important;
+  --ifm-logo-hero: url('/img/tikuna-white-logo.png') !important;
+  --ifm-logo: url('/img/tikuna-dark-logo.png') !important;
   --logo-sakundi: url("/img/sakundi-logo.webp");
   --logo-edenia: url("/img/edenia-light-logo.png");
-  --ifm-background-hero: url('/img/hero-bg-dark.webp') !important;
-  --ifm-logo-hero: url('/img/tikuna-white-logo.png') !important;
-  --footer-background-color: #09294c !important;
-  --ifm-color-secondary: white !important;
-  --ifm-logo: url('/img/tikuna-dark-logo.png') !important;
-  --navbar-background: rgb(0 0 0 / 74%) !important;
 }
 
 .main-wrapper {

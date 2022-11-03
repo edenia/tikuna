@@ -2,42 +2,58 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-
-.heroBanner {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+ 
+.heroBanner{
   width: 100%;
-  height: 690px;
-  background-image: var(--ifm-background-hero);
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 900px;
+  background: var(--diagram-background-color);
   border-bottom: 2px solid #f49912;
+}
+
+.content {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--hero-background-color);
+  border-bottom: 8px solid #f49912;
+  border-radius: 0 0 50% 50%/0 0 20% 20%;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 15rem;
-  padding-top: 4rem !important;
+  padding-top: 8rem;
 }
 
 .image {
-  width: 340px;
+  width: 400px;
   height: auto;
   min-height: 150px;
   background-image: var(--ifm-logo-hero);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+}
+
+.diagramContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diagram {
+  width: 100%;
+  height: 500px;
+  background-image: var(--ifm-background-hero);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .subtitle {
   text-align: center;
   width: 100% !important;
   margin: 1rem;
-  font-size: large !important;
+  font-size: x-large;
 }
 
 .subtitleDiagram{
@@ -50,6 +66,7 @@
   margin-top: 5rem;
   font-weight: 700;
   text-decoration: underline;
+  text-decoration-color: #f49912;
 }
 
 .buttons {
@@ -72,25 +89,17 @@
   text-decoration: none;
 }
 
-@media screen and (min-width: 996px) {
+@media screen and (min-width: 440px) {
   .heroBanner {
-    height: 1000px;
-  }
-  .container {
-    padding-top: 4rem !important;
-  }
-  .subtitle {
-    font-size: x-large !important;
-    width: 40% !important;
-  }
-  .image {
-    width: 540px;
     height: auto;
   }
-}
-
-@media screen and (min-width: 1440px) {
-  .heroBanner {
-    height: 1200px;
+  .subtitle {
+    font-size: large !important;
   }
-}
+  .container{
+    padding-top: 4rem !important;
+  }
+  .content {
+    border-radius: 0 0 50% 50%/0 0 50% 50%;
+  }
+} 

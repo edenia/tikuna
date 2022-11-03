@@ -23,7 +23,7 @@
   --logo-sakundi: url("/img/sakundi-logo-light.png");
   --logo-edenia: url("https://raw.githubusercontent.com/edenia/.github/master/.github/workflows/images/edenia-logo.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
-  --ifm-background-hero: url('/img/hero-bg-light.png') !important;
+  --ifm-background-hero: url('/img/hero-bg-light.webp') !important;
   --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;
   --footer-background-color: #FFFFFF !important;
   --ifm-color-secondary: #051d38 !important;
@@ -52,7 +52,7 @@
   --ifm-card-text-color: white;
   --logo-sakundi: url("/img/sakundi-logo.webp");
   --logo-edenia: url("/img/edenia-light-logo.png");
-  --ifm-background-hero: url('/img/hero-bg.png') !important;
+  --ifm-background-hero: url('/img/hero-bg-dark.webp') !important;
   --ifm-logo-hero: url('/img/tikuna-white-logo.png') !important;
   --footer-background-color: #09294c !important;
   --ifm-color-secondary: white !important;

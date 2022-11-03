@@ -40,6 +40,18 @@
   font-size: large !important;
 }
 
+.subtitleDiagram{
+  text-align: center;
+  width: 100% !important;
+  margin: 1rem;
+  font-size: 30px !important;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  margin-top: 5rem;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
 .buttons {
   display: flex;
   align-items: center;

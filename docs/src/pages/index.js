@@ -28,6 +28,11 @@ const HomepageHero = () => {
             <Translate>Project Intro</Translate>
           </Link>
         </div>
+        <div className={styles.subtitleDiagram}>
+        <Translate>
+            Here is how it works:
+          </Translate>
+        </div>
       </div>
     </header>
   );

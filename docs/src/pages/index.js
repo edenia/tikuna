@@ -12,7 +12,7 @@ const HomepageHero = () => {
   return (
     <header className={styles.heroBanner}>
       <div className={styles.content}>
-        <div className={clsx("container", styles.container, )}>
+        <div className={clsx("container", styles.container )}>
           <div className={styles.image}></div>
           <h1 className={styles.subtitle}>
             <Translate>
@@ -29,7 +29,7 @@ const HomepageHero = () => {
           </div>
         </div>
       </div>
-      <div className={clsx("container", styles.diagramContainer, )}>
+      <div className={clsx("container", styles.diagramContainer )}>
         <div className={styles.subtitleDiagram}>
           <Translate>
             Here is how it works:

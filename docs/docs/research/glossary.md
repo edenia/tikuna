@@ -3,10 +3,10 @@ id: glossary
 title: Glossary
 sidebar_label: Glossary
 description: Glossary of terms definitions and acronyms 
-keywords: [ Glossary, Terms, Definitions, Acronyms,  Tikuna]
+keywords: [ Glossary, Terms, Definitions, Acronyms, Tikuna]
 ---
 
-List of terms necessary to understand the contents of this guide.
+List of terms recommended to understand the contents of this research grant.
 
 ## **A**
 

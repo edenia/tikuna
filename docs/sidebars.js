@@ -3,7 +3,7 @@ const sidebars = {
     {
       type: "category",
       label: "Research",
-      items: ["research/intro", "research/stateoftheart","research/references"],
+      items: ["research/intro", "research/stateoftheart","research/references","research/glossary"],
     },
     {
       type: "category",

@@ -1,0 +1,85 @@
+---
+id: team
+title: The Team at Tikuna
+sidebar_label: The Team
+description: Meet the team of scientist and developers and engineers at Tikuna
+keywords: [tikuna, team, scientists]
+custom_edit_url: null
+---
+
+---
+
+export const cards = [
+  {
+    name: "Andres Gomez Ramirez",
+    subtitle: "Title goes here",
+    image: "/img/team/andres.png",
+    description:
+      "Ph.D. in cybersecurity from the University of Frankfurt and CERN. A blockchain security researcher at Edenia.",
+  },
+  {
+    name: "Francis Gomez Ramirez",
+    subtitle: "Title goes here",
+    image: "/img/team/francis.png",
+    description:
+      "Computer scientist and specialist in project management with wide experience in banking industry and fintech.",
+  },
+  {
+    name: "Loui Al Sardy",
+    subtitle: "Title goes here",
+    image: "/img/team/loui.png",
+    description:
+      "Ph.D. candidate at Chair of Software Engineering at the University of Erlangen-Nuremberg.",
+  },
+  {
+    name: "Xavier Fernández",
+    subtitle: "Title goes here",
+    image: "/img/team/xavier.png",
+    description:
+      "Computer scientist and specialist in project management with wide experience in banking industry and fintech.",
+  },
+  {
+    name: "Edgar Fernández",
+    subtitle: "Business Lead",
+    image: "/img/team/edgar.png",
+    description:
+      "Our company was born with the internet. Now we aim to transform it.",
+  },
+  {
+    name: "Edwin Rodríguez",
+    subtitle: "Title goes here",
+    image: "/img/team/edwin.png",
+    description:
+      "UI/UX Designer & BA in Graphic Design. I am passionate about what I do. I love being around people who inspire me and push me to improve my skills.",
+  },
+  {
+    name: "Paola Espinoza",
+    subtitle: "Title goes here",
+    image: "/img/team/pao.png",
+    description:
+      "Our company was born with the internet. Now we aim to transform it.",
+  },
+];
+
+<div className="cardsContainer">
+  {cards.map((data, i) => (
+    <div className="cardWrapper">
+      <div className="cardHeader">
+        <img src={data.image} alt="Team" className="cardImage" />
+      </div>
+      <div className="cardBody">
+        <p className="title">{data.name}</p>
+        <p className="subtitle">{data.name}</p>
+        <p className="description">{data.description}</p>
+        <a href={data.href}>
+          <img
+            src="/img/icon-link.png"
+            width="32px"
+            height="32px"
+            alt={data.name + " logo"}
+          />
+        </a>
+      </div>
+    </div>
+  ))}
+</div>

@@ -2,7 +2,7 @@ FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-RUN apt-get update; apt-get install -y --no-install-recommends git libpq-dev build-essential nano
+RUN apt-get update; apt-get install -y --no-install-recommends git libpq-dev build-essential nano; rm /var/lib/apt/lists/*
 
 COPY ./ /app
 

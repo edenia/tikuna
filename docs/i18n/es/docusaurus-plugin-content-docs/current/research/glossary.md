@@ -1,5 +1,5 @@
 ---
-id: glosario
+id: glossary
 title: Glosario
 sidebar_label: Glosario
 description: Glosario de términos, definiciones y abreviaturas

@@ -260,6 +260,10 @@ hr {
   line-height: 150%;
 }
 
+.DocSearch-Button{
+  margin: 0 10px !important;
+}
+
 @media screen and (max-width: 996px) {
   .footer__logo {
     margin-right: 0;

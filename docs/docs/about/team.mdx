@@ -9,16 +9,18 @@ custom_edit_url: null
 
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 export const cards = [
   {
-    name: "Andres Gomez Ramirez",
+    name: "Andrés Gómez Ramírez",
     subtitle: "Leader Security Researcher",
     image: "/img/team/andres.png",
     description:
       "Ph.D. in cybersecurity from the University of Frankfurt and CERN. A blockchain security researcher at Edenia.",
   },
   {
-    name: "Francis Gomez Ramirez",
+    name: "Francis Gómez Ramírez",
     subtitle: "Senior DevOps Engineer",
     image: "/img/team/francis.png",
     description:
@@ -74,7 +76,11 @@ Meet the group of professionals behind Tikuna.
   {cards.map((data, i) => (
     <div className="cardWrapper">
       <div className="cardHeader">
-        <img src={data.image} alt="Team" className="cardImage" />
+        <img
+          src={useBaseUrl(data.image)}
+          alt={data.name}
+          className="cardImage"
+        />
       </div>
       <div className="cardBody">
         <p className="title">{data.name}</p>
@@ -82,7 +88,7 @@ Meet the group of professionals behind Tikuna.
         <p className="description">{data.description}</p>
         <a href={data.href}>
           <img
-            src="/img/icon-link.png"
+            src={useBaseUrl("/img/icon-link.png")}
             width="32px"
             height="32px"
             alt={data.name + " logo"}

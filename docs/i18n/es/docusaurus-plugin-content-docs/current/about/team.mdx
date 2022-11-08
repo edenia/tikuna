@@ -1,0 +1,99 @@
+---
+id: team
+title: El equipo de Tikuna
+sidebar_label: El equipo
+description: Meet the team of scientist and developers and engineers at Tikuna
+keywords: [tikuna, team, scientists]
+---
+
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+export const cards = [
+  {
+    name: "Andrés Gómez Ramírez",
+    subtitle: "Investigador de seguridad líder",
+    image: "/img/team/andres.png",
+    description:
+      "Doctor. en ciberseguridad de la Universidad de Frankfurt y CERN. Un investigador de seguridad de blockchain en Edenia.",
+  },
+  {
+    name: "Francis Gómez Ramírez",
+    subtitle: "Ingeniero sénior de DevOps",
+    image: "/img/team/francis.png",
+    description:
+      "Informático y especialista en gestión de proyectos con amplia experiencia en la industria bancaria y fintech.",
+  },
+  {
+    name: "Loui Al Sardy",
+    subtitle: "Investigador de seguridad",
+    image: "/img/team/loui.png",
+    description:
+      "Doctor. Candidato a la Cátedra de Ingeniería de Software en la Universidad de Erlangen-Nuremberg.",
+  },
+  {
+    name: "Xavier Fernández",
+    subtitle: "Gerente de proyecto",
+    image: "/img/team/xavier.png",
+    description:
+      "Socio de Edenia enfocado en infraestructura blockchain y desarrollo de soluciones web3. Xavier ha trabajado en una amplia gama de proyectos, desde código abierto impulsado por la comunidad hasta desarrollo empresarial utilizando diversas implementaciones de tecnología blockchain.",
+  },
+  {
+    name: "Edgar Fernández",
+    subtitle: "Líder de Negocios",
+    image: "/img/team/edgar.png",
+    description:
+      "Nuestra empresa nació con internet. Ahora nuestro objetivo es transformarlo.",
+  },
+  {
+    name: "Edwin Rodríguez",
+    subtitle: "UI / UX y diseñador gráfico",
+    image: "/img/team/edwin.png",
+    description:
+      "Me apasiona lo que hago y disfruto estar rodeado de personas que me inspiran y me empujan a mejorar mis habilidades.",
+  },
+  {
+    name: "Paola Espinoza",
+    subtitle: "Desarrollador web",
+    image: "/img/team/pao.png",
+    description:
+      "Desarrolladora web motivada que busca mejorar en Edenia. Apasionada por la construcción de aplicaciones web y soluciones blockchain.",
+  },
+  {
+    name: "Johanna Yee",
+    subtitle: "Diseñador gráfico",
+    image: "/img/team/johanna.png",
+    description:
+      "Considero que la creatividad y la innovación son indispensables para proponer soluciones eficientes y disruptivas.",
+  },
+];
+
+Conoce al grupo de profesionales detrás de Tikuna.
+
+<div className="cardsContainer">
+  {cards.map((data, i) => (
+    <div className="cardWrapper">
+      <div className="cardHeader">
+        <img
+          src={useBaseUrl(data.image)}
+          alt={data.name}
+          className="cardImage"
+        />
+      </div>
+      <div className="cardBody">
+        <p className="title">{data.name}</p>
+        <p className="subtitle">{data.subtitle}</p>
+        <p className="description">{data.description}</p>
+        <a href={data.href}>
+          <img
+            src={useBaseUrl("/img/icon-link.png")}
+            width="32px"
+            height="32px"
+            alt={data.name + " logo"}
+          />
+        </a>
+      </div>
+    </div>
+  ))}
+</div>

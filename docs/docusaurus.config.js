@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Tikuna",
+  title: "Blockchain Security Monitoring",
   tagline: "A P2P network security monitoring system for the Ethereum blockchain.",
   url: "https://tikuna.io",
   baseUrl: "/",

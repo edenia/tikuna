@@ -123,6 +123,10 @@ footer {
   background-color: white;
 }
 
+.table-of-contents__link:hover, .table-of-contents__link--active {
+  color: #f49912;
+}
+
 .clean-btn {
   border: 1px solid var(--ifm-color-secondary);
   border-radius: 6px !important;

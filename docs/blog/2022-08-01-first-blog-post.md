@@ -1,5 +1,5 @@
 ---
-slug: first-blog-post
+slug: introducing-tikuna
 title: "Tikuna: Blockchain Security Using AI - Supported by the Ethereum Foundation."
 authors: [andres, francis, loui]
 ---

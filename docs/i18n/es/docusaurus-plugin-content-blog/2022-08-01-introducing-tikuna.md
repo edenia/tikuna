@@ -1,6 +1,6 @@
 ---
 slug: introducing-tikuna
-title: "Tikuna: Seguridad en Blockchain usando IA - Soportado por Ethereum Foundation."
+title: "Tikuna: Seguridad en Blockchain usando IA - Apoyado por Ethereum Foundation."
 authors: [andres, francis, loui]
 ---
 ---

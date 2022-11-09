@@ -19,7 +19,7 @@
   --ifm-footer-link-hover-color: #001123;
   --ifm-pagination-nav-color-hover: #f49912;
   --ifm-card-background: white;
-  --ifm-card-text-color: black;
+  --ifm-card-text-color: #001123;
   --ifm-footer-title-color: #051d38 !important;
   --navbar-background: #FFFFFF !important;
   --footer-background-color: #FFFFFF !important;
@@ -32,6 +32,7 @@
   --ifm-background-hero: url('/img/diagram-light.webp') !important;
   --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;
   --ifm-logo: url('/img/tikuna-light-logo.png') !important;
+  --ifm-linkedin-icon: url('/img/icon-link-light.png');
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -39,7 +40,7 @@
   --ifm-color-primary: rgb(0 0 0 / 74%);
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-darkest: white;
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
@@ -62,6 +63,7 @@
   --ifm-logo: url('/img/tikuna-dark-logo.png') !important;
   --logo-sakundi: url("/img/sakundi-logo.webp");
   --logo-edenia: url("/img/edenia-light-logo.png");
+  --ifm-linkedin-icon: url('/img/icon-link.png');
 }
 
 .main-wrapper {
@@ -260,8 +262,20 @@ hr {
   line-height: 150%;
 }
 
-.DocSearch-Button{
+.DocSearch-Button {
   margin: 0 10px !important;
+}
+
+.linkedin {
+  background-image: var(--ifm-linkedin-icon);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 32px;
+}
+
+body {
+  color: var(--ifm-color-primary-darkest);
 }
 
 @media screen and (max-width: 996px) {

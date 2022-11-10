@@ -284,6 +284,64 @@ body {
   color: var(--ifm-color-primary-darkest);
 }
 
+.button {
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: space-between;
+  width: 200px;
+  height: 50px;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  background-size: cover;
+  margin: 10px;
+}
+
+.button:hover {
+  color: white;
+}
+
+.sakundiWeb {
+  background-image: url(/img/icons/sakundi-web.png);
+}
+
+.sakundiTwitter {
+  background-image: url(/img/icons/sakundi-twitter.png);
+}
+
+.sakundiLinkedIn {
+  background-image: url(/img/icons/sakundi-linkedin.png);
+}
+
+.sakundiDiscord {
+  background-image: url(/img/icons/sakundi-discord.png);
+}
+
+.edeniaWeb {
+  background-image: url(/img/icons/edenia-web.png);
+}
+
+.edeniaTwitter {
+  background-image: url(/img/icons/edenia-twitter.png);
+}
+
+.edeniaLinkedIn {
+  background-image: url(/img/icons/edenia-linkedin.png);
+}
+
+.edeniaDiscord {
+  background-image: url(/img/icons/edenia-discord.png);
+}
+
+.socialMediaLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  color: white;
+  justify-content: space-around;
+}
+
 @media screen and (max-width: 996px) {
   .footer__logo {
     margin-right: 0;

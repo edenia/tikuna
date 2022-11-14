@@ -10,6 +10,18 @@ List of terms recommended to understand the contents of this research grant.
 
 ## **A**
 
+### Account
+
+An object that has an address, a balance, a nonce, and possibly some storage and code as well. An account may be either a contract account or an externally owned account (EOA).
+
+* * *
+
+### Address
+
+This is typically an EOA or contract that can receive (destination address) or send (source address) blockchain transactions. Furthermore, it is the rightmost 160 bits of an ECDSA public key's Keccak hash.
+
+* * *
+
 ### API (Application Programming Interface)
 
 Set of functions and procedures that allow the creation of applications that access the characteristics or data of an operating system, application or other specific service.
@@ -21,6 +33,12 @@ Set of functions and procedures that allow the creation of applications that acc
 ### Backend
 
 Backend is the data access layer of a software, which is not directly accessible by users, it contains the logic of the application that handles said data. The Backend accesses the server, which is a specialized application that understands the way the browser requests information.
+
+* * *
+
+### Base Fee
+
+The reserve price for each block is known as the "base fee." It is the minimum gas fee a user must pay for a transaction to be included in the subsequent block.
 
 * * *
 
@@ -48,6 +66,12 @@ It is defined as the number of blocks in the chain between a given block and the
 
 * * *
 
+### Block Header
+
+The block header is a collection of block-specific metadata and a summary of the transactions contained in the execution payload.
+
+* * *
+
 ### Block Rewards	
 
 Bitcoin block reward refers to the new bitcoins that are awarded by the blockchain network to eligible cryptocurrency miners for each block they mine successfully.
@@ -57,6 +81,12 @@ Bitcoin block reward refers to the new bitcoins that are awarded by the blockcha
 ### Blockchain 
 
 A growing list of records, called blocks, that are linked by cryptography. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data (usually represented as a Merkle tree).
+
+* * *
+
+### Block Validation 
+
+Verifying that a new block has valid transactions and signatures, builds on the heaviest historical chain, and adheres to all other consensus requirements. Valid blocks are added to the end of the chain and distributed to the network, where invalid blocks are discarded.
 
 * * *
 
@@ -74,6 +104,12 @@ A chain ID is a blockchain configuration that affects the formation of an addres
 
 * * *
 
+### Contract Account
+
+An account that contains code that is executed whenever it receives a transaction from another account (EOA or contract).
+
+* * *
+
 ## **D**
 
 ### DApps
@@ -88,6 +124,18 @@ A set of practices that combines software development and IT operations. Its goa
 
 * * *
 
+### Discovery
+
+The method by which an Ethereum node identifies other nodes to connect to.
+
+* * *
+
+### Distributed Hash Table (DHT)
+
+A data structure comprising (key, value) pairs that Ethereum nodes use to identify peers to connect with and choose which protocols to utilize for communication.
+
+* * *
+
 ### Docker
 
 A set of platform as a service products that uses virtualization at the operating system level to deliver software in packages called containers. Containers are isolated from each other and bundle their own software, libraries, and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single core operating system, therefore using fewer resources than virtual machines.
@@ -96,13 +144,37 @@ A set of platform as a service products that uses virtualization at the operatin
 
 ## **E**
 
+### Ether
+
+The native cryptocurrency that is used by the Ethereum ecosystem and that is used to pay for gas fees when transactions are being executed.
+
+* * *
+
 ## **F**
+
+### Fork
+
+A change in protocol causing the creation of an alternative chain, or a temporal divergence in two potential block paths during mining.
+
+* * *
 
 ## **G**
 
 ### Genesis JSON
 
 `genesis.json` is the file that defines the `Genesis block`, which is the starting block of the blockchain. This is like the "configuration" of your blockchain. For example, the chain configuration and the level of difficulty to extract blocks.
+
+* * *
+
+### Gas
+
+A virtual fuel used in Ethereum to execute smart contracts. The EVM uses an accounting mechanism to measure the consumption of gas and limit the consumption of computing resources.
+
+* * *
+
+### Gas Limit
+
+The maximum amount of gas a transaction or block may consume.
 
 * * *
 
@@ -189,6 +261,12 @@ A `Merkle Tree` is a tree in which every leaf node is labelled with the hash of 
 
 * * *
 
+### Message
+
+An internal transaction that is never serialized and only sent within the EVM.
+
+* * *
+
 ### Multi-Sig
 
 `Multisig` is a short term for multiple signatures.It’s used to describe the case in which one requires more than one account's permission to execute a transaction. 
@@ -196,6 +274,12 @@ A `Merkle Tree` is a tree in which every leaf node is labelled with the hash of 
 * * *
 
 ## **N**
+
+### Network
+
+The Ethereum network is a peer-to-peer network that broadcasts transactions and blocks to every Ethereum node (network participant).
+
+* * *
 
 ### Nodes
 
@@ -213,7 +297,13 @@ An oracle is a system that makes off-chain data available on-chain. An example o
 
 ## **P**
 
-### Private Key
+### Peer
+
+Computers running Ethereum client software that have identical copies of the blockchain and are connected to one another.
+
+* * *
+
+### Private Key  (aka Secret Key)
 
 A `private key` is a secret key used to sign transactions. In blockchain networks, a private key's authority is determined by it's mapping to a public key on the network.
 
@@ -243,7 +333,25 @@ Once a `pull request` is opened, you can discuss and review the potential change
 
 ## **R**
 
+### Receipt
+
+Data returned by an Ethereum client to represent the result of a particular transaction, including a hash of the transaction, its block number, the amount of gas used, and, in case of deployment of a smart contract, the address of the contract.
+
+* * *
+
+### Recursive Length Prefix (RLP)
+
+Recursive Length Prefix. An encoding standard designed by the Ethereum developers to encode and serialize objects (data structures) of arbitrary complexity and length.
+
+* * *
+
 ## **S**
+
+### Serialization
+
+The process of converting a data structure into a sequence of bytes.
+
+* * *
 
 ### Smart Contract
 
@@ -251,10 +359,27 @@ A `smart contract` is a computer protocol intended to facilitate, verify, or enf
 
 * * *
 
+### Solidity 
+
+A procedural programming language having comparable syntax to JavaScript, C++, and Java. The most commonly used and popular language for Ethereum smart contracts.
+
+* * *
 
 ### Stake 
 
 Tokens deposited in a smart contract is referred to as your stake.
+
+* * *
+
+### State 
+
+A snapshot of all balances and data at a particular point in time on the blockchain, typically referring to the condition at a specific block.
+
+* * *
+
+### Syncing 
+
+The process of downloading the entire latest version of a blockchain to a node.
 
 * * *
 
@@ -286,7 +411,25 @@ It is a combination of one or more actions. Usually the result of executing a `s
 
 ## **U**
 
+### Unhosted Wallet
+
+A type of self-custody wallet that lets users keep their cryptocurrency balances independent of exchanges or third parties.
+
+* * *
+
+### Utility Coin
+
+A token typically providing holders with the ability to access, via an encrypted key, a particular blockchain or network for purposes of accessing certain benefits or functionality on that blockchain or platform. Utility tokens are typically not intended for use as a currency or means of payment.
+
+* * *
+
 ## **V**
+
+### Validator
+
+A node is responsible for storing data, executing transactions, and adding new blocks to the blockchain in a proof-of-stake system. For the validator software to be activated, 32 ETH must be staked.
+
+* * *
 
 ## **W**
 
@@ -296,9 +439,21 @@ It is a combination of one or more actions. Usually the result of executing a `s
 
 * * *
 
+### Whisper
+
+A decentralized (P2P) messaging service. It is used along with Web3 and Swarm to build DApps.
+
+* * *
+
 ### Whitelist
 
 A whitelist is a subjective measure that a blockchain node can implement to allow transactions to be placed in a block only if they are listed in your account or contract whitelist. Each node can specify its own whitelist, which cannot be seen publicly.
+
+* * *
+
+### White Paper
+
+A document released by developers that explain the technology and purpose of the project they are working on. The document tells prospective investors how the cryptocurrency was conceived and highlights its purpose.
 
 * * *
 
@@ -307,3 +462,9 @@ A whitelist is a subjective measure that a blockchain node can implement to allo
 ## **Y**
 
 ## **Z**
+
+### Zero Address
+
+A special Ethereum address, composed entirely of zeros, that is specified as the destination address of a contract creation transaction.
+
+* * *

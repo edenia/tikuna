@@ -30,9 +30,13 @@
   --logo-edenia: url("/img/edenia-logo.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
   --ifm-background-hero: url('/img/diagram-light.webp') !important;
+  --ifm-background-hero-mobile: url('/img/diagram-mobile-light.png') !important;
   --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;
   --ifm-logo: url('/img/tikuna-light-logo.png') !important;
   --ifm-linkedin-icon: url('/img/icon-link-light.png');
+  --ifm-menu-color-background-active: #E2E7F0;
+  --docsearch-modal-background: #e2e7f096 !important;
+  --docsearch-highlight-color: #051d38 !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -59,11 +63,14 @@
   --navbar-background: rgb(0 0 0 / 74%) !important;
   --ifm-background-main-page: url("/img/main-bg.webp") !important;
   --ifm-background-hero: url('/img/diagram-dark.webp') !important;
+  --ifm-background-hero-mobile: url('/img/diagram-mobile-dark.png') !important;
   --ifm-logo-hero: url('/img/tikuna-white-logo.png') !important;
   --ifm-logo: url('/img/tikuna-dark-logo.png') !important;
   --logo-sakundi: url("/img/sakundi-logo.webp");
   --logo-edenia: url("/img/edenia-light-logo.png");
   --ifm-linkedin-icon: url('/img/icon-link.png');
+  --docsearch-modal-background: #060b1486 !important;
+  --docsearch-highlight-color: #FFFFFF !important;
 }
 
 .main-wrapper {
@@ -177,6 +184,7 @@ hr {
   min-height: 110px;
   max-width: 400px;
   margin-top: 2rem !important;
+  margin-right: 1rem;
 }
 
 .edeniaLogo {
@@ -370,4 +378,27 @@ body {
     border-bottom: 3px solid #F49912;
     border-right: none;
   }
+
+  .navbar-sidebar {
+    border-bottom: 2px solid #f49912;
+    background-color: var(--ifm-card-background) !important;
+    padding: 0;
+  }
+
+  .navbar-sidebar__items {
+    --ifm-menu-color: var(--ifm-card-text-color) !important;
+  }
+
+  .navbar-sidebar__close {
+    border: none;
+  }
+
+  .menu__link--active {
+    --ifm-menu-color-active: var(--ifm-card-text-color) !important;
+  }
+  
+  .navbar__toggle {
+    border: none;
+  }
+
 }

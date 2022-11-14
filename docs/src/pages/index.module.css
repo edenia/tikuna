@@ -5,7 +5,7 @@
  
 .heroBanner{
   width: 100%;
-  height: 900px;
+  height: auto;
   background: var(--diagram-background-color);
   border-bottom: 2px solid #f49912;
 }
@@ -44,9 +44,11 @@
 .diagram {
   width: 100%;
   height: 500px;
-  background-image: var(--ifm-background-hero);
+  background-image: var(--ifm-background-hero-mobile);
   background-repeat: no-repeat;
   background-size: contain;
+  margin: 1rem;
+  background-position: center;
 }
 
 .subtitle {
@@ -89,7 +91,7 @@
   text-decoration: none;
 }
 
-@media screen and (min-width: 440px) {
+@media screen and (min-width: 780px) {
   .heroBanner {
     height: auto;
   }
@@ -101,5 +103,8 @@
   }
   .content {
     border-radius: 0 0 50% 50%/0 0 50% 50%;
+  }
+  .diagram {
+    background-image: var(--ifm-background-hero);
   }
 } 

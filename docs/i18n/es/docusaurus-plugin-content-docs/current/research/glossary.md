@@ -10,18 +10,6 @@ Lista de términos necesarios para comprender un poco mas los contenidos present
 
 ## **A**
 
-### Cuenta
-
-Un objeto que tiene una dirección, un saldo, un nonce y posiblemente también algo de almacenamiento y código. Una cuenta puede ser una cuenta de contrato o una cuenta de propiedad externa (EOA).
-
----
-
-### Dirección
-
-Por lo general, se trata de un EOA o contrato que puede recibir (dirección de destino) o enviar (dirección de origen) transacciones de cadena de bloques. Además, son los 160 bits más a la derecha del hash Keccak de una clave pública ECDSA.
-
----
-
 ### API (Interfaz de Programación de Aplicaciones)
 
 Conjunto de funciones y procedimientos que permiten la creación de aplicaciones que acceden a las características o datos de un sistema operativo, aplicación u otro servicio especifico.
@@ -86,6 +74,12 @@ Una cuenta que contiene código que se ejecuta cada vez que recibe una transacci
 
 ---
 
+### Cuenta
+
+Un objeto que tiene una dirección, un saldo, un nonce y posiblemente también algo de almacenamiento y código. Una cuenta puede ser una cuenta de contrato o una cuenta de propiedad externa (EOA).
+
+---
+
 ## **D**
 
 ### DApps
@@ -115,6 +109,12 @@ Es un conjunto de productos de plataforma como servicio que utiliza la virtualiz
 ### Dirección cero
 
 Una dirección especial de Ethereum, compuesta completamente de ceros, que se especifica como la dirección de destino de una transacción de creación de contrato.
+
+---
+
+### Dirección
+
+Por lo general, se trata de un EOA o contrato que puede recibir (dirección de destino) o enviar (dirección de origen) transacciones de cadena de bloques. Además, son los 160 bits más a la derecha del hash Keccak de una clave pública ECDSA.
 
 ---
 

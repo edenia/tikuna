@@ -51,7 +51,7 @@ def load_sessions(data_dir):
 
 class log_dataset_scores(Dataset):
     def __init__(self, scores):
-        peers  = scores.peer.unique()
+        peers = scores.peer.unique()
         score_values = scores.iloc[:,-7:]
 
         # apply normalization techniques

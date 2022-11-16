@@ -68,7 +68,7 @@ class LSTM(ForcastBasedModel):
             freeze=freeze,
             gpu=gpu,
         )
-        num_labels = 7 # TODO: change this
+        num_labels = meta_data["num_labels"]
         self.feature_type = feature_type
         self.label_type = label_type
         self.hidden_size = hidden_size

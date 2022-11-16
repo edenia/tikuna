@@ -10,5 +10,8 @@ COPY ./ /home/tikuna/app
 ENV PATH="${PATH}:/home/tikuna/.local/bin"
 RUN pip3 install --no-warn-script-location --no-cache-dir --upgrade pip
 RUN pip3 install --no-warn-script-location --no-cache-dir -r requirements.txt
+USER root
+RUN chown -R tikuna:tikuna /home/tikuna/app
+USER tikuna
 
 CMD [ "python3", "analysis/ethereum_lstm.py"]

@@ -16,7 +16,7 @@ import pickle
 import json
 from collections import OrderedDict, defaultdict
 from torch.utils.data import Dataset
-
+from sklearn.preprocessing import MinMaxScaler
 from tikuna.common.utils import decision
 
 
@@ -49,6 +49,46 @@ def load_sessions(data_dir):
     logging.info("# test sessions {} ({:.2f} anomalies)".format(num_test, ratio_test))
     return session_train, session_test
 
+class log_dataset_scores(Dataset):
+    def __init__(self, scores):
+        peers  = scores.peer.unique()
+        score_values = scores.iloc[:,-7:]
+
+        # apply normalization techniques
+        score_values_tensor = score_values.to_numpy()
+
+        # Normalise features
+        sc = MinMaxScaler(feature_range = (0, 1))
+        score_values_tensor = sc.fit_transform(score_values_tensor)
+        score_values_tensor = pd.DataFrame(score_values_tensor)
+        score_values_tensor.insert(0, "peer", scores["peer"].reset_index(drop=True), False)
+
+        # Create slidding windows
+        steps = 10
+
+        # Prepare the training data
+        flatten_data_list = []
+
+        for peer in peers:
+            peer_values = score_values_tensor.loc[score_values_tensor["peer"] == peer]
+            peer_values = peer_values.iloc[: , -7:]
+            for i in range(steps, peer_values.shape[0]-steps):
+                features = peer_values.iloc[i-steps:i, :].values
+                labels = peer_values.iloc[i, :].values
+                sample = {
+                    "session_idx": peer,  # not session id??
+                    "features": features,
+                    "window_labels": labels,
+                    "window_anomalies": 0,
+                }
+                flatten_data_list.append(sample)
+        self.flatten_data_list = flatten_data_list
+
+    def __len__(self):
+        return len(self.flatten_data_list)
+
+    def __getitem__(self, idx):
+        return self.flatten_data_list[idx]
 
 class log_dataset(Dataset):
     def __init__(self, session_dict, feature_type="semantics"):

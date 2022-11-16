@@ -189,7 +189,7 @@ class ForcastBasedModel(nn.Module):
                     tensor2flatten_arr(batch_input["window_anomalies"])
                 )
                 store_dict["window_labels"].extend(
-                    tensor2flatten_arr(batch_input["window_labels"])
+                    batch_input["window_labels"].data.cpu().numpy()
                 )
                 store_dict["x"].extend(batch_input["features"].data.cpu().numpy())
                 store_dict["y_pred_topk"].extend(y_pred_topk.data.cpu().numpy())

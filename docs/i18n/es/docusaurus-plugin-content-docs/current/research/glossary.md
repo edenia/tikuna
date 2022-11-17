@@ -20,25 +20,25 @@ Conjunto de funciones y procedimientos que permiten la creación de aplicaciones
 
 ### Backend
 
-Backend es la capa de acceso a datos de un software, que no es directamente accesible por los usuarios,contiene la lógica de la aplicación que maneja dichos datos. El Backend accede al servidor, que es una aplicación especializada que entiende la forma como el navegador solicita información.
+Backend es la capa de acceso a datos de un software, que no es directamente accesible por los usuarios,contiene la lógica de la aplicación que maneja dichos datos. El Backend accede al servidor, que es una aplicación especializada que entiende la forma como el software cliente solicita información.
 
 ---
 
 ### Billeteras
 
-Las billeteras son clientes que almacenan llaves privadas asociadas con los permisos de una o más cuentas. Idealmente, una billetera tiene un estado bloqueado (encriptado) y desbloqueado (sin encriptar) que está protegido por una contraseña de alta entropía.
+Las billeteras son clientes que almacenan llaves privadas asociadas con los permisos de una o más cuentas. Idealmente, una billetera tiene un estado bloqueado (cifrado) y desbloqueado (sin cifrar) que está protegido por una contraseña de alta entropía.
 
 ---
 
 ### Blacklist (Lista negra)
 
-Una lista negra es una medida que un nodo de la cadena de bloques puede poner en práctica para impedir que bloquee cualquier transacción que haya sido autorizada por una lista definida de cuentas bloqueados o cualquier transacción que interactúe con una lista definida de contratos. Cada nodo puede definir su propia lista negra, que no se puede ver públicamente.
+Una lista de nodos o cuentas a las cual un peer no desea conectarse puede definirse como una lista de cuentas bloqueadas. Cada nodo puede definir su propia lista negra, que no se puede ver públicamente.
 
 ---
 
-### Blockhain
+### Blockchain
 
-Es una lista creciente de registros, llamados bloques, que están vinculados mediante criptografía. Cada bloque contiene un hash criptográfico del bloque anterior, una marca de tiempo y datos de transacción (generalmente representados como un árbol Merkle).
+Es una lista creciente de registros, llamados bloques, que están vinculados mediante criptografía. Cada bloque contiene un hash criptográfico del bloque anterior, una marca de tiempo y datos de transacciones (generalmente representados como un árbol Merkle).
 
 ---
 
@@ -56,7 +56,7 @@ Se define como el número de bloques en la cadena entre un bloque dado y el prim
 
 ### Bloque
 
-Los bloques son archivos donde los datos pertenecientes a la cadena de bloques se registran de forma permanente. Almacenan algunas o todas las transacciones más recientes que aún no han ingresado a ningún bloque anterior. Un bloque es un almacén permanente de registros que una vez escritos no pueden ser alterados o eliminados.
+Los bloques son conjuntos de registros donde los datos pertenecientes a la cadena de bloques se registran de forma permanente. Almacenan algunas o todas las transacciones más recientes que aún no han ingresado a ningún bloque anterior. Un bloque es un almacén permanente de registros que una vez escritos no pueden ser alterados o eliminados.
 
 ---
 
@@ -134,7 +134,7 @@ La criptomoneda nativa que utiliza el ecosistema Ethereum y que se utiliza para 
 
 ### Estado
 
-Un estado instantáneo de todos los saldos y datos en un momento determinado en la cadena de bloques, que generalmente se refiere a la condición en un bloque específico.
+Una copia instantánea de todos los saldos y datos en un momento determinado en la cadena de bloques, que generalmente se refiere a la condición en un bloque específico.
 
 ---
 
@@ -402,7 +402,7 @@ Una métrica mediante la cual se mide el rendimiento de una cadena de bloques.
 
 ### Tarifa base
 
-The reserve price for each block is known as the "base fee." It is the minimum gas fee a user must pay for a transaction to be included in the subsequent block.
+El precio de reserva de cada bloque se conoce como "tarifa base". Es la tarifa mínima de gas que debe pagar un usuario para que una transacción sea incluida en el bloque posterior.
 
 ---
 
@@ -418,7 +418,7 @@ Una estructura de datos que comprende pares (clave, valor) que los nodos de Ethe
 
 ### Validador
 
-Un nodo es responsable de almacenar datos, ejecutar transacciones y agregar nuevos bloques a la cadena de bloques en un sistema de prueba de participación. Para que el software de validación se active, se deben apostar 32 ETH.
+Un nodo es responsable de almacenar datos, ejecutar transacciones y agregar nuevos bloques a la cadena de bloques en un sistema de prueba de participación. Para que el software de validación se active, se deben depositar en la cadena 32 ETH.
 
 ---
 
@@ -432,7 +432,7 @@ Verificar que un nuevo bloque tiene transacciones y firmas válidas, se basa en 
 
 ### Wallet
 
-Las `Wallets` son clientes que almacenan llaves privadas asociadas con los permisos de una o más cuentas. Idealmente, una billetera tiene un estado bloqueado (encriptado) y desbloqueado (sin encriptar) que está protegido por una contraseña de alta entropía.
+Las `Wallets` son clientes que almacenan llaves privadas asociadas con los permisos de una o más cuentas. Idealmente, una billetera tiene un estado bloqueado (cifrado) y desbloqueado (sin cifrar) que está protegido por una contraseña de alta entropía.
 
 ---
 

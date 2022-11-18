@@ -2,6 +2,8 @@ import os
 import time
 import torch
 import logging
+import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 import pandas as pd
 from torch import nn
@@ -83,7 +85,7 @@ class ForcastBasedModel(nn.Module):
         logging.info("Evaluating {} data.".format(dtype))
 
         if self.label_type == "next_log":
-            return self.__evaluate_next_log(test_loader, dtype=dtype)
+            return self.__evaluate_next_log_scores(test_loader, dtype=dtype)
         elif self.label_type == "anomaly":
             return self.__evaluate_anomaly(test_loader, dtype=dtype)
         elif self.label_type == "none":
@@ -254,6 +256,72 @@ class ForcastBasedModel(nn.Module):
                     best_f1 = eval_results["f1"]
             count_end = time.time()
             logging.info("Finish counting [{:.2f}s]".format(count_end - count_start))
+            return best_result
+
+    def __evaluate_next_log_scores(self, test_loader, dtype="test"):
+        model = self.eval()  # set to evaluation mode
+        with torch.no_grad():
+            lower_threshold = 0.0
+            upper_threshold = 0.3
+            best_result = None
+            best_f1 = -float("inf")
+            tp = 0
+            fp = 0
+            tn = 0
+            fn = 0
+            total_anom = 0
+            y_pred = []
+            loss_dist = []
+            store_dict = defaultdict(list)
+            infer_start = time.time()
+            for batch_input in test_loader:
+                return_dict = model.forward(self.__input2device(batch_input))
+                y_pred = return_dict["y_pred"]
+                loss = return_dict["loss"]
+                loss_dist.append(loss)
+                if loss >= upper_threshold:
+                    if 1.0 in batch_input["window_anomalies"]:
+                        tp += 1
+                    else:
+                        fp += 1
+                else:
+                    if 1.0 in batch_input["window_anomalies"]:
+                        fn += 1
+                    else:
+                        tn += 1
+            infer_end = time.time()
+            loss_sc = []
+            for i in loss_dist:
+                loss_sc.append((i,i))
+            '''plt.scatter(*zip(*loss_sc))
+            plt.axvline(0.3, 0.0, 1)
+            plt.figure(figsize=(12,6))
+            plt.title('Loss Distribution')
+            sns.distplot(loss_dist,bins=100,kde=True, color='blue')
+            plt.axvline(upper_threshold, 0.0, 10, color='r')
+            plt.axvline(lower_threshold, 0.0, 10, color='b')
+            conf = [[tn,fp],[fn,tp]]
+            plt.figure()
+            sns.heatmap(conf,annot=True,annot_kws={"size": 16},fmt='g')'''
+            if (tp+fp) > 0 and (tp+fn) > 0:
+                precision = tp/(tp+fp)
+                recall = tp/(tp+fn)
+                eval_results = {
+                        "f1": 2*(precision*recall)/(precision+recall),
+                        "acc": (tp+tn)/(tp+fp+tn+fn)
+                }
+            else:
+                eval_results = {
+                        "f1": 0,
+                        "acc": 0
+                }
+            if eval_results["f1"] >= best_f1:
+                best_result = eval_results
+                best_f1 = eval_results["f1"]
+            print('[TP] {}\t[FP] {}\t[MISSED] {}'.format(tp, fp, total_anom-tp))
+            print('[TN] {}\t[FN] {}'.format(tn, fn))
+            print('[ACC] {} {}'.format(tn, fn))
+            self.time_tracker["test"] = infer_end - infer_start
             return best_result
 
     def __input2device(self, batch_input):

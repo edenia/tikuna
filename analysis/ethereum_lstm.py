@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # Parameters in this cell can be overriden using papermill
 
 # path to directory contaning output from the extract_test_outputs method in analyze.py

@@ -21,20 +21,25 @@
   --ifm-card-background: white;
   --ifm-card-text-color: #001123;
   --ifm-footer-title-color: #051d38 !important;
-  --navbar-background: #FFFFFF !important;
-  --footer-background-color: #FFFFFF !important;
-  --diagram-background-color: #FFFFFF !important;
-  --hero-background-color: linear-gradient(4deg, rgba(194,211,235,1) 0%, rgba(254,254,254,1) 51%);
+  --navbar-background: #ffffff !important;
+  --footer-background-color: #ffffff !important;
+  --diagram-background-color: #ffffff !important;
+  --hero-background-color: linear-gradient(
+    4deg,
+    rgba(194, 211, 235, 1) 0%,
+    rgba(254, 254, 254, 1) 51%
+  );
   --ifm-color-secondary: #051d38 !important;
   --logo-sakundi: url("/img/sakundi-logo-light.png");
   --logo-edenia: url("/img/edenia-logo.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
-  --ifm-background-hero: url('/img/diagram-light.webp') !important;
-  --ifm-background-hero-mobile: url('/img/diagram-mobile-light.png') !important;
-  --ifm-logo-hero: url('/img/tikuna-blue-logo.png') !important;
-  --ifm-logo: url('/img/tikuna-light-logo.png') !important;
-  --ifm-linkedin-icon: url('/img/icon-link-light.png');
-  --ifm-menu-color-background-active: #E2E7F0;
+  --ifm-background-hero: url("/img/diagram-light.webp") !important;
+  --ifm-background-hero-mobile: url("/img/diagram-mobile-light.png") !important;
+  --ifm-logo-hero: url("/img/tikuna-blue-logo.png") !important;
+  --ifm-logo: url("/img/tikuna-light-logo.png") !important;
+  --ifm-linkedin-icon: url("/img/icon-link-light.png");
+  --ifm-roadmap: url("/img/roadmap.webp") !important;
+  --ifm-menu-color-background-active: #e2e7f0;
   --docsearch-modal-background: #e2e7f096 !important;
   --docsearch-highlight-color: #051d38 !important;
 }
@@ -57,20 +62,26 @@
   --ifm-card-background: #020e15;
   --ifm-card-text-color: white;
   --footer-background-color: #09294c !important;
-  --diagram-background-color: #060B14 !important;
-  --hero-background-color: linear-gradient(0deg, rgba(6,11,21,1) 0%, rgba(5,37,79,1) 43%, rgba(4,45,74,1) 100%);
+  --diagram-background-color: #060b14 !important;
+  --hero-background-color: linear-gradient(
+    0deg,
+    rgba(6, 11, 21, 1) 0%,
+    rgba(5, 37, 79, 1) 43%,
+    rgba(4, 45, 74, 1) 100%
+  );
   --ifm-color-secondary: white !important;
   --navbar-background: rgb(0 0 0 / 74%) !important;
   --ifm-background-main-page: url("/img/main-bg.webp") !important;
-  --ifm-background-hero: url('/img/diagram-dark.webp') !important;
-  --ifm-background-hero-mobile: url('/img/diagram-mobile-dark.png') !important;
-  --ifm-logo-hero: url('/img/tikuna-white-logo.png') !important;
-  --ifm-logo: url('/img/tikuna-dark-logo.png') !important;
+  --ifm-background-hero: url("/img/diagram-dark.webp") !important;
+  --ifm-background-hero-mobile: url("/img/diagram-mobile-dark.png") !important;
+  --ifm-logo-hero: url("/img/tikuna-white-logo.png") !important;
+  --ifm-logo: url("/img/tikuna-dark-logo.png") !important;
+  --ifm-roadmap: url("/img/roadmap-dark.webp") !important;
   --logo-sakundi: url("/img/sakundi-logo.webp");
   --logo-edenia: url("/img/edenia-light-logo.png");
-  --ifm-linkedin-icon: url('/img/icon-link.png');
+  --ifm-linkedin-icon: url("/img/icon-link.png");
   --docsearch-modal-background: #060b1486 !important;
-  --docsearch-highlight-color: #FFFFFF !important;
+  --docsearch-highlight-color: #ffffff !important;
 }
 
 .main-wrapper {
@@ -126,10 +137,10 @@ footer {
   border: none;
 }
 
-.table-of-contents__link:hover, .table-of-contents__link--active {
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
   color: #f49912;
 }
-
 
 a.sidebarItemLink_node_modules-\@docusaurus-theme-classic-lib-theme-BlogSidebar-Desktop-styles-module:hover,
 a.sidebarItemLinkActive_node_modules-\@docusaurus-theme-classic-lib-theme-BlogSidebar-Desktop-styles-module {
@@ -196,6 +207,15 @@ hr {
   margin-top: 2rem !important;
 }
 
+.roadmapImage {
+  background-image: var(--ifm-roadmap);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 555px;
+  max-width: 1343px;
+  margin-top: 2rem !important;
+}
+
 .buttonDashboard {
   background-image: url(/img/ButtontoGrafana.png);
   background-repeat: no-repeat;
@@ -229,7 +249,7 @@ hr {
   height: 240px;
   margin: 20px 0;
   border-radius: 8px;
-  border-right: 3px solid #F49912;
+  border-right: 3px solid #f49912;
   color: var(--ifm-card-text-color);
   background-color: var(--ifm-card-background);
 }
@@ -241,7 +261,11 @@ hr {
   height: auto;
   border-top-left-radius: 5%;
   border-bottom-left-radius: 5%;
-  background: linear-gradient(36.1deg, rgba(54, 243, 255, 0.88) 21.39%, #3C8FFF 82.14%);
+  background: linear-gradient(
+    36.1deg,
+    rgba(54, 243, 255, 0.88) 21.39%,
+    #3c8fff 82.14%
+  );
 }
 
 .cardImage {
@@ -363,7 +387,7 @@ body {
     display: none;
   }
 
-  .cardsContainer{
+  .cardsContainer {
     flex-direction: column;
   }
 
@@ -372,10 +396,10 @@ body {
     border-top-right-radius: 5%;
   }
 
-  .cardWrapper{
+  .cardWrapper {
     height: auto;
     flex-direction: column;
-    border-bottom: 3px solid #F49912;
+    border-bottom: 3px solid #f49912;
     border-right: none;
   }
 
@@ -396,9 +420,8 @@ body {
   .menu__link--active {
     --ifm-menu-color-active: var(--ifm-card-text-color) !important;
   }
-  
+
   .navbar__toggle {
     border: none;
   }
-
 }

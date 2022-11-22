@@ -368,10 +368,6 @@ Un lenguaje de programación procedimental que tiene una sintaxis comparable a J
 
 El proceso de descargar la última versión completa de una cadena de bloques en un nodo.
 
-### Susurro
-
-Un servicio de mensajería descentralizado (P2P). Se usa junto con Web3 y Swarm para construir DApps.
-
 ---
 
 ## **T**
@@ -439,6 +435,12 @@ Las `Wallets` son clientes que almacenan llaves privadas asociadas con los permi
 ### Whitelist
 
 Una lista blanca es una medida subjetiva que un nodo de blockchain puede poner en práctica para permitir que las transacciones se coloquen en un bloque solo si se enumeran en su cuenta o lista blanca de contrato. Cada nodo puede especificar su propia lista blanca, que no se puede ver públicamente.
+
+---
+
+### Whisper
+
+Un servicio de mensajería descentralizado (P2P). Se usa junto con Web3 y Swarm para construir DApps.
 
 ---
 

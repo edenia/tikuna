@@ -19,5 +19,3 @@ seaborn
 python-rclone
 base58
 ipyfilechooser
-keras
-tensorflow

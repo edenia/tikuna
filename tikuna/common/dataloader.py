@@ -61,25 +61,70 @@ class log_dataset_scores(Dataset):
         sc = MinMaxScaler(feature_range = (0, 1))
         score_values_tensor = sc.fit_transform(score_values_tensor)
         score_values_tensor = pd.DataFrame(score_values_tensor)
-        score_values_tensor.insert(0, "peer", scores["peer"].reset_index(drop=True), False)
+        score_values_tensor["peer"] = scores["peer"].reset_index(drop=True)
+        score_values_tensor["honest"] = scores["honest"].reset_index(drop=True)
 
         # Create slidding windows
-        steps = 10
+        steps = 20
 
         # Prepare the training data
         flatten_data_list = []
 
         for peer in peers:
             peer_values = score_values_tensor.loc[score_values_tensor["peer"] == peer]
-            peer_values = peer_values.iloc[: , -7:]
+            honest = 0 if True in peer_values.honest.unique() else 1
+            peer_values = peer_values.iloc[: , :7]
             for i in range(steps, peer_values.shape[0]-steps):
                 features = peer_values.iloc[i-steps:i, :].values
                 labels = peer_values.iloc[i, :].values
                 sample = {
-                    "session_idx": peer,  # not session id??
+                    "session_idx": peer,
                     "features": features,
                     "window_labels": labels,
-                    "window_anomalies": 0,
+                    "window_anomalies": honest,
+                }
+                flatten_data_list.append(sample)
+        self.flatten_data_list = flatten_data_list
+
+    def __len__(self):
+        return len(self.flatten_data_list)
+
+    def __getitem__(self, idx):
+        return self.flatten_data_list[idx]
+
+class log_dataset_traces(Dataset):
+    def __init__(self, traces):
+        peers = traces.peer.unique()
+        trace_values = traces.iloc[:,:11]
+
+        # apply normalization techniques
+        trace_values_tensor = trace_values.to_numpy()
+
+        # Normalise features
+        sc = MinMaxScaler(feature_range = (0, 1))
+        trace_values_tensor = sc.fit_transform(trace_values_tensor)
+        trace_values_tensor = pd.DataFrame(trace_values_tensor)
+        trace_values_tensor["peer"] = traces["peer"].reset_index(drop=True)
+        trace_values_tensor["honest"] = traces["honest"].reset_index(drop=True)
+
+        # Create slidding windows
+        steps = 5
+
+        # Prepare the training data
+        flatten_data_list = []
+
+        for peer in peers:
+            peer_values = trace_values_tensor.loc[trace_values_tensor["peer"] == peer]
+            honest = 0 if True in peer_values.honest.unique() else 1
+            peer_values = peer_values.iloc[: , :11]
+            for i in range(steps, peer_values.shape[0]-steps):
+                features = peer_values.iloc[i-steps:i, :].values
+                labels = peer_values.iloc[i, :].values
+                sample = {
+                    "session_idx": peer,
+                    "features": features,
+                    "window_labels": labels,
+                    "window_anomalies": honest,
                 }
                 flatten_data_list.append(sample)
         self.flatten_data_list = flatten_data_list

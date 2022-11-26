@@ -85,7 +85,7 @@ class ForcastBasedModel(nn.Module):
         logging.info("Evaluating {} data.".format(dtype))
 
         if self.label_type == "next_log":
-            return self.__evaluate_next_log_scores(test_loader, dtype=dtype)
+            return self.__evaluate_next_vector(test_loader, dtype=dtype)
         elif self.label_type == "anomaly":
             return self.__evaluate_anomaly(test_loader, dtype=dtype)
         elif self.label_type == "none":
@@ -258,18 +258,17 @@ class ForcastBasedModel(nn.Module):
             logging.info("Finish counting [{:.2f}s]".format(count_end - count_start))
             return best_result
 
-    def __evaluate_next_log_scores(self, test_loader, dtype="test"):
+    def __evaluate_next_vector(self, test_loader, dtype="test"):
         model = self.eval()  # set to evaluation mode
         with torch.no_grad():
             lower_threshold = 0.0
-            upper_threshold = 0.3
+            upper_threshold = 0.1
             best_result = None
             best_f1 = -float("inf")
             tp = 0
             fp = 0
             tn = 0
             fn = 0
-            total_anom = 0
             y_pred = []
             loss_dist = []
             store_dict = defaultdict(list)
@@ -293,7 +292,7 @@ class ForcastBasedModel(nn.Module):
             loss_sc = []
             for i in loss_dist:
                 loss_sc.append((i,i))
-            '''plt.scatter(*zip(*loss_sc))
+            plt.scatter(*zip(*loss_sc))
             plt.axvline(0.3, 0.0, 1)
             plt.figure(figsize=(12,6))
             plt.title('Loss Distribution')
@@ -302,8 +301,8 @@ class ForcastBasedModel(nn.Module):
             plt.axvline(lower_threshold, 0.0, 10, color='b')
             conf = [[tn,fp],[fn,tp]]
             plt.figure()
-            sns.heatmap(conf,annot=True,annot_kws={"size": 16},fmt='g')'''
-            if (tp+fp) > 0 and (tp+fn) > 0:
+            sns.heatmap(conf,annot=True,annot_kws={"size": 16},fmt='g')
+            if tp > 0:
                 precision = tp/(tp+fp)
                 recall = tp/(tp+fn)
                 eval_results = {
@@ -318,9 +317,10 @@ class ForcastBasedModel(nn.Module):
             if eval_results["f1"] >= best_f1:
                 best_result = eval_results
                 best_f1 = eval_results["f1"]
-            print('[TP] {}\t[FP] {}\t[MISSED] {}'.format(tp, fp, total_anom-tp))
+            print('[TP] {}\t[FP]'.format(tp, fp))
             print('[TN] {}\t[FN] {}'.format(tn, fn))
-            print('[ACC] {} {}'.format(tn, fn))
+            print('[F1] {}'.format(eval_results["f1"]))
+            print('[ACC] {}'.format(eval_results["acc"]))
             self.time_tracker["test"] = infer_end - infer_start
             return best_result
 

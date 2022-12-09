@@ -33,8 +33,11 @@ spec:
         ports:
         - protocol: TCP
           containerPort: 4000
+        - protocol: TCP
           containerPort: 13000
+        - protocol: TCP
           containerPort: 8080
+        - protocol: TCP
           containerPort: 3500
         - protocol: UDP
           containerPort: 12000

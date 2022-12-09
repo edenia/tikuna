@@ -24,17 +24,21 @@ spec:
         name: prysm-beacon
         resources:
           requests:
-            memory: "3G"
+            memory: "5G"
             cpu: "0.5"
           limits:
-            memory: "6G"
+            memory: "10G"
             cpu: "1"
         envFrom:
         ports:
         - protocol: TCP
           containerPort: 4000
+        - protocol: TCP
           containerPort: 13000
+        - protocol: TCP
           containerPort: 8080
+        - protocol: TCP
+          containerPort: 3500
         - protocol: UDP
           containerPort: 12000
         volumeMounts:
@@ -57,6 +61,7 @@ spec:
         - "8080"
         - "--execution-endpoint"
         - "http://10.43.141.63:8551"
+        - "--enable-debug-rpc-endpoints"
       volumes:
       - name: jwt-prysm-consensus
         secret:

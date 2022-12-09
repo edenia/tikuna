@@ -24,10 +24,10 @@ spec:
         name: eth-executor
         resources:
           requests:
-            memory: "3G"
+            memory: "5G"
             cpu: "0.5"
           limits:
-            memory: "6G"
+            memory: "10G"
             cpu: "1"
         envFrom:
         ports:

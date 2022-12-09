@@ -1,0 +1,31 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http
+spec:
+  entryPoints:
+    - web
+  routes:
+  - kind: Rule
+    match: Host(`eth.edenia.cloud`)
+    services:
+    - kind: Service
+      name: prysm-beacon
+      port: 8080
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`eth.edenia.cloud`)
+    services:
+    - kind: Service
+      name: prysm-beacon
+      port: 8080
+  tls:
+    certResolver: myresolver

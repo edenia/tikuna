@@ -16,6 +16,22 @@
 
 Tikuna, a proof-of-concept P2P network security monitoring system for the Ethereum blockchain. By leveraging Machine Learning techniques, it will extract security and performance insights for early detection of relevant incidents. Tikuna will bring improved visibility to the security state of the P2P network. 
 
+## Table of Contents
+
+* [About the Project](#about-the-project)
+* [Project Purpose](#project-purpose)
+* [Project Roadmap](#project-roadmap)
+* [Installation](#installation)
+* [Teck Stack](#teck-stack)
+* [File Structure](#file-structure)
+* [Project Status](#project-status)
+* [Contributing](#contributing)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
+<!-- * [About Sakundi](#about-sakundi) -->
+<!-- * [About Edenia](#about-edenia) -->
+* [License](#license)
+
 ## About the Project
 
 We will investigate how to apply Machine Learning algorithms to monitor the security of the Ethereum P2P network for early detection of a few specific attacks. We will develop Tikuna, a proof-of-concept tool (open source so that every user can use it) derived from such research, and will provide a scientific report based on the findings of applying the tool to the mainnet network. We will also provide a simple dashboard for the community to observe the insights that Tikuna provides. Additionally, we will create a draft of a scientific paper based on the research results.
@@ -33,6 +49,13 @@ The overall goal of the project is to support the Ethereum community by providin
 3. Find insights from the data analysis to develop or adapt a dashboard and alerts.
 4. Deliverables include a scientific report about the findings, open-source code of the developed security tools, and a proof-of-concept dashboard with security-related insights.
 
+## Installation
+
+To run this project, install it locally using:
+- $ git clone https://github.com/edenia/tikuna
+- $ cd tikuna
+- $ sudo docker build -t ghcr.io/edenia/tikuna:latest .
+
 ## Tech Stack
 
 The documentation website [tikuna.io](https://tikuna.io) is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
@@ -44,6 +67,7 @@ The documentation website [tikuna.io](https://tikuna.io) is built using [Docusau
 - Run `yarn` in order to install dependencies. At this point you can run `yarn start` to see the development website at http://localhost:3000.
 
 ## File Structure
+
 This could help the reader understand the organization inside the project, for example:
 
 ```text title="file-structure"
@@ -69,7 +93,19 @@ Please Read EOS Costa Rica's [Open Source Contributing Guidelines](https://guide
 
 If you find a bug, please report big and small bugs by [**opening an issue**](https://github.com/edenia/tikuna/issues/new/choose)
 
-## About Sakundi
+## Project Status
+
+Project is: _in progress_
+
+## Acknowledgements
+
+The Tikuna team gratefully acknowledges that the work presented was supported by the Ethereum Foundation.
+
+## Contact
+
+Created by Tikuna team [@Tikuna team](https://tikuna.io/docs/about/team) - feel free to contact us!
+
+### About Sakundi
 
 <div align="center">
 
@@ -87,7 +123,7 @@ Sakundi is a research-based Blockchain security and privacy organization. It off
 
 [sakundi.io](https://sakundi.io)
 
-## About Edenia
+### About Edenia
 
 <div align="center">
 	<a href="https://edenia.com">
@@ -102,3 +138,8 @@ Sakundi is a research-based Blockchain security and privacy organization. It off
 Edenia runs independent blockchain infrastructure and develops web3 solutions. Our team of technology-agnostic builders has been operating since 1987, leveraging the newest technologies to make the internet safer, more efficient, and more transparent.
 
 [edenia.com](https://edenia.com)
+
+## License
+This project is open source and available under the Apache License Version 2.0.
+
+

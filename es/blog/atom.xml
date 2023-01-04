@@ -2,11 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tikuna.io/es/blog</id>
     <title>Blockchain Security Monitoring Blog</title>
-    <updated>2022-08-01T00:00:00.000Z</updated>
+    <updated>2023-01-04T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tikuna.io/es/blog"/>
     <subtitle>Blockchain Security Monitoring Blog</subtitle>
     <icon>https://tikuna.io/es/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Tikuna - Nuestra contribución a la seguridad en la blockchain]]></title>
+        <id>tikuna-contribution</id>
+        <link href="https://tikuna.io/es/blog/tikuna-contribution"/>
+        <updated>2023-01-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr><p>Aunque existen avances en materia de ciberseguridad, muchas aplicaciones no cuentan con sólidas funciones de seguridad. Actualmente, más allá de razones de calidad del producto, el software tiene muchos enemigos detrás que buscan romper las líneas para aprovecharse o sabotear las condiciones del software.</p><p>Dentro de la Web 3 es la misma historia o quizás aún más grave, porque están implicados elementos como los activos digitales (criptomonedas o NFT). Aunque estas tecnologías utilizan blockchain y su algoritmo de consenso como base para llevar a cabo los procesos backend, tienen decenas de agujeros que son descubiertos con el tiempo por hackers, cuyo objetivo no es contribuir al ecosistema. Imagina una gran red descentralizada donde cientos de proyectos innovadores o emergentes buscan utilizarla para el desarrollo de sus aplicaciones, este es un escenario existente que sucede dentro de la blockchain de Ethereum. En la actualidad, los crecientes niveles de hackeos, persecución de fondos o descuidos por parte de instituciones, como la última emisión de FTX, han puesto a la ciberseguridad del blockchain como el refugio detrás de la perfección de sus operaciones. Los exchanges, los contratos inteligentes, los tokens o las aplicaciones descentralizadas forman parte de los elementos que son auditados para verificar su calidad y seguridad. 156 millones de dólares fueron robados en apenas cuatro meses en 2021  en hackeos a protocolos de finanzas descentralizadas, más allá de la cantidad que representa una pérdida significativa para particulares y empresas, también es una señal a nivel cualitativo, que demuestra que los protocolos requieren integración y mantenimiento en materia de seguridad informática. </p><p>Desde el equipo de Tikuna reconocemos esto, de ahí que estemos haciendo una importante contribución a la comunidad y a la ciberseguridad en blockchain, desarrollando y ofreciendo monitorización de detección temprana de ataques para la red P2P Ethereum. Contar con sistemas que puedan reforzar y monitorizar entornos descentralizados, antes de que ocurran estos desafortunados eventos, genera más confianza y una intensa propiedad anticipatoria. Como solución de código abierto, los usuarios podrán aprovechar los datos expuestos, con la intención de complementar la integración de la seguridad y hacer que el consumo de productos blockchain, y dentro de Ethereum, sea cada vez más seguro y predecible, características ambas muy valoradas en la actualidad.</p>]]></content>
+        <author>
+            <name>Andres Gomez Ramirez</name>
+            <uri>https://www.linkedin.com/in/andres-gomez-ramirez-bb7226156/</uri>
+        </author>
+        <author>
+            <name>Francis Gomez Ramirez</name>
+            <uri>https://www.linkedin.com/in/francis-adrian-gomez-ramirez-599598138/</uri>
+        </author>
+        <author>
+            <name>Loui Al Sardy</name>
+            <uri>https://www.linkedin.com/in/loui-alsardy/</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Tikuna: Seguridad en Blockchain usando IA - Apoyado por Ethereum Foundation.]]></title>
         <id>introducing-tikuna</id>

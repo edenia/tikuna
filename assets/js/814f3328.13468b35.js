@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktikuna=self.webpackChunktikuna||[]).push([[535],{5641:t=>{t.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Tikuna: Blockchain Security Using AI - Supported by the Ethereum Foundation.","permalink":"/blog/introducing-tikuna"}]}')}}]);

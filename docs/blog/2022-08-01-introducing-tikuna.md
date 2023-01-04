@@ -3,7 +3,7 @@ slug: introducing-tikuna
 title: "Tikuna: Blockchain Security Using AI - Supported by the Ethereum Foundation."
 authors: [andres, francis, loui]
 ---
-
+---
 Cybersecurity systems are complex and play a fundamental role in various applications. Even in highly secure and decentralized systems like blockchain networks, there are cases in which the dApps, average users, or the network itself are exposed to many daily risks. Due to certain vulnerabilities, numerous businesses are interested in fostering research and development of security-focused solutions, which is precisely why our team is developing Tikuna.
 
 Tikuna is a proof-of-concept P2P network security monitoring system for the Ethereum blockchain. Using Machine Learning techniques, it will extract security and performance insights for detecting relevant incidents and improving visibility to the security state of the P2P network. This proposed research project has been approved and supported by the [Ethereum Foundation](http://ethereum.org) with an award of USD 102,200 to start the development process.

@@ -52,16 +52,18 @@ The overall goal of the project is to support the Ethereum community by providin
 ## Installation
 
 To run this project, install it locally using:
+```console
 - $ git clone https://github.com/edenia/tikuna
 - $ cd tikuna
 - $ docker build -t tikuna:latest .
+```
 
 ## Quick start
 To start using tikuna, do the following:
 * Inside the tikuna project directory execute the following command:
-  $ ./start_tikuna.sh
+  ```console $ ./start_tikuna.sh ```
 * This will start a docker container. Once inside the docker container run the next command:
-  $ ./start_jupyter_notebook.sh
+  ```console $ ./start_jupyter_notebook.sh ```
 * It will start a jupyter notebook instance where you will be able to run the machine learning algorithms over ethereum data.
   Just open your browser and go to localhost:8890
 

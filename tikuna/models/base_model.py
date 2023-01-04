@@ -317,7 +317,7 @@ class ForcastBasedModel(nn.Module):
             if eval_results["f1"] >= best_f1:
                 best_result = eval_results
                 best_f1 = eval_results["f1"]
-            print('[TP] {}\t[FP]'.format(tp, fp))
+            print('[TP] {}\t[FP] {}'.format(tp, fp))
             print('[TN] {}\t[FN] {}'.format(tn, fn))
             print('[F1] {}'.format(eval_results["f1"]))
             print('[ACC] {}'.format(eval_results["acc"]))

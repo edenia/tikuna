@@ -52,7 +52,7 @@ def load_sessions(data_dir):
 class log_dataset_scores(Dataset):
     def __init__(self, scores):
         peers = scores.peer.unique()
-        score_values = scores.iloc[:,-7:]
+        score_values = scores.iloc[:,-3:]
 
         # apply normalization techniques
         score_values_tensor = score_values.to_numpy()
@@ -65,7 +65,7 @@ class log_dataset_scores(Dataset):
         score_values_tensor["honest"] = scores["honest"].reset_index(drop=True)
 
         # Create slidding windows
-        steps = 20
+        steps = 10
 
         # Prepare the training data
         flatten_data_list = []
@@ -73,7 +73,7 @@ class log_dataset_scores(Dataset):
         for peer in peers:
             peer_values = score_values_tensor.loc[score_values_tensor["peer"] == peer]
             honest = 0 if True in peer_values.honest.unique() else 1
-            peer_values = peer_values.iloc[: , :7]
+            peer_values = peer_values.iloc[: , :3]
             for i in range(steps, peer_values.shape[0]-steps):
                 features = peer_values.iloc[i-steps:i, :].values
                 labels = peer_values.iloc[i, :].values
@@ -95,7 +95,7 @@ class log_dataset_scores(Dataset):
 class log_dataset_traces(Dataset):
     def __init__(self, traces):
         peers = traces.peer.unique()
-        trace_values = traces.iloc[:,:11]
+        trace_values = traces.iloc[:,:5]
 
         # apply normalization techniques
         trace_values_tensor = trace_values.to_numpy()
@@ -116,7 +116,7 @@ class log_dataset_traces(Dataset):
         for peer in peers:
             peer_values = trace_values_tensor.loc[trace_values_tensor["peer"] == peer]
             honest = 0 if True in peer_values.honest.unique() else 1
-            peer_values = peer_values.iloc[: , :11]
+            peer_values = peer_values.iloc[: , :5]
             for i in range(steps, peer_values.shape[0]-steps):
                 features = peer_values.iloc[i-steps:i, :].values
                 labels = peer_values.iloc[i, :].values

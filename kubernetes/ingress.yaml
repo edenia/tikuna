@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: http
+  name: prometheus-http
 spec:
   entryPoints:
     - web
@@ -16,7 +16,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: https
+  name: prometheus-https
 spec:
   entryPoints:
     - websecure
@@ -27,5 +27,37 @@ spec:
     - kind: Service
       name: prysm-beacon
       port: 8080
+  tls:
+    certResolver: myresolver
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-http
+spec:
+  entryPoints:
+    - web
+  routes:
+  - kind: Rule
+    match: Host(`dash.tikuna.io`)
+    services:
+    - kind: Service
+      name: grafana-eth
+      port: 3000
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`dash.tikuna.io`)
+    services:
+    - kind: Service
+      name: grafana-eth
+      port: 3000
   tls:
     certResolver: myresolver

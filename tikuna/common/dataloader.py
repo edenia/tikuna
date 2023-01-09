@@ -108,7 +108,7 @@ class log_dataset_traces(Dataset):
         trace_values_tensor["honest"] = traces["honest"].reset_index(drop=True)
 
         # Create slidding windows
-        steps = 5
+        steps = 6
 
         # Prepare the training data
         flatten_data_list = []

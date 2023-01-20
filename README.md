@@ -49,6 +49,13 @@ The overall goal of the project is to support the Ethereum community by providin
 3. Find insights from the data analysis to develop or adapt a dashboard and alerts.
 4. Deliverables include a scientific report about the findings, open-source code of the developed security tools, and a proof-of-concept dashboard with security-related insights.
 
+## Before starting
+
+* Install docker `https://docs.docker.com/engine/install/`. If you have previously installed Docker, verify it using the `docker --version` command and proceed to the next step.
+* Create a local directory named `/data`; if this directory already exists, proceed to the next step.
+* Copy the folders that contain the data to the `/data` directory created in the previous step.
+
+
 ## Installation
 
 To run this project, install it locally using:
@@ -59,17 +66,41 @@ To run this project, install it locally using:
 ```
 
 ## Quick start
-To start using tikuna, do the following:
-* Inside the tikuna project directory execute the following command:
+
+To begin using Tikuna, perform the steps below.
+
+* Inside the Tikuna project directory execute the following command to start a docker container:
   ```bash
      $ ./start_tikuna.sh
   ```
-* This will start a docker container. Once inside the docker container run the next command:
+* Once inside the docker container execute the following command to launch a Jupyter Notebook session in which the machine learning algorithms can be executed using Ethereum data: 
   ```bash
      $ ./start_jupyter_notebook.sh
   ```
-* It will start a jupyter notebook instance where you will be able to run the machine learning algorithms over ethereum data.
-  Just open your browser and go to localhost:8890
+* After executing the previous command, you only need to open a browser, and then copy & paste the displayed URL.
+
+<div align="center">
+	<img src="/docs/static/img/ReadmeUrlJupyter.png" width="400">
+</div>
+
+* In the web browser, navigate to the analysis folder, and then click over it.
+
+<div align="center">
+	<img src="/docs/static/img/ReadmeClickAnalisys.png" width="400">
+</div>
+
+* Click on testing_analysis_trace.ipynb file.
+
+<div align="center">
+	<img src="/docs/static/img/ReadmeClickScript.png" width="400">
+</div>
+
+* For each step, click the `Run` button and wait until the results are displayed on the screen.
+
+<div align="center">
+	<img src="/docs/static/img/ReadmeRunResults.png" width="400">
+</div>
+
 
 ## Documentation
 

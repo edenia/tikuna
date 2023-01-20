@@ -80,25 +80,25 @@ To begin using Tikuna, perform the steps below.
 * After executing the previous command, you only need to open a browser, and then copy & paste the displayed URL.
 
 <div align="center">
-	<img src="/docs/static/img/ReadmeUrlJupyter.png" width="400">
+	<img src="/docs/static/img/ReadmeUrlJupyter.png" width="600">
 </div>
 
 * In the web browser, navigate to the analysis folder, and then click over it.
 
 <div align="center">
-	<img src="/docs/static/img/ReadmeClickAnalisys.png" width="400">
+	<img src="/docs/static/img/ReadmeClickAnalisys.png" width="600">
 </div>
 
 * Click on testing_analysis_trace.ipynb file.
 
 <div align="center">
-	<img src="/docs/static/img/ReadmeClickScript.png" width="400">
+	<img src="/docs/static/img/ReadmeClickScript.png" width="600">
 </div>
 
 * For each step, click the `Run` button and wait until the results are displayed on the screen.
 
 <div align="center">
-	<img src="/docs/static/img/ReadmeRunResults.png" width="400">
+	<img src="/docs/static/img/ReadmeRunResults.png" width="600">
 </div>
 
 

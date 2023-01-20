@@ -59,20 +59,18 @@ def load_trace_data(traces_filepath):
     peers = peer_info_to_pandas(peer_info_filename)
     # select the cols from peers table we want to join on
     p = peers[['peer_id', 'seq', 'honest']]
-    traces = traces.sort_values(['peerID', 'timestamp'])
     peers = traces.peerID.unique()
     traces['timestamp'] = pd.to_datetime(traces['timestamp'])
     traces.set_index('timestamp', inplace=True)
     traces = traces.groupby(['peerID', pd.Grouper(freq='1S')])['type'].value_counts()
     traces = traces.unstack(level="type", fill_value=0)\
     .reset_index(level=["peerID", "timestamp"])
-    traces = traces.drop(columns=['timestamp'])
     traces.rename(columns = {'peerID':'peer_id'}, inplace = True)
     traces['peer_id'] = traces['peer_id'].apply(lambda x: b64_to_b58(x))
     traces = traces.merge(p, on='peer_id')
     traces = traces.drop(columns=['peer_id'])
     traces = traces.rename(columns={'seq': 'peer'})
-    traces = traces.sort_values(['peer'])
+    traces = traces.sort_values(['peer', 'timestamp'])
     return traces
 
 def aggregate_peer_scores_single(scores_filepath, peers_table):

@@ -62,7 +62,7 @@ def load_trace_data(traces_filepath):
     peers = traces.peerID.unique()
     traces['timestamp'] = pd.to_datetime(traces['timestamp'])
     traces.set_index('timestamp', inplace=True)
-    traces = traces.groupby(['peerID', pd.Grouper(freq='1S')])['type'].value_counts()
+    traces = traces.groupby(['peerID', pd.Grouper(freq='0.1S')])['type'].value_counts()
     traces = traces.unstack(level="type", fill_value=0)\
     .reset_index(level=["peerID", "timestamp"])
     traces.rename(columns = {'peerID':'peer_id'}, inplace = True)

@@ -95,7 +95,8 @@ class log_dataset_scores(Dataset):
 class log_dataset_traces(Dataset):
     def __init__(self, traces):
         peers = traces.peer.unique()
-        trace_values = traces.iloc[:,:5]
+        # trace_values = traces.iloc[:,1:11]
+        trace_values = traces.iloc[:,1:6]
 
         # apply normalization techniques
         trace_values_tensor = trace_values.to_numpy()

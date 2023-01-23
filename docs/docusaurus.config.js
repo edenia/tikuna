@@ -188,9 +188,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-        appId: 'EGAL2YNUQC',
-        apiKey: '619753e3212769002f3fc8859cc482a2',
-        indexName: 'tikuna_project',
+        appId: 'WBFSRMA4RP',
+        apiKey: '0cf32e65f305559bb8bd9cee5df12451',
+        indexName: 'tikuna',
         contextualSearch: true,
         searchParameters: {},
         searchPagePath: 'search',

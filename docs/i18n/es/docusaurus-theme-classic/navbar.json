@@ -11,6 +11,10 @@
     "message": "Monitoreo",
     "description": "Navbar item with label Monitoring"
   },
+  "item.label.User Section": {
+    "message": "Sección de usuario",
+    "description": "The label of footer link with label=About Tikuna linking to /docs/about/team"
+  },
   "item.label.Blog": {
     "message": "Blog",
     "description": "Navbar item with label Blog"

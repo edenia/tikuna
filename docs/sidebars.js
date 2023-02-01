@@ -15,6 +15,11 @@ const sidebars = {
       label: "Monitoring",
       items: ["monitoring/network-eth2", "monitoring/beacon-node"],
     },
+    {
+      type: "category",
+      label: "User Section",
+      items: ["user-section/how-to-use-tikuna", "user-section/understanding-dashboards"],
+    },
   ],
 };
 

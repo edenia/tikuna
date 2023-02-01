@@ -14,5 +14,9 @@
   "sidebar.tutorialSidebar.category.Monitoring": {
     "message": "Monitoreo",
     "description": "The label for category Monitoring in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.User Section": {
+    "message": "Sección de usuario",
+    "description": "The label for category user section in sidebar tutorialSidebar"
   }
 }

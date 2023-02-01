@@ -23,6 +23,10 @@
     "message": "Acerca de Tikuna",
     "description": "The label of footer link with label=About Tikuna linking to /docs/about/team"
   },
+  "link.item.label.User section": {
+    "message": "Sección de usuario",
+    "description": "The label of footer link with label=About Tikuna linking to /docs/about/team"
+  },
   "link.item.label.GitHub": {
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/edenia/tikuna"

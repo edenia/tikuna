@@ -32,6 +32,12 @@
   --ifm-color-secondary: #051d38 !important;
   --logo-sakundi: url("/img/sakundi-logo-light.png");
   --logo-edenia: url("/img/edenia-logo.png");
+  --ifm-readme-click-analysis: url("/img/ReadmeClickAnalisys.png");
+  --ifm-readme-click-script: url("/img/ReadmeClickScript.png");
+  --ifm-readme-run-results: url("/img/ReadmeRunResults.png");
+  --ifm-readme-url-jupyter: url("/img/ReadmeUrlJupyter.png");
+  --ifm-readme-status-neighborhood: url("/img/readmeStatusNeigborhood.png");
+  --ifm-readme-status-network: url("/img/readmeNetworkStatus.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
   --ifm-background-hero: url("/img/diagram-light.webp") !important;
   --ifm-background-hero-mobile: url("/img/diagram-mobile-light.png") !important;
@@ -204,6 +210,60 @@ hr {
   background-size: contain;
   min-height: 110px;
   max-width: 400px;
+  margin-top: 2rem !important;
+}
+
+.readmeClickAnalisys {
+  background-image: var(--ifm-readme-click-analysis);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 450px;
+  max-width: 800px;
+  margin-top: 2rem !important;
+}
+
+.readmeClickScript {
+  background-image: var(--ifm-readme-click-script);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 450px;
+  max-width: 800px;
+  margin-top: 2rem !important;
+}
+
+.readmeRunResults {
+  background-image: var(--ifm-readme-run-results);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 450px;
+  max-width: 800px;
+  margin-top: 2rem !important;
+}
+
+.readmeUrlJupyter {
+  background-image: var(--ifm-readme-url-jupyter);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 130px;
+  max-width: 800px;
+  margin-top: 2rem !important;
+}
+
+.readmeStatusNeighborhood {
+  background-image: var(--ifm-readme-status-neighborhood);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 600px;
+  max-width: 800px;
+  margin-top: 2rem !important;
+}
+
+.readmeStatusNetwork {
+  background-image: var(--ifm-readme-status-network);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 600px;
+  max-width: 800px;
   margin-top: 2rem !important;
 }
 

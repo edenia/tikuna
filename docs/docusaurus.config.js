@@ -85,6 +85,12 @@ const config = {
           },
           {
             type: "doc",
+            docId: "user-section/how-to-use-tikuna",
+            position: "left",
+            label: "User Section",
+          },
+          {
+            type: "doc",
             docId: "monitoring/beacon-node",
             position: "left",
             label: "Monitoring",
@@ -125,6 +131,10 @@ const config = {
               {
                 label: "Monitoring",
                 to: "docs/monitoring/beacon-node",
+              },
+              {
+                label: "User section",
+                to: "docs/user-section/how-to-use-tikuna",
               },
             ],
           },

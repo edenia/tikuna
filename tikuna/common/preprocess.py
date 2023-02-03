@@ -165,12 +165,13 @@ class FeatureExtractor(BaseEstimator):
                 param_json, os.path.join(self.cache_dir, "feature_extractor.json")
             )
 
-    def __generate_windows(self, session_dict, stride):
+    def __generate_windows(self, data, stride):
+        session_dict = {}
         window_count = 0
-        for session_id, data_dict in session_dict.items():
+        for index, row in data["features"].iterrows():
             if self.window_type == "sliding":
                 i = 0
-                templates = data_dict["templates"]
+                templates = row
                 template_len = len(templates)
                 windows = []
                 window_labels = []
@@ -179,37 +180,38 @@ class FeatureExtractor(BaseEstimator):
                     window = templates[i: i + self.window_size]
                     next_log = self.log2id_train.get(templates[i + self.window_size], 1)
 
-                    if isinstance(data_dict["label"], list):
+                    if isinstance(data["label"].iloc[index,:], list):
                         window_anomaly = int(
-                            1 in data_dict["label"][i: i + self.window_size + 1]
+                            1 in data["label"].iloc[i: i + self.window_size + 1]
                         )
                     else:
-                        window_anomaly = data_dict["label"]
+                        window_anomaly = data["label"].iloc[index,:].to_numpy()
 
                     windows.append(window)
                     window_labels.append(next_log)
                     window_anomalies.append(window_anomaly)
                     i += stride
                 else:
-                    window = templates[i:-1]
+                    window = templates[i:-1].values.tolist()
                     window.extend(["PADDING"] * (self.window_size - len(window)))
                     next_log = self.log2id_train.get(templates[-1], 1)
 
-                    if isinstance(data_dict["label"], list):
-                        window_anomaly = int(1 in data_dict["label"][i:])
+                    if isinstance(data["label"].iloc[index,:], list):
+                        window_anomaly = int(1 in data["label"][index][i:]).to_numpy()
                     else:
-                        window_anomaly = data_dict["label"]
+                        window_anomaly = data["label"].iloc[index,:].to_numpy()
 
                     windows.append(window)
                     window_labels.append(next_log)
                     window_anomalies.append(window_anomaly)
                 window_count += len(windows)
 
-                session_dict[session_id]["windows"] = windows
-                session_dict[session_id]["window_labels"] = window_labels
-                session_dict[session_id]["window_anomalies"] = window_anomalies
+                session_dict[index] = {}
+                session_dict[index]["windows"] = windows
+                session_dict[index]["window_labels"] = window_labels
+                session_dict[index]["window_anomalies"] = window_anomalies
 
-                if session_id == "all":
+                if index == "all":
                     logging.info(
                         "Total window number {} ({:.2f})".format(
                             len(window_anomalies),
@@ -218,11 +220,13 @@ class FeatureExtractor(BaseEstimator):
                     )
 
             elif self.window_type == "session":
-                session_dict[session_id]["windows"] = [data_dict["templates"]]
-                session_dict[session_id]["window_labels"] = [data_dict["label"]]
+                session_dict[index] = {}
+                session_dict[index]["windows"] = [data_dict["templates"]]
+                session_dict[index]["window_labels"] = [data_dict["label"]]
                 window_count += 1
 
         logging.info("{} sliding windows generated.".format(window_count))
+        return session_dict
 
     def __windows2quantitative(self, windows):
         total_features = []
@@ -265,7 +269,7 @@ class FeatureExtractor(BaseEstimator):
             logging.info("Cannot load cached feature extractor.")
             return False
 
-    def fit(self, session_dict):
+    def fit(self, data):
         if self.load():
             return
         log_padding = "<pad>"
@@ -273,7 +277,7 @@ class FeatureExtractor(BaseEstimator):
 
         # encode
         total_logs = list(
-            itertools.chain(*[v["templates"] for k, v in session_dict.items()])
+            itertools.chain(*[row for index, row in data["features"].iterrows()])
         )
         self.ulog_train = set(total_logs)
         self.id2log_train = {0: log_padding, 1: log_oov}
@@ -282,7 +286,8 @@ class FeatureExtractor(BaseEstimator):
         )
         self.log2id_train = {v: k for k, v in self.id2log_train.items()}
 
-        logging.info("{} tempaltes are found.".format(len(self.log2id_train)))
+        logging.info("{} words are found.".format(len(self.log2id_train)))
+        # logging.info("{} word list.".format(self.log2id_train))
 
         if self.label_type == "next_log":
             self.meta_data["num_labels"] = len(self.log2id_train)
@@ -319,9 +324,10 @@ class FeatureExtractor(BaseEstimator):
         if self.cache:
             self.save()
 
-    def transform(self, session_dict, datatype="train"):
+    def transform(self, data, datatype="train"):
+        session_dict = {}
         logging.info("Transforming {} data.".format(datatype))
-        ulog = set(itertools.chain(*[v["templates"] for k, v in session_dict.items()]))
+        ulog = set(itertools.chain(*[row for index, row in data["features"].iterrows()]))
         if datatype == "test":
             # handle new logs
             ulog_new = ulog - self.ulog_train
@@ -334,9 +340,9 @@ class FeatureExtractor(BaseEstimator):
 
         # generate windows, each window contains logid only
         if datatype == "train":
-            self.__generate_windows(session_dict, self.stride)
+            session_dict = self.__generate_windows(data, self.stride)
         else:
-            self.__generate_windows(session_dict, self.stride)
+            session_dict = self.__generate_windows(data, self.stride)
 
         if self.feature_type == "semantics":
             if self.use_tfidf:

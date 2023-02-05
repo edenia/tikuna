@@ -168,62 +168,25 @@ class FeatureExtractor(BaseEstimator):
     def __generate_windows(self, data, stride):
         session_dict = {}
         window_count = 0
-        for index, row in data["features"].iterrows():
-            if self.window_type == "sliding":
-                i = 0
-                templates = row
-                template_len = len(templates)
-                windows = []
-                window_labels = []
-                window_anomalies = []
-                while i + self.window_size < template_len:
-                    window = templates[i: i + self.window_size]
-                    next_log = self.log2id_train.get(templates[i + self.window_size], 1)
+        windows = []
+        window_labels = []
+        window_anomalies = []
+        row_size = data["features"].shape[1]
+        data_list = list(self.ulog_train)
+        for i in range(self.window_size, len(data_list)-self.window_size):
+            window = data_list[i-self.window_size:i]
+            next_log = data_list[i]
+            window_anomaly = data["label"].iloc[int(i/row_size)].values
 
-                    if isinstance(data["label"].iloc[index,:], list):
-                        window_anomaly = int(
-                            1 in data["label"].iloc[i: i + self.window_size + 1]
-                        )
-                    else:
-                        window_anomaly = data["label"].iloc[index,:].to_numpy()
+            windows.append(window)
+            window_labels.append(next_log)
+            window_anomalies.append(window_anomaly)
+            window_count += len(windows)
 
-                    windows.append(window)
-                    window_labels.append(next_log)
-                    window_anomalies.append(window_anomaly)
-                    i += stride
-                else:
-                    window = templates[i:-1].values.tolist()
-                    window.extend(["PADDING"] * (self.window_size - len(window)))
-                    next_log = self.log2id_train.get(templates[-1], 1)
-
-                    if isinstance(data["label"].iloc[index,:], list):
-                        window_anomaly = int(1 in data["label"][index][i:]).to_numpy()
-                    else:
-                        window_anomaly = data["label"].iloc[index,:].to_numpy()
-
-                    windows.append(window)
-                    window_labels.append(next_log)
-                    window_anomalies.append(window_anomaly)
-                window_count += len(windows)
-
-                session_dict[index] = {}
-                session_dict[index]["windows"] = windows
-                session_dict[index]["window_labels"] = window_labels
-                session_dict[index]["window_anomalies"] = window_anomalies
-
-                if index == "all":
-                    logging.info(
-                        "Total window number {} ({:.2f})".format(
-                            len(window_anomalies),
-                            sum(window_anomalies) / len(window_anomalies),
-                        )
-                    )
-
-            elif self.window_type == "session":
-                session_dict[index] = {}
-                session_dict[index]["windows"] = [data_dict["templates"]]
-                session_dict[index]["window_labels"] = [data_dict["label"]]
-                window_count += 1
+            session_dict[i] = {}
+            session_dict[i]["windows"] = windows
+            session_dict[i]["window_labels"] = window_labels
+            session_dict[i]["window_anomalies"] = window_anomalies
 
         logging.info("{} sliding windows generated.".format(window_count))
         return session_dict

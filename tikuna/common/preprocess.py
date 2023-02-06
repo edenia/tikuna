@@ -175,8 +175,8 @@ class FeatureExtractor(BaseEstimator):
         data_list = list(self.ulog_train)
         for i in range(self.window_size, len(data_list)-self.window_size):
             window = data_list[i-self.window_size:i]
-            next_log = data_list[i]
-            window_anomaly = data["label"].iloc[int(i/row_size)].values
+            next_log = self.log2id_train.get(data_list[i], 1)
+            window_anomaly = data["label"].iloc[int(i/row_size)].item()
 
             windows.append(window)
             window_labels.append(next_log)

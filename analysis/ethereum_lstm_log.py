@@ -28,8 +28,8 @@ abnormal_data = pd.read_csv(ECLIPSE_LOG_DATA,
                          sep = '\s+',
                          names=["Timestamp", "Removed IP", "Removed Port",
                                 "Added IP", "Added Port", "Bucket", "label"])
-display(normal_data)
-display(abnormal_data)
+print(normal_data)
+print(abnormal_data)
 
 normal_data['Timestamp'] = pd.to_datetime(normal_data['Timestamp'],
                                           format='[%Y-%m-%d|%H:%M:%S.%f]')
@@ -39,14 +39,14 @@ abnormal_data['Timestamp'] = pd.to_datetime(abnormal_data['Timestamp'],
 training_data = {}
 testing_data = {}
 
-training_data["features"] = normal_data.iloc[:1000, 1:6]
-training_data["label"] = normal_data.iloc[:1000, [6]].replace("normal", 0)
+training_data["features"] = normal_data.iloc[:1000000, 1:6]
+training_data["label"] = normal_data.iloc[:1000000, [6]].replace("normal", 0)
 training_data["type"] = "training"
 
-testing_data["features"] = pd.concat([abnormal_data.iloc[:, 1:6], normal_data.iloc[1000:2000, 1:6]])
+testing_data["features"] = pd.concat([abnormal_data.iloc[:, 1:6], normal_data.iloc[1000000:1002000, 1:6]])
 testing_data["label"] = pd.concat([
                            abnormal_data.iloc[:, [6]].replace("abnormal", 1),
-                           normal_data.iloc[1000:2000, [6]].replace("normal", 0)])
+                           normal_data.iloc[1000000:1002000, [6]].replace("normal", 0)])
 testing_data["type"] = "testing"
 
 parser = argparse.ArgumentParser()

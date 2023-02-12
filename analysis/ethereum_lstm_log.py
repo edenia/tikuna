@@ -43,10 +43,10 @@ training_data["features"] = normal_data.iloc[:1000000, 1:6]
 training_data["label"] = normal_data.iloc[:1000000, [6]].replace("normal", 0)
 training_data["type"] = "training"
 
-testing_data["features"] = pd.concat([abnormal_data.iloc[:, 1:6], normal_data.iloc[1000000:1002000, 1:6]])
+testing_data["features"] = pd.concat([abnormal_data.iloc[:, 1:6], normal_data.iloc[1000000:1001500, 1:6]])
 testing_data["label"] = pd.concat([
                            abnormal_data.iloc[:, [6]].replace("abnormal", 1),
-                           normal_data.iloc[1000000:1002000, [6]].replace("normal", 0)])
+                           normal_data.iloc[1000000:1001500, [6]].replace("normal", 0)])
 testing_data["type"] = "testing"
 
 parser = argparse.ArgumentParser()

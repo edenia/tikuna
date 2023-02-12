@@ -44,7 +44,7 @@ class Vocab:
         self.token_vocab_size = None
 
     def __tokenize_log(self, log):
-        word_lst_tmp = re.findall(r"[a-zA-Z]+", log)
+        word_lst_tmp = str(log)
         word_lst = []
         for word in word_lst_tmp:
             res = list(filter(None, re.split("([A-Z][a-z][^A-Z]*)", word)))
@@ -280,7 +280,7 @@ class FeatureExtractor(BaseEstimator):
             logging.info("Building vocab.")
             self.vocab.build_vocab(self.ulog_train)
             logging.info("Building vocab done.")
-            self.meta_data["vocab_size"] = self.vocab.token_vocab_size
+            self.meta_data["vocab_size"] = self.vocab_size_train + self.vocab_size_test
 
             if self.pretrain_path is not None:
                 logging.info(
@@ -309,7 +309,6 @@ class FeatureExtractor(BaseEstimator):
         if datatype == "test":
             # handle new logs
             ulog_new = ulog - self.ulog_train
-            # logging.info(f"{len(ulog_new)} new words shown while testing.")
 
         if self.cache:
             cached_file = os.path.join(self.cache_dir, datatype + ".pkl")

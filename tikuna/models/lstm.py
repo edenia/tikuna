@@ -87,12 +87,40 @@ class LSTM(ForcastBasedModel):
         if self.use_attention:
             assert window_size is not None, "window size must be set if use attention"
             self.attn = Attention(hidden_size * num_directions, window_size)
-        self.criterion = nn.MSELoss()
+        # self.criterion = nn.MSELoss()
+        self.criterion = nn.CrossEntropyLoss()
         self.prediction_layer = nn.Linear(
             self.hidden_size * self.num_directions, num_labels
         )
 
     def forward(self, input_dict):
+        if self.label_type == "anomaly":
+            y = input_dict["window_anomalies"].long().view(-1)
+        elif self.label_type == "next_log":
+            y = input_dict["window_labels"].long().view(-1)
+        self.batch_size = y.size()[0]
+        x = input_dict["features"]
+        x = self.embedder(x)
+
+        if self.feature_type == "semantics":
+            if not self.use_tfidf:
+                x = x.sum(dim=-2)  # add tf-idf
+
+        outputs, _ = self.rnn(x.float())
+
+        if self.use_attention:
+            representation = self.attn(outputs)
+        else:
+            # representation = outputs.mean(dim=1)
+            representation = outputs[:, -1, :]
+
+        logits = self.prediction_layer(representation)
+        y_pred = logits.softmax(dim=-1)
+        loss = self.criterion(logits, y)
+        return_dict = {"loss": loss, "y_pred": y_pred}
+        return return_dict
+
+    def forward_vector(self, input_dict):
         if self.label_type == "anomaly":
             y = input_dict["window_anomalies"].float()
         elif self.label_type == "next_log":

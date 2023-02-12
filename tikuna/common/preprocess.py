@@ -61,8 +61,7 @@ class Vocab:
         vocab_size = len(self.word2idx)
         pretrain_matrix = np.zeros([vocab_size, 300])
         oov_count = 0
-        # print(list(self.word2idx.keys()))
-        # exit()
+
         for word, idx in tqdm(self.word2idx.items()):
             if word in word_vec_dict:
                 pretrain_matrix[idx] = word_vec_dict[word]
@@ -168,25 +167,30 @@ class FeatureExtractor(BaseEstimator):
     def __generate_windows(self, data, stride):
         session_dict = {}
         window_count = 0
-        windows = []
-        window_labels = []
-        window_anomalies = []
         row_size = data["features"].shape[1]
-        data_list = list(self.ulog_train)
+        data_list = list(itertools.chain(*[row for index, row in data["features"].iterrows()]))
         for i in range(self.window_size, len(data_list)-self.window_size):
+            windows = []
+            window_labels = []
+            window_anomalies = []
             window = data_list[i-self.window_size:i]
             next_log = self.log2id_train.get(data_list[i], 1)
-            window_anomaly = data["label"].iloc[int(i/row_size)].item()
+
+            # If one of the data is anomaluous all the data is anomalous
+            if data["label"].iloc[(int)((i-self.window_size)/row_size):(int)(i/row_size)].sum().item() > 0:
+                window_anomaly = 1
+            else:
+                window_anomaly = 0
 
             windows.append(window)
             window_labels.append(next_log)
             window_anomalies.append(window_anomaly)
-            window_count += len(windows)
+            window_count += 1
 
-            session_dict[i] = {}
-            session_dict[i]["windows"] = windows
-            session_dict[i]["window_labels"] = window_labels
-            session_dict[i]["window_anomalies"] = window_anomalies
+            session_dict[window_count] = {}
+            session_dict[window_count]["windows"] = windows
+            session_dict[window_count]["window_labels"] = window_labels
+            session_dict[window_count]["window_anomalies"] = window_anomalies
 
         logging.info("{} sliding windows generated.".format(window_count))
         return session_dict
@@ -232,28 +236,39 @@ class FeatureExtractor(BaseEstimator):
             logging.info("Cannot load cached feature extractor.")
             return False
 
-    def fit(self, data):
+    def fit(self, data, datatype="train"):
         if self.load():
             return
         log_padding = "<pad>"
         log_oov = "<oov>"
+        self.vocab_size_test = 0
 
         # encode
         total_logs = list(
             itertools.chain(*[row for index, row in data["features"].iterrows()])
         )
-        self.ulog_train = set(total_logs)
-        self.id2log_train = {0: log_padding, 1: log_oov}
-        self.id2log_train.update(
-            {idx: log for idx, log in enumerate(self.ulog_train, 2)}
-        )
-        self.log2id_train = {v: k for k, v in self.id2log_train.items()}
-
-        logging.info("{} words are found.".format(len(self.log2id_train)))
-        # logging.info("{} word list.".format(self.log2id_train))
+        if datatype == "test":
+            self.ulog_test = set(total_logs)
+            self.ulog_train.update(set(total_logs))
+            training_size = len(self.id2log_train)
+            self.id2log_train.update(
+                {idx: log for idx, log in enumerate(self.ulog_test, training_size)}
+            )
+            self.log2id_train.update({v: k for k, v in self.id2log_train.items()})
+            self.vocab_size_test = len(self.log2id_train)
+            logging.info("{} words are found in testing data.".format(self.vocab_size_test))
+        else:
+            self.ulog_train = set(total_logs)
+            self.id2log_train = {0: log_padding, 1: log_oov}
+            self.id2log_train.update(
+                {idx: log for idx, log in enumerate(self.ulog_train, 2)}
+            )
+            self.log2id_train = {v: k for k, v in self.id2log_train.items()}
+            self.vocab_size_train = len(self.log2id_train)
+            logging.info("{} words are found in training data.".format(self.vocab_size_train))
 
         if self.label_type == "next_log":
-            self.meta_data["num_labels"] = len(self.log2id_train)
+            self.meta_data["num_labels"] = self.vocab_size_train + self.vocab_size_test
         elif self.label_type == "anomaly":
             self.meta_data["num_labels"] = 2
         else:
@@ -278,7 +293,7 @@ class FeatureExtractor(BaseEstimator):
                 self.vocab.fit_tfidf(total_logs)
 
         elif self.feature_type == "sequentials":
-            self.meta_data["vocab_size"] = len(self.log2id_train)
+            self.meta_data["vocab_size"] = self.vocab_size_train + self.vocab_size_test
 
         else:
             logging.info('Unrecognized feature type "{}"'.format(self.feature_type))
@@ -294,7 +309,7 @@ class FeatureExtractor(BaseEstimator):
         if datatype == "test":
             # handle new logs
             ulog_new = ulog - self.ulog_train
-            logging.info(f"{len(ulog_new)} new templates show while testing.")
+            # logging.info(f"{len(ulog_new)} new words shown while testing.")
 
         if self.cache:
             cached_file = os.path.join(self.cache_dir, datatype + ".pkl")
@@ -338,6 +353,6 @@ class FeatureExtractor(BaseEstimator):
             dump_pickle(session_dict, cached_file)
         return session_dict
 
-    def fit_transform(self, session_dict):
-        self.fit(session_dict)
-        return self.transform(session_dict, datatype="train")
+    def fit_transform(self, session_dict, datatype="train"):
+        self.fit(session_dict, datatype)
+        return self.transform(session_dict, datatype)

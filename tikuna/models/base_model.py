@@ -85,6 +85,8 @@ class ForcastBasedModel(nn.Module):
         logging.info("Evaluating {} data.".format(dtype))
 
         if self.label_type == "next_log":
+            return self.__evaluate_next_log(test_loader, dtype=dtype)
+        elif self.label_type == "next_vector":
             return self.__evaluate_next_vector(test_loader, dtype=dtype)
         elif self.label_type == "anomaly":
             return self.__evaluate_anomaly(test_loader, dtype=dtype)

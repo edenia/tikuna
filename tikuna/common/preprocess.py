@@ -44,15 +44,8 @@ class Vocab:
         self.token_vocab_size = None
 
     def __tokenize_log(self, log):
-        word_lst_tmp = str(log)
         word_lst = []
-        for word in word_lst_tmp:
-            res = list(filter(None, re.split("([A-Z][a-z][^A-Z]*)", word)))
-            if len(res) == 0:
-                word_lst.append(word.lower())
-            else:
-                res = [w.lower() for w in res]
-                word_lst.extend(res)
+        word_lst.append(log.lower())
         return word_lst
 
     def gen_pretrain_matrix(self, pretrain_path):
@@ -98,6 +91,7 @@ class Vocab:
 
     def fit_tfidf(self, total_logs):
         logging.info("Fitting tfidf.")
+        total_logs = [str (item) for item in total_logs]
         self.tfidf = TfidfVectorizer(
             tokenizer=lambda x: self.__tokenize_log(x),
             vocabulary=self.word2idx,
@@ -106,12 +100,14 @@ class Vocab:
         self.tfidf.fit(total_logs)
 
     def transform_tfidf(self, logs):
+        logs = set(map(str, logs))
         return self.tfidf.transform(logs)
 
     def logs2idx(self, logs):
         idx_list = []
         for log in logs:
-            tokens = self.__tokenize_log(log)
+            tokens = self.__tokenize_log(str(log))
+            print("tokens", tokens)
             tokens_idx = self.trp(
                 [self.word2idx.get(t, 1) for t in tokens], self.max_token_len
             )
@@ -248,6 +244,7 @@ class FeatureExtractor(BaseEstimator):
             itertools.chain(*[row for index, row in data["features"].iterrows()])
         )
         if datatype == "test":
+            self.complete_logs.extend(total_logs)
             self.ulog_test = set(total_logs)
             self.ulog_train.update(set(total_logs))
             training_size = len(self.id2log_train)
@@ -258,6 +255,7 @@ class FeatureExtractor(BaseEstimator):
             self.vocab_size_test = len(self.log2id_train)
             logging.info("{} words are found in testing data.".format(self.vocab_size_test))
         else:
+            self.complete_logs = total_logs
             self.ulog_train = set(total_logs)
             self.id2log_train = {0: log_padding, 1: log_oov}
             self.id2log_train.update(
@@ -278,7 +276,8 @@ class FeatureExtractor(BaseEstimator):
         if self.feature_type == "semantics":
             logging.info("Using semantics.")
             logging.info("Building vocab.")
-            self.vocab.build_vocab(self.ulog_train)
+            self.vocab.word2idx = self.log2id_train
+            self.vocab.token_vocab_size = len(self.vocab.word2idx)
             logging.info("Building vocab done.")
             self.meta_data["vocab_size"] = self.vocab_size_train + self.vocab_size_test
 
@@ -315,18 +314,14 @@ class FeatureExtractor(BaseEstimator):
             if os.path.isfile(cached_file):
                 return load_pickle(cached_file)
 
-        # generate windows, each window contains logid only
-        if datatype == "train":
-            session_dict = self.__generate_windows(data, self.stride)
-        else:
-            session_dict = self.__generate_windows(data, self.stride)
+        session_dict = self.__generate_windows(data, self.stride)
 
         if self.feature_type == "semantics":
             if self.use_tfidf:
-                indice = self.vocab.transform_tfidf(ulog).toarray()
+                indice = self.vocab.transform_tfidf(self.complete_logs).toarray()
             else:
-                indice = np.array(self.vocab.logs2idx(ulog))
-            log2idx = {log: indice[idx] for idx, log in enumerate(ulog)}
+                indice = np.array(self.vocab.logs2idx(self.complete_logs))
+            log2idx = {log: indice[idx] for idx, log in enumerate(self.complete_logs)}
             log2idx["PADDING"] = np.zeros(indice.shape[1]).reshape(-1)
             logging.info("Extracting semantic features.")
 

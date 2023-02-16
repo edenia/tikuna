@@ -46,15 +46,16 @@ def dump_final_results(params, eval_results, model):
         fw.write(info)
 
 
-def dump_params(params):
+def dump_params(params, meta_data):
     hash_id = hashlib.md5(
         str(sorted([(k, v) for k, v in params.items()])).encode("utf-8")
     ).hexdigest()[0:8]
     params["hash_id"] = hash_id
-    save_dir = os.path.join("./experiment_records", hash_id)
+    save_dir = os.path.join("./tikuna_model_data", hash_id)
     os.makedirs(save_dir, exist_ok=True)
 
     json_pretty_dump(params, os.path.join(save_dir, "params.json"))
+    json_pretty_dump(meta_data, os.path.join(save_dir, "meta_data.json"))
 
     log_file = os.path.join(save_dir, hash_id + ".log")
     # logs will not show in the file without the two lines.
@@ -70,6 +71,16 @@ def dump_params(params):
     logging.info(json.dumps(params, indent=4))
     return save_dir
 
+def load_params(directory):
+    load_dir = os.path.join("./tikuna_model_data", directory)
+
+    with open(os.path.join(load_dir, "params.json")) as json_file:
+        params = json.load(json_file)
+    # Opening JSON file
+    with open(os.path.join(load_dir, "meta_data.json")) as json_file:
+        meta_data = json.load(json_file)
+
+    return params, meta_data
 
 def decision(probability):
     return random.random() < probability

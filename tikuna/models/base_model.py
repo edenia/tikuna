@@ -227,7 +227,6 @@ class ForcastBasedModel(nn.Module):
                 store_df["window_pred_anomaly_{}".format(topk)] = (
                     ~(hit_df["acc_num"] <= check_num)
                 ).astype(int)
-            # store_df.to_csv("store_{}_2.csv".format(dtype), index=False)
 
             logging.info("Finish generating store_df.")
 
@@ -240,7 +239,6 @@ class ForcastBasedModel(nn.Module):
                 )
             else:
                 session_df = store_df
-            # session_df.to_csv("session_{}_2.csv".format(dtype), index=False)
 
             for topk in range(1, self.topk + 1):
                 pred = (session_df[f"window_pred_anomaly_{topk}"] > 0).astype(int)

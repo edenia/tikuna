@@ -51,7 +51,7 @@ def dump_params(params, meta_data):
         str(sorted([(k, v) for k, v in params.items()])).encode("utf-8")
     ).hexdigest()[0:8]
     params["hash_id"] = hash_id
-    save_dir = os.path.join("./tikuna_model_data", hash_id)
+    save_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", hash_id)
     os.makedirs(save_dir, exist_ok=True)
 
     json_pretty_dump(params, os.path.join(save_dir, "params.json"))
@@ -72,7 +72,7 @@ def dump_params(params, meta_data):
     return save_dir
 
 def load_params(directory):
-    load_dir = os.path.join("./tikuna_model_data", directory)
+    load_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", directory)
 
     with open(os.path.join(load_dir, "params.json")) as json_file:
         params = json.load(json_file)

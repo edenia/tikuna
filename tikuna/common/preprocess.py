@@ -154,7 +154,7 @@ class FeatureExtractor(BaseEstimator):
         if cache:
             param_json = self.get_params()
             identifier = hashlib.md5(str(param_json).encode("utf-8")).hexdigest()[0:8]
-            self.cache_dir = os.path.join("./cache", identifier)
+            self.cache_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", identifier)
             os.makedirs(self.cache_dir, exist_ok=True)
             json_pretty_dump(
                 param_json, os.path.join(self.cache_dir, "feature_extractor.json")

@@ -19,14 +19,14 @@ try:
             words = line.split()
             log = [words[0]]
             log.extend([ words[i].partition('=')[2] for i in indices ])
-            print(log)
             if logs_added > 20:
                 logs_added = 0
                 jsonString = json.dumps(log_list)
-                r = requests.post('http://parsek.io:4444', json=jsonString)
-                print(f"Status Code: {r.status_code}, Response: {r.json()}")
+                print("Sending log request...")
+                r = requests.post('http://parsek.io:4444/evaluate', json=jsonString)
+                print(f"Status Code: {r.status_code}, Response: {r}")
             else:
-                log_list.extend(log)
+                log_list.append(log)
                 logs_added += 1
 except StopIteration:
     print(f'log stream ended for prysm-beacon')

@@ -107,7 +107,6 @@ class Vocab:
         idx_list = []
         for log in logs:
             tokens = self.__tokenize_log(str(log))
-            print("tokens", tokens)
             tokens_idx = self.trp(
                 [self.word2idx.get(t, 1) for t in tokens], self.max_token_len
             )
@@ -171,12 +170,13 @@ class FeatureExtractor(BaseEstimator):
             window_anomalies = []
             window = data_list[i-self.window_size:i]
             next_log = self.log2id_train.get(data_list[i], 1)
+            window_anomaly = 0
 
             # If one of the data is anomaluous all the data is anomalous
-            if data["label"].iloc[(int)((i-self.window_size)/row_size):(int)(i/row_size)].sum().item() > 0:
+            # new data does not have a label
+            if "label" in data \
+            and data["label"].iloc[(int)((i-self.window_size)/row_size):(int)(i/row_size)].sum().item() > 0:
                 window_anomaly = 1
-            else:
-                window_anomaly = 0
 
             windows.append(window)
             window_labels.append(next_log)
@@ -243,7 +243,18 @@ class FeatureExtractor(BaseEstimator):
         total_logs = list(
             itertools.chain(*[row for index, row in data["features"].iterrows()])
         )
-        if datatype == "test":
+
+        if datatype == "train":
+            self.complete_logs = total_logs
+            self.ulog_train = set(total_logs)
+            self.id2log_train = {0: log_padding, 1: log_oov}
+            self.id2log_train.update(
+                {idx: log for idx, log in enumerate(self.ulog_train, 2)}
+            )
+            self.log2id_train = {v: k for k, v in self.id2log_train.items()}
+            self.vocab_size_train = len(self.log2id_train)
+            logging.info("{} words are found in training data.".format(self.vocab_size_train))
+        else:
             self.complete_logs.extend(total_logs)
             self.ulog_test = set(total_logs)
             self.ulog_train.update(set(total_logs))
@@ -254,16 +265,6 @@ class FeatureExtractor(BaseEstimator):
             self.log2id_train.update({v: k for k, v in self.id2log_train.items()})
             self.vocab_size_test = len(self.log2id_train)
             logging.info("{} words are found in testing data.".format(self.vocab_size_test))
-        else:
-            self.complete_logs = total_logs
-            self.ulog_train = set(total_logs)
-            self.id2log_train = {0: log_padding, 1: log_oov}
-            self.id2log_train.update(
-                {idx: log for idx, log in enumerate(self.ulog_train, 2)}
-            )
-            self.log2id_train = {v: k for k, v in self.id2log_train.items()}
-            self.vocab_size_train = len(self.log2id_train)
-            logging.info("{} words are found in training data.".format(self.vocab_size_train))
 
         if self.label_type == "next_log":
             self.meta_data["num_labels"] = self.vocab_size_train + self.vocab_size_test

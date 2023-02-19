@@ -23,17 +23,13 @@ class EthereumAttackDetector():
     def evaluate(self, input_json):
         evaluation_data = {}
         input_list = json.loads(input_json)
-        print(input_list)
         input_data = pd.DataFrame(input_list)
 
         evaluation_data["features"] = input_data.iloc[:, 1:6]
-        evaluation_data["type"] = "testing"
-        session_test = self.feature_extractor.fit_transform(evaluation_data, datatype="test")
+        session_test = self.feature_extractor.fit_transform(evaluation_data, datatype="predict")
         dataset_test = log_dataset(session_test, feature_type=self.params["feature_type"])
         dataloader_test = DataLoader(
-            dataset_test, batch_size=100, shuffle=False, pin_memory=True
+            dataset_test, batch_size=1, shuffle=False, pin_memory=True
         )
-        final_test_results = self.model.evaluate(
-            dataloader_test,
-            dtype="evaluate"
-        )
+        self.model.label_type = "anomaly"
+        final_test_results = self.model.predict(dataloader_test)

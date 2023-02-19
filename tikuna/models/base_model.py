@@ -324,6 +324,20 @@ class ForcastBasedModel(nn.Module):
             self.time_tracker["test"] = infer_end - infer_start
             return best_result
 
+    def predict(self, test_loader):
+        self.eval()
+        with torch.no_grad():
+            y_pred = []
+            store_dict = defaultdict(list)
+            infer_start = time.time()
+            for batch_input in test_loader:
+                return_dict = self.forward(self.__input2device(batch_input))
+                y_prob, y_pred = return_dict["y_pred"].max(dim=1)
+                y = batch_input["window_labels"]
+                print("y_pred", y_pred)
+                print("y", y)
+            return y_pred
+
     def __input2device(self, batch_input):
         return {k: v.to(self.device) for k, v in batch_input.items()}
 

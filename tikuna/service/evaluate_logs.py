@@ -4,6 +4,7 @@ import argparse
 import pandas as pd
 import json
 
+from threading import Thread
 from alertmanager import AlertManager
 from alertmanager import Alert
 from torch.utils.data import DataLoader
@@ -34,20 +35,22 @@ class EthereumAttackDetector():
             dataset_test, batch_size=200, shuffle=False, pin_memory=True
         )
         anomalies = self.model.predict(dataloader_test)
-        found_anomaly = anomalies.sum()
-        if found_anomaly.item() > 0:
-            print("Found alnomalies:", found_anomaly.item())
+        found_anomalies = anomalies.sum()
+        if found_anomalies.item() > 0:
+            print("Found anomalies!!:", found_anomalies.item())
+            thread = Thread(target=self.send_alert, args=(input_json,))
+            thread.start()
 
-    '''def send_alert(self, message):
+    def send_alert(self, message):
         alert_data = {
             "labels": {
-                "alertname": "EclipseAttack",
+                "alertname": "EclipseAttackOnEthereumNode",
                 "instance": "localhost:4444",
                 "job": "prometheus",
                 "severity": "critical",
                 "log_data": message
             }
-         }
-         alert = Alert.from_dict(alert_data)
-         alert_manager = AlertManager(host="parsek.io")
-         alert_manager.post_alerts(alert)'''
+        }
+        alert = Alert.from_dict(alert_data)
+        alert_manager = AlertManager(host="http://parsek.io")
+        alert_manager.post_alerts(alert)

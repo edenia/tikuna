@@ -4,6 +4,8 @@ import argparse
 import pandas as pd
 import json
 
+from alertmanager import AlertManager
+from alertmanager import Alert
 from torch.utils.data import DataLoader
 from tikuna.models import LSTM
 from tikuna.common.preprocess import FeatureExtractor
@@ -29,7 +31,23 @@ class EthereumAttackDetector():
         session_test = self.feature_extractor.fit_transform(evaluation_data, datatype="predict")
         dataset_test = log_dataset(session_test, feature_type=self.params["feature_type"])
         dataloader_test = DataLoader(
-            dataset_test, batch_size=1, shuffle=False, pin_memory=True
+            dataset_test, batch_size=200, shuffle=False, pin_memory=True
         )
-        self.model.label_type = "anomaly"
-        final_test_results = self.model.predict(dataloader_test)
+        anomalies = self.model.predict(dataloader_test)
+        found_anomaly = anomalies.sum()
+        if found_anomaly.item() > 0:
+            print("Found alnomalies:", found_anomaly.item())
+
+    '''def send_alert(self, message):
+        alert_data = {
+            "labels": {
+                "alertname": "EclipseAttack",
+                "instance": "localhost:4444",
+                "job": "prometheus",
+                "severity": "critical",
+                "log_data": message
+            }
+         }
+         alert = Alert.from_dict(alert_data)
+         alert_manager = AlertManager(host="parsek.io")
+         alert_manager.post_alerts(alert)'''

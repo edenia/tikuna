@@ -10,6 +10,7 @@ ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 
 dkg = client.containers.get("prysm-beacon").logs(stream = True, follow = True, tail = 10)
 try:
+    print("Starting Ethereum log collection...")
     logs_added = 0
     log_list = []
     while True:
@@ -24,8 +25,11 @@ try:
                 jsonString = json.dumps(log_list)
                 log_list = []
                 print("Sending log request...")
-                r = requests.post('http://parsek.io:4444/evaluate', json=jsonString)
-                print(f"Status Code: {r.status_code}, Response: {r}")
+                try:
+                    r = requests.post('http://parsek.io:4444/evaluate', json=jsonString)
+                    print(f"Status Code: {r.status_code}, Response: {r}")
+                except:
+                    print("Connection error!")
             else:
                 log_list.append(log)
                 logs_added += 1

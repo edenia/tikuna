@@ -90,54 +90,6 @@ class ForcastBasedModel(nn.Module):
             return self.__evaluate_next_vector(test_loader, dtype=dtype)
         elif self.label_type == "anomaly":
             return self.__evaluate_anomaly(test_loader, dtype=dtype)
-        elif self.label_type == "none":
-            return self.__evaluate_recst(test_loader, dtype=dtype)
-
-    def __evaluate_recst(self, test_loader, dtype="test"):
-        self.eval()  # set to evaluation mode
-        with torch.no_grad():
-            y_pred = []
-            store_dict = defaultdict(list)
-            infer_start = time.time()
-            for batch_input in test_loader:
-                return_dict = self.forward(self.__input2device(batch_input))
-                y_pred = return_dict["y_pred"]
-                store_dict["session_idx"].extend(
-                    tensor2flatten_arr(batch_input["session_idx"])
-                )
-                store_dict["window_anomalies"].extend(
-                    tensor2flatten_arr(batch_input["window_anomalies"])
-                )
-                store_dict["window_preds"].extend(tensor2flatten_arr(y_pred))
-            infer_end = time.time()
-            logging.info("Finish inference [{:.2f}s]".format(infer_end - infer_start))
-            self.time_tracker["test"] = infer_end - infer_start
-
-            store_df = pd.DataFrame(store_dict)
-
-            use_cols = ["session_idx", "window_anomalies", "window_preds"]
-            session_df = (
-                store_df[use_cols]
-                .groupby("session_idx", as_index=False)
-                .max()  # most anomalous window
-            )
-            assert (
-                self.anomaly_ratio is not None
-            ), "anomaly_ratio should be specified for autoencoder!"
-            thre = np.percentile(
-                session_df[f"window_preds"].values, 100 - self.anomaly_ratio * 100
-            )
-            pred = (session_df[f"window_preds"] > thre).astype(int)
-            y = (session_df["window_anomalies"] > 0).astype(int)
-
-            eval_results = {
-                "f1": f1_score(y, pred),
-                "rc": recall_score(y, pred),
-                "pc": precision_score(y, pred),
-                "acc": accuracy_score(y, pred),
-            }
-            logging.info({k: f"{v:.3f}" for k, v in eval_results.items()})
-            return eval_results
 
     def __evaluate_anomaly(self, test_loader, dtype="test"):
 
@@ -326,17 +278,16 @@ class ForcastBasedModel(nn.Module):
 
     def predict(self, test_loader):
         self.eval()
+        anomaly = None
         with torch.no_grad():
-            y_pred = []
             store_dict = defaultdict(list)
             infer_start = time.time()
             for batch_input in test_loader:
                 return_dict = self.forward(self.__input2device(batch_input))
                 y_prob, y_pred = return_dict["y_pred"].max(dim=1)
                 y = batch_input["window_labels"]
-                print("y_pred", y_pred)
-                print("y", y)
-            return y_pred
+                anomaly = pd.DataFrame((y_pred != y).numpy()).astype(int)
+            return anomaly
 
     def __input2device(self, batch_input):
         return {k: v.to(self.device) for k, v in batch_input.items()}

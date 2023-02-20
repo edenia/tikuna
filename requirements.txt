@@ -20,3 +20,4 @@ python-rclone
 base58
 ipyfilechooser
 flask
+pylertalertmanager

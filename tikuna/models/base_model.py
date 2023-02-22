@@ -120,9 +120,9 @@ class ForcastBasedModel(nn.Module):
 
             eval_results = {
                 "f1": f1_score(y, pred),
-                "rc": recall_score(y, pred),
-                "pc": precision_score(y, pred),
-                "acc": accuracy_score(y, pred),
+                "Recall": recall_score(y, pred),
+                "Precision": precision_score(y, pred),
+                "Accuracy": accuracy_score(y, pred),
             }
             logging.info({k: f"{v:.3f}" for k, v in eval_results.items()})
             return eval_results
@@ -198,8 +198,8 @@ class ForcastBasedModel(nn.Module):
                 window_topk_acc = 1 - store_df["window_anomalies"].sum() / len(store_df)
                 eval_results = {
                     "f1": f1_score(y, pred),
-                    "rc": recall_score(y, pred),
-                    "pc": precision_score(y, pred),
+                    "Recall": recall_score(y, pred),
+                    "Precision": precision_score(y, pred),
                     "top{}-acc".format(topk): window_topk_acc,
                 }
                 logging.info({k: f"{v:.3f}" for k, v in eval_results.items()})
@@ -259,20 +259,19 @@ class ForcastBasedModel(nn.Module):
                 recall = tp/(tp+fn)
                 eval_results = {
                         "f1": 2*(precision*recall)/(precision+recall),
-                        "acc": (tp+tn)/(tp+fp+tn+fn)
+                        "Recall": recall,
+                        "Precision": precision,
+                        "Accuracy": (tp+tn)/(tp+fp+tn+fn)
                 }
             else:
                 eval_results = {
                         "f1": 0,
                         "acc": 0
                 }
+            logging.info({k: f"{v:.3f}" for k, v in eval_results.items()})
             if eval_results["f1"] >= best_f1:
                 best_result = eval_results
                 best_f1 = eval_results["f1"]
-            print('[TP] {}\t[FP] {}'.format(tp, fp))
-            print('[TN] {}\t[FN] {}'.format(tn, fn))
-            print('[F1] {}'.format(eval_results["f1"]))
-            print('[ACC] {}'.format(eval_results["acc"]))
             self.time_tracker["test"] = infer_end - infer_start
             return best_result
 

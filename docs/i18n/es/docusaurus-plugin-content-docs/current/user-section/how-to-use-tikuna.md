@@ -30,7 +30,7 @@ Para correr este proyecto, instalelo localmente usando:
 
 Para empezar a usar Tikuna, ejecute los pasos descrito a continuación.
 
-* Dentro del directorio del proyecto Tikuna ejecute el siguiente comando para iniciar un contenedor de docker:
+* Dentro del directorio del proyecto Tikuna, vaya a la carpeta `bin` y ejecute el siguiente comando para iniciar un contenedor de docker:
 
   ```bash
      $ ./start_tikuna.sh
@@ -38,7 +38,7 @@ Para empezar a usar Tikuna, ejecute los pasos descrito a continuación.
 * Dentro del contenedor de docker ejecute el siguiente comando para lanzar una sesión de Jupyter Notebook en donde los algoritmos de machine learning pueden ser ejecutados usando la data de Ethereum: 
 
   ```bash
-     $ ./start_jupyter_notebook.sh
+     $ ./bin/start_jupyter_notebook.sh
   ```
 * Después de ejecutar el comando anterior, usted solo necesita abrir su navegador, y luego copie y pegue la url mostrada en pantalla.
 

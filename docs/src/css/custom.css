@@ -244,7 +244,7 @@ hr {
   background-image: var(--ifm-readme-url-jupyter);
   background-repeat: no-repeat;
   background-size: contain;
-  min-height: 130px;
+  min-height: 150px;
   max-width: 800px;
   margin-top: 2rem !important;
 }

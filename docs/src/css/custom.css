@@ -226,7 +226,7 @@ hr {
   background-image: var(--ifm-readme-click-script);
   background-repeat: no-repeat;
   background-size: contain;
-  min-height: 450px;
+  min-height: 350px;
   max-width: 800px;
   margin-top: 2rem !important;
 }

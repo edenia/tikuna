@@ -48,7 +48,7 @@ Para empezar a usar Tikuna, ejecute los pasos descrito a continuación.
 
 <div className="readmeClickAnalisys click"></div>
 
-* Click sobre el archivo testing_analysis_trace.ipynb.
+* Click sobre el archivo ethereum_lstm_log.ipynb.
 
 <div className="readmeClickScript script"></div>
 

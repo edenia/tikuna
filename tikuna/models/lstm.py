@@ -128,6 +128,7 @@ class LSTM(ForcastBasedModel):
         y = input_dict["window_labels"].float()
         self.batch_size = y.size()[0]
         x = input_dict["features"]
+        print("x.shape", x.shape)
 
         outputs, _ = self.rnn(x.float())
 

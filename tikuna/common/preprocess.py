@@ -25,7 +25,6 @@ def load_vectors(fname):
         with open(fname, "rb") as fr:
             data = pickle.load(fr)
     else:
-        # load fasttext file
         fin = io.open(fname, "r", encoding="utf-8", newline="\n", errors="ignore")
         n, d = map(int, fin.readline().split())
         data = {}
@@ -123,7 +122,7 @@ class FeatureExtractor(BaseEstimator):
 
     def __init__(
         self,
-        label_type="next_log",  # "none", "next_log", "anomaly"
+        label_type="next_log",
         feature_type="sequentials",
         eval_type="session",
         window_type="sliding",

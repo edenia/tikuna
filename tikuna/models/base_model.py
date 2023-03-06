@@ -200,7 +200,7 @@ class ForcastBasedModel(nn.Module):
                     "f1": f1_score(y, pred),
                     "Recall": recall_score(y, pred),
                     "Precision": precision_score(y, pred),
-                    "top{}-acc".format(topk): window_topk_acc,
+                    "Accuracy": accuracy_score(y, pred),
                 }
                 logging.info({k: f"{v:.3f}" for k, v in eval_results.items()})
                 if eval_results["f1"] >= best_f1:
@@ -349,7 +349,7 @@ class ForcastBasedModel(nn.Module):
                     worse_count += 1
                     if worse_count >= self.patience:
                         logging.info("Early stop at epoch: {}".format(epoch))
-                        break
+                        # break
 
         self.load_model(self.model_save_file)
         return best_results

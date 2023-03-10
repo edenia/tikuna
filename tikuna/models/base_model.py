@@ -214,7 +214,7 @@ class ForcastBasedModel(nn.Module):
         model = self.eval()  # set to evaluation mode
         with torch.no_grad():
             lower_threshold = 0.0
-            upper_threshold = 0.08
+            upper_threshold = 0.1
             best_result = None
             best_f1 = -float("inf")
             tp = 0

@@ -349,7 +349,7 @@ class ForcastBasedModel(nn.Module):
                     worse_count += 1
                     if worse_count >= self.patience:
                         logging.info("Early stop at epoch: {}".format(epoch))
-                        # break
+                        break
 
         self.load_model(self.model_save_file)
         return best_results

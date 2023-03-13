@@ -89,7 +89,7 @@ class log_dataset_traces(Dataset):
         # Eclipse single
         trace_values = traces.iloc[:,0:5]
         # Covert
-        # trace_values = traces.iloc[:,0:10]
+        # trace_values = traces.iloc[:,1:11]
         # Eclipse network
         # trace_values = traces.iloc[:,0:8]
 

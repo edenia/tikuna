@@ -15,11 +15,6 @@ from tikuna.service.evaluate_logs import EthereumAttackDetector
 detector = None
 app = Flask(__name__)
 
-@app.route("/metrics")
-def requests_count():
-    res = []
-    return Response(res, mimetype="text/plain")
-
 @app.route("/evaluate", methods=['POST'])
 def evaluate_log():
     content_type = request.headers.get('Content-Type')
@@ -27,7 +22,7 @@ def evaluate_log():
         logs = request.json
         if logs:
            detector.evaluate(logs)
-        res = ["AAAAAA!"]
+        res = [""]
         return Response(res, mimetype="text/plain")
     else:
         return 'Content-Type not supported!'

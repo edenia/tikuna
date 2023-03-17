@@ -18,7 +18,7 @@ Our project aimed to implement Tikuna, a proof-of-concept P2P network security m
 
 Tikuna, the first project in Latin America to get academic research funding from the Ethereum Foundation, has created a novel strategy to increase awareness of the P2P network's security state. We are proud to contribute to advancing blockchain safety and enhancing the Ethereum blockchain's security. To learn more about Tikuna, [visit our website](https://tikuna.io) [[19]](/docs/research/references).
 
-### I Phase roadmap
+### Phase I roadmap
 
 <div className="roadmapImageBlog"></div>
 

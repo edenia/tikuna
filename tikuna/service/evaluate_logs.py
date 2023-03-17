@@ -52,5 +52,5 @@ class EthereumAttackDetector():
             }
         }
         alert = Alert.from_dict(alert_data)
-        alert_manager = AlertManager(host="http://parsek.io")
+        alert_manager = AlertManager(host="http://localhost")
         alert_manager.post_alerts(alert)

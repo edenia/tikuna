@@ -26,7 +26,7 @@ try:
                 log_list = []
                 print("Sending log request...")
                 try:
-                    r = requests.post('http://parsek.io:4444/evaluate', json=jsonString)
+                    r = requests.post('http://localhost:4444/evaluate', json=jsonString)
                     print(f"Status Code: {r.status_code}, Response: {r}")
                 except:
                     print("Connection error!")

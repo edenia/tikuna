@@ -45,6 +45,9 @@
   --ifm-logo: url("/img/tikuna-light-logo.png") !important;
   --ifm-linkedin-icon: url("/img/icon-link-light.png");
   --ifm-roadmap: url("/img/roadmap.webp") !important;
+  --ifm-dashboardEclipseAttacks: url("/img/dashboardEclipseAttacks.png") !important;
+  --ifm-dashboardBeacoNode: url("/img/dashboardBeacoNode.png") !important;
+  --ifm-dashboardp2pstatus: url("/img/dashboardp2pstatus.png") !important;
   --ifm-menu-color-background-active: #e2e7f0;
   --docsearch-modal-background: #e2e7f096 !important;
   --docsearch-highlight-color: #051d38 !important;
@@ -83,6 +86,7 @@
   --ifm-logo-hero: url("/img/tikuna-white-logo.png") !important;
   --ifm-logo: url("/img/tikuna-dark-logo.png") !important;
   --ifm-roadmap: url("/img/roadmap-dark.webp") !important;
+  --ifm-training-blog: url("/img/trainingBlogImage.png") !important;
   --logo-sakundi: url("/img/sakundi-logo.webp");
   --logo-edenia: url("/img/edenia-light-logo.png");
   --ifm-linkedin-icon: url("/img/icon-link.png");
@@ -272,6 +276,51 @@ hr {
   background-repeat: no-repeat;
   background-size: contain;
   min-height: 555px;
+  max-width: 1343px;
+  margin-top: 2rem !important;
+}
+
+.roadmapImageBlog {
+  background-image: var(--ifm-roadmap);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 270px;
+  max-width: 1343px;
+  margin-top: 2rem !important;
+}
+
+.trainingImageBlog {
+  background-image: var(--ifm-training-blog);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 300px;
+  max-width: 1343px;
+  margin-top: 2rem !important;
+}
+
+.dashboardp2pstatus {
+  background-image: var(--ifm-dashboardp2pstatus);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 350px;
+  max-width: 1343px;
+  margin-top: 2rem !important;
+}
+
+.dashboardBeacoNode {
+  background-image: var(--ifm-dashboardBeacoNode);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 320px;
+  max-width: 1343px;
+  margin-top: 2rem !important;
+}
+
+.dashboardEclipseAttacks {
+  background-image: var(--ifm-dashboardEclipseAttacks);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 160px;
   max-width: 1343px;
   margin-top: 2rem !important;
 }

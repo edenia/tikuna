@@ -26,3 +26,7 @@ https://docs.ethhub.io/ethereum roadmap/ethereum2.0/proof-of-stak
 - [15] Vyzovitis, D., Napora, Y., McCormick, D., Dias, D., & Psaras, Y. (2020). GossipSub: Attack-Resilient Message Propagation in the Filecoin and ETH2.0 Networks. arXiv. https://doi.org/10.48550/arXiv.2007.02754
 - [16] M. Cortes-Goicoechea and L. Bautista-Gomez, "Discovering the Ethereum2 P2P Network," 2021 Third International Conference on Blockchain Computing and Applications (BCCA), 2021, pp. 81-88, doi: 10.1109/BCCA53669.2021.9657041.
 - [17] Guangquan Xu, Bingjiang Guo, Chunhua Su, Xi Zheng, Kaitai Liang, Duncan S. Wong, Hao Wang, Am I eclipsed? A smart detector of eclipse attacks for Ethereum, Computers & Security, Volume 88, 2020,101604, ISSN 0167-4048, https://doi.org/10.1016/j.cose.2019.101604.
+- [18] https://sulab-sever.u-aizu.ac.jp/ACNS2023/call_workshops.html
+- [19] https://tikuna.io/
+- [20] https://edenia.com/ 
+- [21] https://sakundi.io/ 

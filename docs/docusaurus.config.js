@@ -64,6 +64,7 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
+      image: "img/dashboardp2pstatus.png",
       navbar: {
         logo: {
           alt: "Tikuna Logo",

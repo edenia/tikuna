@@ -59,7 +59,7 @@ spec:
         - "--monitoring-port"
         - "8080"
         - "--execution-endpoint"
-        - "http://eth-executor:8551"
+        - "http://eth-executor.ethereum:8551"
         - "--enable-debug-rpc-endpoints"
       volumes:
       - name: jwt-prysm-consensus

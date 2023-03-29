@@ -52,6 +52,10 @@ spec:
         - "0.0.0.0"
         - "--authrpc.jwtsecret"
         - "/root/consensus_jwt/jwt.hex"
+        - "--authrpc.vhosts"
+        - "*"
+        - "--http.vhosts"
+        - "*"
       volumes:
       - name: jwt-consensus
         secret:

@@ -28,7 +28,7 @@ spec:
             cpu: "0.5"
           limits:
             memory: "10G"
-            cpu: "1"
+            cpu: "2"
         envFrom:
         ports:
         - protocol: TCP

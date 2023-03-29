@@ -6,7 +6,7 @@ metadata:
   name: prysm-beacon
 spec:
   serviceName: prysm-beacon
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: prysm-beacon
@@ -59,7 +59,7 @@ spec:
         - "--monitoring-port"
         - "8080"
         - "--execution-endpoint"
-        - "http://10.43.141.63:8551"
+        - "http://eth-executor:8551"
         - "--enable-debug-rpc-endpoints"
       volumes:
       - name: jwt-prysm-consensus

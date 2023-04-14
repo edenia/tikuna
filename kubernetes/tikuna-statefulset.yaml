@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: tikuna
+  name: tikuna
+spec:
+  serviceName: tikuna
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tikuna
+  template:
+    metadata:
+      labels:
+        app: tikuna
+    spec:
+      imagePullSecrets:
+          - name: regcred
+      securityContext:
+        runAsUser: tikuna
+        fsGroup: tikuna
+      containers:
+      - image: registry.gitlab.com/sakundi/tikuna:latest
+        imagePullPolicy: "Always"
+        name: tikuna
+        command: "python"
+        args:
+          - "tikuna/app.py"
+        ports:
+        - protocol: TCP
+          containerPort: 4444
+        volumeMounts:
+        - mountPath: /home/tikuna/app/data
+          name: data
+      restartPolicy: Always
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ethereum-storage
+        resources:
+          requests:
+            storage: 10Gi

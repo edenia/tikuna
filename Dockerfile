@@ -1,6 +1,8 @@
 FROM python:3.8-slim-buster
 
-RUN apt-get update; apt-get install -y --no-install-recommends git libpq-dev build-essential nano procps; rm -rf /var/lib/apt/lists/*
+RUN apt-get update; apt-get install -y --no-install-recommends \
+    git libpq-dev build-essential nano procps curl iputils-ping; \
+    rm -rf /var/lib/apt/lists/*
 
 RUN useradd -ms /bin/bash tikuna
 USER tikuna

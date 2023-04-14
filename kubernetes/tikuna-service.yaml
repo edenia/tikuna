@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: tikuna
+  name: tikuna
+spec:
+  ports:
+  - name: http
+    port: 4444
+    targetPort: 4444
+    protocol: TCP
+  selector:
+    app: tikuna

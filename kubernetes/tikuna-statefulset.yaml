@@ -18,15 +18,13 @@ spec:
       imagePullSecrets:
           - name: regcred
       securityContext:
-        runAsUser: tikuna
-        fsGroup: tikuna
+        runAsUser: 1000
+        fsGroup: 1000
       containers:
       - image: registry.gitlab.com/sakundi/tikuna:latest
         imagePullPolicy: "Always"
         name: tikuna
-        command: "python"
-        args:
-          - "tikuna/app.py"
+        command: ["python", "tikuna/app.py"]
         ports:
         - protocol: TCP
           containerPort: 4444

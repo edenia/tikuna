@@ -24,7 +24,8 @@ spec:
       - image: registry.gitlab.com/sakundi/tikuna:latest
         imagePullPolicy: "Always"
         name: tikuna
-        command: ["python", "tikuna/app.py"]
+        workingDir: /home/tikuna/app/tikuna
+        command: ["python", "app.py"]
         ports:
         - protocol: TCP
           containerPort: 4444

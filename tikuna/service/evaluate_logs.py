@@ -3,6 +3,8 @@ sys.path.append("../")
 import argparse
 import pandas as pd
 import json
+import os
+import logging
 
 from threading import Thread
 from alertmanager import AlertManager
@@ -15,13 +17,29 @@ from tikuna.common.utils import seed_everything, dump_final_results, dump_params
 
 class EthereumAttackDetector():
     def __init__(self):
-        self.params, self.meta_data = load_params("current")
+        working_directory = "production"
+        self.params, self.meta_data = load_params(working_directory)
         self.params["cache"] = True
+        self.params["evaluation"] = True
 
         self.feature_extractor = FeatureExtractor(**self.params)
 
-        model_save_path = dump_params(self.params, self.meta_data)
-        self.model = LSTM(meta_data=self.meta_data, model_save_path=model_save_path, **self.params)
+        save_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", working_directory)
+        os.makedirs(save_dir, exist_ok=True)
+
+        log_file = os.path.join(save_dir, "tikuna.log")
+
+        for handler in logging.root.handlers[:]:
+            logging.root.removeHandler(handler)
+
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s P%(process)d %(levelname)s %(message)s",
+            handlers=[logging.FileHandler(log_file), logging.StreamHandler()],
+        )
+
+        logging.info(json.dumps(self.params, indent=4))
+        self.model = LSTM(meta_data=self.meta_data, model_save_path=save_dir, **self.params)
 
     def evaluate(self, input_json):
         evaluation_data = {}

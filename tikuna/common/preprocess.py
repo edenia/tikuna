@@ -133,6 +133,7 @@ class FeatureExtractor(BaseEstimator):
         pretrain_path=None,
         use_tfidf=False,
         cache=False,
+        evaluation=False,
         **kwargs,
     ):
         self.label_type = label_type
@@ -146,10 +147,11 @@ class FeatureExtractor(BaseEstimator):
         self.max_token_len = max_token_len
         self.min_token_count = min_token_count
         self.cache = cache
+        self.evaluation = evaluation
         self.vocab = Vocab(max_token_len, min_token_count)
         self.meta_data = {}
 
-        if cache:
+        if cache and not evaluation:
             param_json = self.get_params()
             identifier = hashlib.md5(str(param_json).encode("utf-8")).hexdigest()[0:8]
             self.cache_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", identifier)
@@ -157,6 +159,8 @@ class FeatureExtractor(BaseEstimator):
             json_pretty_dump(
                 param_json, os.path.join(self.cache_dir, "feature_extractor.json")
             )
+        else:
+            self.cache_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", "production")
 
     def __generate_windows(self, data, stride):
         session_dict = {}
@@ -221,6 +225,8 @@ class FeatureExtractor(BaseEstimator):
 
     def load(self):
         try:
+            if self.evaluation:
+                self.cache_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", "production")
             save_file = os.path.join(self.cache_dir, "est.pkl")
             logging.info("Loading feature extractor from {}.".format(save_file))
             with open(save_file, "rb") as fw:
@@ -308,6 +314,9 @@ class FeatureExtractor(BaseEstimator):
         if datatype == "test":
             # handle new logs
             ulog_new = ulog - self.ulog_train
+
+        if self.evaluation:
+            self.cache_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", "production")
 
         if self.cache:
             cached_file = os.path.join(self.cache_dir, datatype + ".pkl")

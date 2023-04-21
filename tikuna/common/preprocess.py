@@ -147,9 +147,10 @@ class FeatureExtractor(BaseEstimator):
         self.max_token_len = max_token_len
         self.min_token_count = min_token_count
         self.cache = cache
-        self.evaluation = evaluation
         self.vocab = Vocab(max_token_len, min_token_count)
         self.meta_data = {}
+        self.evaluation = evaluation
+        self.model_loaded = False
 
         if cache and not evaluation:
             param_json = self.get_params()
@@ -225,8 +226,11 @@ class FeatureExtractor(BaseEstimator):
 
     def load(self):
         try:
+            if self.model_loaded:
+                return True
             if self.evaluation:
                 self.cache_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", "production")
+                self.model_loaded = True
             save_file = os.path.join(self.cache_dir, "est.pkl")
             logging.info("Loading feature extractor from {}.".format(save_file))
             with open(save_file, "rb") as fw:

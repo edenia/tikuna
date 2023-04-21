@@ -25,6 +25,7 @@ class EthereumAttackDetector():
         self.feature_extractor = FeatureExtractor(**self.params)
 
         save_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", working_directory)
+        model_file = os.path.join(save_dir, "model.ckpt")
         os.makedirs(save_dir, exist_ok=True)
 
         log_file = os.path.join(save_dir, "tikuna.log")
@@ -40,6 +41,7 @@ class EthereumAttackDetector():
 
         logging.info(json.dumps(self.params, indent=4))
         self.model = LSTM(meta_data=self.meta_data, model_save_path=save_dir, **self.params)
+        self.model.load_model(model_file)
 
     def evaluate(self, input_json):
         evaluation_data = {}

@@ -151,13 +151,13 @@ class log_dataset_octets(Dataset):
             next_log = log_values_tensor.iloc[i, :].values
             window_anomaly = 0
             # If one of the data is anomaluous all the data is anomalous
-            if labels.iloc[i-steps:i, :].sum().item() > 0:
+            if labels is not None and labels.iloc[i-steps:i, :].sum().item() > 0:
                 window_anomaly = 1
             sample = {
                 "session_idx": 0,
                 "features": features,
                 "window_labels": next_log,
-                "window_anomalies": labels.iloc[i, :].values,
+                "window_anomalies": window_anomaly,
             }
             flatten_data_list.append(sample)
         self.flatten_data_list = flatten_data_list

@@ -59,10 +59,10 @@ training_data["features"] = normal_data.loc[:1000000, columns].copy()
 training_data["label"] = normal_data.iloc[:1000000, [6]].replace("normal", 0).copy()
 
 testing_data["features"] = pd.concat([abnormal_data.loc[:, columns],
-                                      normal_data.loc[1000000:1001200, columns]]).copy()
+                                      normal_data.loc[1000000:1002000, columns]]).copy()
 testing_data["label"] = pd.concat([
                            abnormal_data.iloc[:, [6]].replace("abnormal", 1),
-                           normal_data.iloc[1000000:1001200, [6]].replace("normal", 0)]).copy()
+                           normal_data.iloc[1000000:1002000, [6]].replace("normal", 0)]).copy()
 
 parser = argparse.ArgumentParser()
 
@@ -85,7 +85,7 @@ parser.add_argument("--label_type", default="next_vector", type=str)
 parser.add_argument("--use_tfidf", action="store_true")
 parser.add_argument("--max_token_len", default=50, type=int)
 parser.add_argument("--min_token_count", default=1, type=int)
-parser.add_argument("--cache", default="False", type=bool)
+parser.add_argument("--cache", default="True", type=bool)
 
 ##### Training params
 parser.add_argument("--epoches", default=100, type=int)

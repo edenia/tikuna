@@ -118,5 +118,3 @@ key_info = [
 args_str = "\t".join(
     ["{}:{}".format(k, v) for k, v in params.items() if k in key_info]
 )
-
-dump_final_results(params, eval_results, model)

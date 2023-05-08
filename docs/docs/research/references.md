@@ -30,3 +30,6 @@ https://docs.ethhub.io/ethereum roadmap/ethereum2.0/proof-of-stak
 - [19] https://tikuna.io/
 - [20] https://edenia.com/ 
 - [21] https://sakundi.io/ 
+- [22] https://explore.flashbots.net
+- [23] https://ethereum.org/en/developers/docs/mev/
+- [24] https://www.flashbots.net/

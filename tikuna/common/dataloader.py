@@ -56,7 +56,7 @@ class log_dataset_scores(Dataset):
         score_values_tensor["honest"] = scores["honest"].reset_index(drop=True)
 
         # Create slidding windows
-        steps = 10
+        steps = 5
 
         # Prepare the training data
         flatten_data_list = []
@@ -141,7 +141,7 @@ class log_dataset_octets(Dataset):
         log_values_tensor = pd.DataFrame(log_values_tensor)
 
         # Create slidding windows
-        steps = 10
+        steps = 5
 
         # Prepare the training data
         flatten_data_list = []

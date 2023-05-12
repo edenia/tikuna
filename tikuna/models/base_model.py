@@ -214,7 +214,7 @@ class ForcastBasedModel(nn.Module):
         model = self.eval()  # set to evaluation mode
         with torch.no_grad():
             lower_threshold = 0.0
-            upper_threshold = 0.1
+            upper_threshold = 0.07
             best_result = None
             best_f1 = -float("inf")
             tp = 0
@@ -286,6 +286,20 @@ class ForcastBasedModel(nn.Module):
                 y_prob, y_pred = return_dict["y_pred"].max(dim=1)
                 y = batch_input["window_labels"]
                 anomaly = pd.DataFrame((y_pred != y).numpy()).astype(int)
+            return anomaly
+
+    def predict_vector(self, test_loader):
+        self.eval()
+        anomaly = 0
+        with torch.no_grad():
+            store_dict = defaultdict(list)
+            infer_start = time.time()
+            for batch_input in test_loader:
+                return_dict = self.forward(self.__input2device(batch_input))
+                loss, y_pred = return_dict["y_pred"].max(dim=1)
+                print(loss)
+                if loss > 0.2:
+                    anomaly = anomaly + 1
             return anomaly
 
     def __input2device(self, batch_input):

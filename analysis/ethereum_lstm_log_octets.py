@@ -69,7 +69,7 @@ parser = argparse.ArgumentParser()
 ##### Model params
 parser.add_argument("--model_name", default="LSTM", type=str)
 parser.add_argument("--use_attention", action="store_true")
-parser.add_argument("--hidden_size", default=128, type=int)
+parser.add_argument("--hidden_size", default=30, type=int)
 parser.add_argument("--num_layers", default=2, type=int)
 parser.add_argument("--num_directions", default=2, type=int)
 parser.add_argument("--embedding_dim", default=11, type=int)

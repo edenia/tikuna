@@ -64,10 +64,9 @@ class EthereumAttackDetector():
         dataloader_test = DataLoader(
             dataset_evaluation, batch_size=200, shuffle=False, pin_memory=True
         )
-        anomalies = self.model.predict(dataloader_test)
-        found_anomalies = anomalies.sum()
-        if found_anomalies.item() > 0:
-            print("Found anomalies!!:", found_anomalies.item())
+        anomalies = self.model.predict_vector(dataloader_test)
+        if anomalies > 0:
+            print("Found anomalies!!:", anomalies)
             thread = Thread(target=self.send_alert, args=(input_json,))
             thread.start()
 

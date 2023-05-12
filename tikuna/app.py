@@ -10,7 +10,7 @@ from flask import Response, Flask, request
 from prometheus_client.core import CollectorRegistry
 from collections import Counter
 
-from tikuna.service.evaluate_logs import EthereumAttackDetector
+from tikuna.service.evaluate_logs_octets import EthereumAttackDetector
 
 detector = None
 app = Flask(__name__)

@@ -297,8 +297,7 @@ class ForcastBasedModel(nn.Module):
             for batch_input in test_loader:
                 return_dict = self.forward(self.__input2device(batch_input))
                 loss, y_pred = return_dict["y_pred"].max(dim=1)
-                print(loss)
-                if loss > 0.2:
+                if (loss > 0.2).any():
                     anomaly = anomaly + 1
             return anomaly
 

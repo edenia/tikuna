@@ -13,6 +13,7 @@ from torch.utils.data import DataLoader
 from tikuna.models import LSTM
 from tikuna.common.dataloader import load_sessions, log_dataset_octets
 from tikuna.common.utils import seed_everything, dump_final_results, dump_params, load_params
+from tikuna.common.utils import load_scaler, save_scaler
 
 class EthereumAttackDetector():
     def __init__(self):
@@ -25,6 +26,12 @@ class EthereumAttackDetector():
         save_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", working_directory)
         model_file = os.path.join(save_dir, "model.ckpt")
         os.makedirs(save_dir, exist_ok=True)
+
+        # load scaler
+        self.scaler = load_scaler(working_directory)
+        if self.scaler is None:
+            logging.error("MinMax Scaler file not found!")
+            return
 
         log_file = os.path.join(save_dir, "tikuna.log")
 
@@ -59,7 +66,11 @@ class EthereumAttackDetector():
 
         evaluation_data["features"] = input_data.iloc[:, [6,7,8,9,2,10,11,12,13,4,5]]
         evaluation_data["label"] = None
-        dataset_evaluation = log_dataset_octets(evaluation_data["features"], evaluation_data["label"])
+
+        # Scale evaluation data
+        evaluation_data_scaled = self.scaler.transform(evaluation_data["features"].to_numpy())
+
+        dataset_evaluation = log_dataset_octets(pd.DataFrame(evaluation_data_scaled), evaluation_data["label"])
 
         dataloader_test = DataLoader(
             dataset_evaluation, batch_size=200, shuffle=False, pin_memory=True

@@ -8,6 +8,7 @@ import pickle
 import random
 import hashlib
 import logging
+import joblib
 from datetime import datetime
 
 
@@ -82,6 +83,18 @@ def load_params(directory):
 
     return params, meta_data
 
+def load_scaler(directory):
+    load_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", directory)
+    scaler = None
+    scaler_path = os.path.join(load_dir, "scaler.gz")
+    if os.path.exists(scaler_path):
+        scaler = joblib.load(scaler_path)
+    return scaler
+
+def save_scaler(scaler, directory):
+    save_dir = os.path.join("/home/tikuna/app/data/tikuna_model_data", directory)
+    joblib.dump(scaler, os.path.join(save_dir, "scaler.gz"))
+
 def decision(probability):
     return random.random() < probability
 
@@ -127,4 +140,3 @@ def load_pickle(file_path):
     logging.info("Loading from {}".format(file_path))
     with open(file_path, "rb") as fr:
         return pickle.load(fr)
-

@@ -7,7 +7,6 @@ import pickle
 import json
 from collections import OrderedDict, defaultdict
 from torch.utils.data import Dataset
-from sklearn.preprocessing import MinMaxScaler
 from tikuna.common.utils import decision
 
 
@@ -133,13 +132,7 @@ class log_dataset_traces(Dataset):
 
 class log_dataset_octets(Dataset):
     def __init__(self, logs, labels):
-        # Extract tensor
-        log_values_tensor = logs.to_numpy()
-        # apply normalization techniques
-        sc = MinMaxScaler(feature_range = (0, 1))
-        log_values_tensor = sc.fit_transform(logs)
-        log_values_tensor = pd.DataFrame(log_values_tensor)
-
+        log_values_tensor = logs
         # Create slidding windows
         steps = 5
 

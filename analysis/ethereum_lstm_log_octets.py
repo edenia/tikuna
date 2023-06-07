@@ -8,7 +8,7 @@ import pandas as pd
 from torch.utils.data import DataLoader
 from tikuna.models import LSTM
 from tikuna.common.dataloader import load_sessions, log_dataset, log_dataset_octets
-from tikuna.common.utils import seed_everything, dump_final_results, dump_params
+from tikuna.common.utils import seed_everything, dump_final_results, dump_params, load_scaler, save_scaler
 
 NORMAL_LOG_DATA="/home/tikuna/app/data/mainnet/normal/log/normal.log"
 ECLIPSE_LOG_DATA="/home/tikuna/app/data/mainnet/eclipse-single/log/eclipse.log"
@@ -55,14 +55,14 @@ columns = ['Removed oct1', 'Removed oct2', 'Removed oct3', 'Removed oct4',
            'Removed Port', 'Added oct1', 'Added oct2', 'Added oct3',
            'Added oct4', 'Added Port', 'Bucket']
 
-training_data["features"] = normal_data.loc[:1000000, columns].copy()
-training_data["label"] = normal_data.iloc[:1000000, [6]].replace("normal", 0).copy()
+training_data["features"] = normal_data.loc[:3000000, columns].copy()
+training_data["label"] = normal_data.iloc[:3000000, [6]].replace("normal", 0).copy()
 
 testing_data["features"] = pd.concat([abnormal_data.loc[:, columns],
-                                      normal_data.loc[1000000:1002000, columns]]).copy()
+                                      normal_data.loc[3000000:3002000, columns]]).copy()
 testing_data["label"] = pd.concat([
                            abnormal_data.iloc[:, [6]].replace("abnormal", 1),
-                           normal_data.iloc[1000000:1002000, [6]].replace("normal", 0)]).copy()
+                           normal_data.iloc[3000000:3002000, [6]].replace("normal", 0)]).copy()
 
 parser = argparse.ArgumentParser()
 
@@ -89,7 +89,7 @@ parser.add_argument("--cache", default="True", type=bool)
 
 ##### Training params
 parser.add_argument("--epoches", default=100, type=int)
-parser.add_argument("--batch_size", default=1024, type=int)
+parser.add_argument("--batch_size", default=2048, type=int)
 parser.add_argument("--learning_rate", default=0.01, type=float)
 parser.add_argument("--topk", default=5, type=int)
 parser.add_argument("--patience", default=10, type=int)
@@ -101,18 +101,32 @@ parser.add_argument("--gpu", default=0, type=int)
 args, unknown = parser.parse_known_args()
 params = vars(args)
 
+# Define where to save model data
 model_save_path = dump_params(params, None)
 
 seed_everything(params["random_seed"])
 meta_data = {'num_labels':11, 'vocab_size': 14}
 
-dataset_train = log_dataset_octets(training_data["features"], training_data["label"])
+# load scaler
+scaler = load_scaler(model_save_path)
+if scaler is None:
+    scaler = MinMaxScaler(feature_range = (0, 1))
+
+# Scale training and testing data
+training_data_scaled = scaler.fit_transform(training_data["features"].to_numpy())
+testing_data_scaled = scaler.transform(testing_data["features"].to_numpy())
+
+# Save scaler
+save_scaler(scaler, model_save_path)
+
+# Create training and testing data loaders
+dataset_train = log_dataset_octets(pd.DataFrame(training_data_scaled), training_data["label"])
 
 dataloader_train = DataLoader(
     dataset_train, batch_size=params["batch_size"], shuffle=True, pin_memory=True
 )
 
-dataset_test = log_dataset_octets(testing_data["features"], testing_data["label"])
+dataset_test = log_dataset_octets(pd.DataFrame(testing_data_scaled), testing_data["label"])
 
 dataloader_test = DataLoader(
     dataset_test, batch_size=1, shuffle=True, pin_memory=True

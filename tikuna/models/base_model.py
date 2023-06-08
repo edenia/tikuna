@@ -97,7 +97,6 @@ class ForcastBasedModel(nn.Module):
         with torch.no_grad():
             y_pred = []
             store_dict = defaultdict(list)
-            infer_start = time.time()
             for batch_input in test_loader:
                 return_dict = self.forward(self.__input2device(batch_input))
                 y_prob, y_pred = return_dict["y_pred"].max(dim=1)
@@ -132,7 +131,6 @@ class ForcastBasedModel(nn.Module):
         with torch.no_grad():
             y_pred = []
             store_dict = defaultdict(list)
-            infer_start = time.time()
             for batch_input in test_loader:
                 return_dict = model.forward(self.__input2device(batch_input))
                 y_pred = return_dict["y_pred"]
@@ -223,8 +221,6 @@ class ForcastBasedModel(nn.Module):
             fn = 0
             y_pred = []
             loss_dist = []
-            store_dict = defaultdict(list)
-            infer_start = time.time()
             for batch_input in test_loader:
                 return_dict = model.forward(self.__input2device(batch_input))
                 y_pred = return_dict["y_pred"]
@@ -279,8 +275,6 @@ class ForcastBasedModel(nn.Module):
         self.eval()
         anomaly = None
         with torch.no_grad():
-            store_dict = defaultdict(list)
-            infer_start = time.time()
             for batch_input in test_loader:
                 return_dict = self.forward(self.__input2device(batch_input))
                 y_prob, y_pred = return_dict["y_pred"].max(dim=1)
@@ -292,12 +286,10 @@ class ForcastBasedModel(nn.Module):
         self.eval()
         anomaly = 0
         with torch.no_grad():
-            store_dict = defaultdict(list)
-            infer_start = time.time()
             for batch_input in test_loader:
                 return_dict = self.forward(self.__input2device(batch_input))
-                loss, y_pred = return_dict["y_pred"].max(dim=1)
-                if (loss > 0.2).any():
+                loss = return_dict["loss"]
+                if (loss > 0.09):
                     anomaly = anomaly + 1
             return anomaly
 

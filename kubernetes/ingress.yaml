@@ -7,7 +7,7 @@ spec:
     - web
   routes:
   - kind: Rule
-    match: Host(`eth.edenia.cloud`)
+    match: Host(`${NODE_HOST}`)
     services:
     - kind: Service
       name: prysm-beacon
@@ -22,7 +22,7 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: Host(`eth.edenia.cloud`)
+    match: Host(`${NODE_HOST}`)
     services:
     - kind: Service
       name: prysm-beacon
@@ -39,7 +39,7 @@ spec:
     - web
   routes:
   - kind: Rule
-    match: Host(`dash.tikuna.io`)
+    match: Host(`${DASHBOARD_HOST}`)
     services:
     - kind: Service
       name: grafana-eth
@@ -54,7 +54,7 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: Host(`dash.tikuna.io`)
+    match: Host(`${DASHBOARD_HOST}`)
     services:
     - kind: Service
       name: grafana-eth

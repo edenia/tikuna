@@ -10,21 +10,17 @@ spec:
     port: 5052
     targetPort: 5052
     protocol: TCP
-  - name: tcp
-    port: 13000
-    targetPort: 13000
-    protocol: TCP
-  - name: debug
-    port: 3500
-    targetPort: 3500
-    protocol: TCP
   - name: monitoring
     port: 8080
     targetPort: 8080
     protocol: TCP
-  - name: udp
-    port: 12000
-    targetPort: 12000
+  - name: ligh-tcp
+    port: 9000
+    targetPort: 9000
+    protocol: TCP
+  - name: light-udp
+    port: 9000
+    targetPort: 9000
     protocol: UDP
   selector:
     app: lighthouse-beacon

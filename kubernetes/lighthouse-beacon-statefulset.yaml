@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: lighthouse-beacon
+  name: lighthouse-beacon
+spec:
+  serviceName: lighthouse-beacon
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lighthouse-beacon
+  template:
+    metadata:
+      labels:
+        app: lighthouse-beacon
+    spec:
+      # nodeName: congo
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      containers:
+      - image: sigp/lighthouse:latest
+        imagePullPolicy: "Always"
+        name: lighthouse-beacon
+        resources:
+          requests:
+            memory: "5G"
+            cpu: "0.5"
+          limits:
+            memory: "10G"
+            cpu: "1"
+        envFrom:
+        ports:
+        - protocol: TCP
+          containerPort: 13000
+          containerPort: 8080
+          containerPort: 3500
+          containerPort: 5052
+        - protocol: UDP
+          containerPort: 12000
+        volumeMounts:
+        - mountPath: /data
+          name: lighthouse-beacon
+          subPath: data
+        - mountPath: /root/consensus_jwt
+          name: jwt-lighthouse-consensus
+        command: ["lighthouse", "bn"]
+        args:
+        - "--network=mainnet"
+        - "--datadir=/data"
+        - "--execution-jwt=/root/consensus_jwt/jwt.hex"
+        - "--monitoring-endpoint=http://0.0.0.0:8080"
+        - "--execution-endpoint=http://eth-executor.ethereum:8551"
+        - "--http"
+        - "--http-address=0.0.0.0"
+        - "--http-allow-origin='*'"
+        - "--http-port=5052"
+
+      volumes:
+      - name: jwt-lighthouse-consensus
+        secret:
+           secretName: secret-jwt-eth-prysm
+      restartPolicy: Always
+  volumeClaimTemplates:
+    - metadata:
+        name: lighthouse-beacon
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ethereum-storage
+        resources:
+          requests:
+            storage: 500Gi

@@ -15,7 +15,6 @@ spec:
       labels:
         app: lighthouse-beacon
     spec:
-      # nodeName: congo
       securityContext:
         runAsUser: 0
         fsGroup: 0
@@ -33,12 +32,11 @@ spec:
         envFrom:
         ports:
         - protocol: TCP
-          containerPort: 13000
           containerPort: 8080
-          containerPort: 3500
           containerPort: 5052
+          containerPort: 9000
         - protocol: UDP
-          containerPort: 12000
+          containerPort: 9000
         volumeMounts:
         - mountPath: /data
           name: lighthouse-beacon
@@ -54,7 +52,7 @@ spec:
         - "--execution-endpoint=http://eth-executor.ethereum:8551"
         - "--http"
         - "--http-address=0.0.0.0"
-        - "--http-allow-origin='*'"
+        - "--http-allow-origin=*"
         - "--http-port=5052"
 
       volumes:

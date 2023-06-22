@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: lighthouse-beacon
+  name: lighthouse-beacon
+spec:
+  ports:
+  - name: http
+    port: 5052
+    targetPort: 5052
+    protocol: TCP
+  - name: tcp
+    port: 13000
+    targetPort: 13000
+    protocol: TCP
+  - name: debug
+    port: 3500
+    targetPort: 3500
+    protocol: TCP
+  - name: monitoring
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  - name: udp
+    port: 12000
+    targetPort: 12000
+    protocol: UDP
+  selector:
+    app: lighthouse-beacon

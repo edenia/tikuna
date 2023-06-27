@@ -78,7 +78,9 @@ class EthereumAttackDetector():
         anomalies = self.model.predict_vector(dataloader_test)
         if anomalies > 0:
             print("Found anomalies!!:", anomalies)
-            thread = Thread(target=self.send_alert, args=(input_json,))
+            message = "Added IP addresses and used buckets: "
+            message = message + ''.join(map(str, [[line[3], line[5]] for line in input_json]))
+            thread = Thread(target=self.send_alert, args=(message,))
             thread.start()
 
     def send_alert(self, message):
@@ -92,5 +94,5 @@ class EthereumAttackDetector():
             }
         }
         alert = Alert.from_dict(alert_data)
-        alert_manager = AlertManager(host="http://localhost")
+        alert_manager = AlertManager(host="http://kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local")
         alert_manager.post_alerts(alert)

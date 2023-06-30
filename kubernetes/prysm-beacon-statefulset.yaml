@@ -6,7 +6,7 @@ metadata:
   name: prysm-beacon
 spec:
   serviceName: prysm-beacon
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: prysm-beacon
@@ -46,21 +46,16 @@ spec:
           name: jwt-prysm-consensus
         args:
         - "--accept-terms-of-use"
-        - "--datadir"
-        - "/data"
-        - "--jwt-secret"
-        - "/root/consensus_jwt/jwt.hex"
-        - "--grpc-gateway-host"
-        - "0.0.0.0"
-        - "--rpc-host"
-        - "0.0.0.0"
-        - "--monitoring-host"
-        - "0.0.0.0"
-        - "--monitoring-port"
-        - "8080"
-        - "--execution-endpoint"
-        - "http://eth-executor.ethereum:8551"
+        - "--datadir=/data"
+        - "--jwt-secret=/root/consensus_jwt/jwt.hex"
+        - "--grpc-gateway-host=0.0.0.0"
+        - "--rpc-host=0.0.0.0"
+        - "--monitoring-host=0.0.0.0"
+        - "--monitoring-port=8080"
+        - "--execution-endpoint=http://eth-executor.ethereum:8551"
         - "--enable-debug-rpc-endpoints"
+        - "--checkpoint-sync-url=https://beaconstate.ethstaker.cc"
+        - "--genesis-beacon-api-url=https://beaconstate.ethstaker.cc"
       volumes:
       - name: jwt-prysm-consensus
         secret:
@@ -74,4 +69,4 @@ spec:
         storageClassName: ethereum-storage
         resources:
           requests:
-            storage: 300Gi
+            storage: 400Gi

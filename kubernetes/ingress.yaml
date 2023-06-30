@@ -61,3 +61,63 @@ spec:
       port: 3000
   tls:
     certResolver: myresolver
+---
+kind: IngressRouteTCP
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: geth-tcp
+  namespace: ethereum
+spec:
+  entryPoints:
+    - geth-tcp
+  routes:
+  - match: HostSNI(`${NODE_HOST}`)
+    services:
+    - name: eth-executor
+      namespace: ethereum
+      port: 30303
+---
+kind: IngressRouteUDP
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: geth-udp
+  namespace: ethereum
+spec:
+  entryPoints:
+    - geth-udp
+  routes:
+  - match: HostSNI(`${NODE_HOST}`)
+    services:
+    - name: eth-executor
+      namespace: ethereum
+      port: 30303
+---
+kind: IngressRouteTCP
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: prysm-tcp
+  namespace: ethereum
+spec:
+  entryPoints:
+    - prysm-tcp
+  routes:
+  - match: HostSNI(`${NODE_HOST}`)
+    services:
+    - name: prysm-beacon
+      namespace: ethereum
+      port: 13000
+---
+kind: IngressRouteTCP
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: prysm-udp
+  namespace: ethereum
+spec:
+  entryPoints:
+    - prysm-udp
+  routes:
+  - match: HostSNI(`${NODE_HOST}`)
+    services:
+    - name: prysm-beacon
+      namespace: ethereum
+      port: 12000

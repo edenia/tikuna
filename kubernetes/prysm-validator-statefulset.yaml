@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: prysm-validator
+  name: prysm-validator
+spec:
+  serviceName: prysm-validator
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prysm-validator
+  template:
+    metadata:
+      labels:
+        app: prysm-validator
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      containers:
+      - image: gcr.io/prysmaticlabs/prysm/validator:stable
+        imagePullPolicy: "Always"
+        name: prysm-validator
+        resources:
+          requests:
+            memory: "5G"
+            cpu: "0.5"
+          limits:
+            memory: "10G"
+            cpu: "1"
+        envFrom:
+        ports:
+        - protocol: TCP
+          containerPort: 4000
+        volumeMounts:
+        - mountPath: /data
+          name: prysm-validator
+          subPath: data
+        - mountPath: /root/consensus_jwt
+          name: jwt-prysm-consensus
+        args:
+        - "--accept-terms-of-use"
+        - "--datadir=/data"
+        - "--jwt-secret=/root/consensus_jwt/jwt.hex"
+        - "--graffiti='Pura vida'"
+        - "--wallet-dir=/data/prysm-wallet"
+        - "--keys-dir=/data/keystore"
+        - "--beacon-rest-api-provider='http://prysm-beacon:3500'"
+        - "--beacon-rpc-provider='http://prysm-beacon:4000'"
+      volumes:
+      - name: jwt-prysm-consensus
+        secret:
+           secretName: secret-jwt-eth-prysm
+      restartPolicy: Always
+  volumeClaimTemplates:
+    - metadata:
+        name: prysm-validator
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ethereum-storage
+        resources:
+          requests:
+            storage: 50Gi

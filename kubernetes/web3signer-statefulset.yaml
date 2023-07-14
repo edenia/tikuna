@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: web3signer
+  name: web3signer
+spec:
+  serviceName: web3signer
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web3signer
+  template:
+    metadata:
+      labels:
+        app: web3signer
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      containers:
+      - image: consensys/web3signer:develop
+        imagePullPolicy: "Always"
+        name: web3signer
+        ports:
+        - protocol: TCP
+          containerPort: 9000
+        volumeMounts:
+        - mountPath: /data/keystore/validator-key.json
+          name: validator-key
+        args:
+        - "--key-store-path=/data/keystore/validator-key.json"
+        - "eth2"
+        - "--slashing-protection-enabled=false"
+      volumes:
+      - name: validator-key
+        secret:
+           secretName: ethereum-validator-key
+      restartPolicy: Always
+  volumeClaimTemplates:
+    - metadata:
+        name: web3signer
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ethereum-storage
+        resources:
+          requests:
+            storage: 2Gi

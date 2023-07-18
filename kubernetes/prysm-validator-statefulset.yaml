@@ -37,17 +37,13 @@ spec:
         - mountPath: /data
           name: prysm-validator
           subPath: data
-        - mountPath: /root/consensus_jwt
-          name: jwt-prysm-consensus
         args:
         - "--accept-terms-of-use"
         - "--datadir=/data"
-        - "--jwt-secret=/root/consensus_jwt/jwt.hex"
         - "--graffiti='Pura vida'"
-        - "--wallet-dir=/data/prysm-wallet"
-        - "--keys-dir=/data/keystore"
-        - "--beacon-rest-api-provider='http://prysm-beacon:3500'"
-        - "--beacon-rpc-provider='http://prysm-beacon:4000'"
+        - "--beacon-rest-api-provider='prysm-beacon:3500'"
+        - "--beacon-rpc-provider='prysm-beacon:4000'"
+        - "--validators-external-signer-url=http://web3signer:9000"
       volumes:
       - name: jwt-prysm-consensus
         secret:
@@ -61,4 +57,4 @@ spec:
         storageClassName: ethereum-storage
         resources:
           requests:
-            storage: 50Gi
+            storage: 20Gi

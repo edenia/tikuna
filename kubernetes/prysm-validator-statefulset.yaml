@@ -41,9 +41,10 @@ spec:
         - "--accept-terms-of-use"
         - "--datadir=/data"
         - "--graffiti='Pura vida'"
-        - "--beacon-rest-api-provider='prysm-beacon:3500'"
-        - "--beacon-rpc-provider='prysm-beacon:4000'"
+        - "--beacon-rest-api-provider=http://prysm-beacon:3500"
+        - "--beacon-rpc-provider=ws://prysm-beacon:4000"
         - "--validators-external-signer-url=http://web3signer:9000"
+        - "--enable-beacon-rest-api"
       volumes:
       - name: jwt-prysm-consensus
         secret:

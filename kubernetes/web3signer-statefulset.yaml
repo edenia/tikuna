@@ -26,16 +26,22 @@ spec:
         - protocol: TCP
           containerPort: 9000
         volumeMounts:
-        - mountPath: /data/keystore/validator-key.json
-          name: validator-key
+        - name: validator-key
+          mountPath: /data/keystore
+        - name: validator-key-password
+          mountPath: /data/passwords
         args:
-        - "--key-store-path=/data/keystore/validator-key.json"
         - "eth2"
+        - "--keystores-path=/data/keystore"
+        - "--keystores-passwords-path=/data/passwords"
         - "--slashing-protection-enabled=false"
       volumes:
       - name: validator-key
         secret:
            secretName: ethereum-validator-key
+      - name: validator-key-password
+        secret:
+           secretName: test-password
       restartPolicy: Always
   volumeClaimTemplates:
     - metadata:

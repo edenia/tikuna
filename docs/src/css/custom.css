@@ -38,6 +38,7 @@
   --ifm-readme-url-jupyter: url("/img/ReadmeUrlJupyter.png");
   --ifm-blog-mev-gros-profit: url("/img/mev-gros-profit.jpeg");
   --ifm-blog-mev: url("/img/mev.jpeg");
+  --ifm-blog-mev2: url("/img/mev2.png");
   --ifm-readme-status-neighborhood: url("/img/readmeStatusNeigborhood.png");
   --ifm-readme-status-network: url("/img/readmeNetworkStatus.png");
   --ifm-background-main-page: url("/img/main-bg-light.webp") !important;
@@ -279,6 +280,15 @@ hr {
   background-size: contain;
   min-height: 810px;
   max-width: 800px;
+  margin-top: 2rem !important;
+}
+
+.blogMev2 {
+  background-image: var(--ifm-blog-mev2);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 600px;
+  max-width: 1000px;
   margin-top: 2rem !important;
 }
 

@@ -2,11 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tikuna.io/blog</id>
     <title>Blockchain Security Monitoring Blog</title>
-    <updated>2023-05-08T00:00:00.000Z</updated>
+    <updated>2023-07-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tikuna.io/blog"/>
     <subtitle>Blockchain Security Monitoring Blog</subtitle>
     <icon>https://tikuna.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[The Danger of Malicious Block Proposers in Maximal Extractable Value]]></title>
+        <id>malicious-validators</id>
+        <link href="https://tikuna.io/blog/malicious-validators"/>
+        <updated>2023-07-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr><p>As we introduced in our previous blog post <a href="/docs/research/references">[25]</a>, the term Maximal Extractable Value (MEV) refers to the highest amount of value that can be extracted from a blockchain by a producer/validator during the process of creating a block. This can be achieved by including, excluding, or rearranging the order of transactions.</p><p>MEV is a relatively novel topic with many unexplored security consequences. For instance, on April 3rd, 2023, a malicious validator node operator exploited a vulnerability in the mev-boost-relay <a href="/docs/research/references">[26]</a>, the most popular MEV relay, to get access to the transaction bundle content, even when the block was created to fail the validation to be accepted by the beacon chain nodes. With the obtained list of transactions, the attacker could execute a front-running attack, earning 20 million USD from the victim block bundle builders.</p><p>The following graphic explains how the normal flow of block creation in Ethereum among validators, builders, and relays should work <a href="/docs/research/references">[27]</a>: </p><div class="blogMev2"></div><p>Typically, block proposers (consensus validators) should blindly sign block headers created by block builders and then wait until the blocks are already announced to the network to be able to access the block content (the transactions). Hence, the proposers cannot steal the MEV created by the block builders. However, a vulnerability in the relay software allowed a malicious proposer to modify a block header with corrupt data that the network should not accept.q The relay assumed the signed block as valid and returned the block content to the proposer, which instead extracted the MEV for itself. It then created another valid block that was accepted by the network, therefore stealing the builder's profit.</p><p>Here <a href="/docs/research/references">[28]</a>, you can see the vulnerability disclosure write-up with a more detailed explanation and countermeasures taken by the developers. One of the mentioned countermeasures is that the relay does not send the block content directly to the block proposer; instead, it has to read it from the network when it's accepted. This approach is only partially practical because a malicious proposer could run many validator nodes or even launch an eclipse attack on the network so it can see the block's content much faster and try to front-run the relay. Tikuna may help detect such eclipse attacks and alert the affected relays.</p><p>As we see here, malicious validators are becoming a worrying reality. Monitoring the behavior of validators can help identify those trying to take advantage of the blockchain network. At Sakundi <a href="/docs/research/references">[21]</a>, we are developing technologies to monitor the blockchain using AI technologies that may help detect such malicious validators.</p><p>In the upcoming series of posts, we will be exploring other topics related to MEV in the context of blockchain technology. Stay tuned for more!</p><p>Have questions? Contact us today to find out more about our services.</p><hr><br>]]></content>
+        <author>
+            <name>Andres Gomez Ramirez</name>
+            <uri>https://www.linkedin.com/in/andres-gomez-ramirez-bb7226156/</uri>
+        </author>
+        <author>
+            <name>Francis Gomez Ramirez</name>
+            <uri>https://www.linkedin.com/in/francis-adrian-gomez-ramirez-599598138/</uri>
+        </author>
+        <author>
+            <name>Loui Al Sardy</name>
+            <uri>https://www.linkedin.com/in/loui-alsardy/</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The power of MEV: Why Maximal Extractable Value (MEV) is a Game-Changer in DeFi]]></title>
         <id>the-power-of-mev</id>

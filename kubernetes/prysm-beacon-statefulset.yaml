@@ -6,7 +6,7 @@ metadata:
   name: prysm-beacon
 spec:
   serviceName: prysm-beacon
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: prysm-beacon
@@ -74,4 +74,4 @@ spec:
         storageClassName: ethereum-storage
         resources:
           requests:
-            storage: 300Gi
+            storage: 400Gi

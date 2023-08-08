@@ -79,7 +79,7 @@ class EthereumAttackDetector():
         if anomalies > 0:
             print("Found anomalies!!:", anomalies)
             message = "Added IP addresses and used buckets: "
-            message = message + ''.join(map(str, [[line[3], line[5]] for line in input_json]))
+            message = message + ''.join(map(str, [[line[3], line[5]] for line in input_list]))
             thread = Thread(target=self.send_alert, args=(message,))
             thread.start()
 

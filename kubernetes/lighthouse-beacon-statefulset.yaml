@@ -48,7 +48,6 @@ spec:
         - "--network=mainnet"
         - "--datadir=/data"
         - "--execution-jwt=/root/consensus_jwt/jwt.hex"
-        - "--monitoring-endpoint=http://0.0.0.0:8080"
         - "--execution-endpoint=http://eth-executor.ethereum:8551"
         - "--http"
         - "--http-address=0.0.0.0"

@@ -19,7 +19,7 @@ spec:
         runAsUser: 0
         fsGroup: 0
       containers:
-      - image: ethereum/client-go
+      - image: ethereum/client-go:latest
         imagePullPolicy: "Always"
         name: eth-executor
         resources:
@@ -46,16 +46,11 @@ spec:
         - "--http"
         - "--http.api"
         - "eth,net,engine,admin"
-        - "--http.addr"
-        - "0.0.0.0"
-        - "--authrpc.addr"
-        - "0.0.0.0"
-        - "--authrpc.jwtsecret"
-        - "/root/consensus_jwt/jwt.hex"
-        - "--authrpc.vhosts"
-        - "*"
-        - "--http.vhosts"
-        - "*"
+        - "--http.addr=0.0.0.0"
+        - "--authrpc.addr=0.0.0.0"
+        - "--authrpc.jwtsecret=/root/consensus_jwt/jwt.hex"
+        - "--authrpc.vhosts=*"
+        - "--http.vhosts=*"
       volumes:
       - name: jwt-consensus
         secret:

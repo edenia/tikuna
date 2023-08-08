@@ -19,7 +19,7 @@ spec:
         runAsUser: 0
         fsGroup: 0
       containers:
-      - image: gcr.io/prysmaticlabs/prysm/validator:stable
+      - image: gcr.io/prysmaticlabs/prysm/validator:latest-portable
         imagePullPolicy: "Always"
         name: prysm-validator
         resources:

@@ -31,6 +31,8 @@ spec:
         - name: validator-key-password
           mountPath: /data/passwords
         args:
+        - "--logging=TRACE"
+        - "--http-host-allowlist=prysm-validator,web3signer"
         - "eth2"
         - "--keystores-path=/data/keystore"
         - "--keystores-passwords-path=/data/passwords"
@@ -41,7 +43,7 @@ spec:
            secretName: ethereum-validator-key
       - name: validator-key-password
         secret:
-           secretName: test-password
+           secretName: ethereum-validator-password
       restartPolicy: Always
   volumeClaimTemplates:
     - metadata:

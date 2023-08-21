@@ -19,17 +19,16 @@ spec:
         runAsUser: 0
         fsGroup: 0
       containers:
-      - image: gcr.io/prysmaticlabs/prysm/validator:latest-portable
+      - image: gcr.io/prysmaticlabs/prysm/validator:stable
         imagePullPolicy: "Always"
         name: prysm-validator
         resources:
           requests:
             memory: "5G"
-            cpu: "0.5"
+            cpu: "1"
           limits:
             memory: "10G"
-            cpu: "1"
-        envFrom:
+            cpu: "2"
         ports:
         - protocol: TCP
           containerPort: 4000
@@ -42,9 +41,11 @@ spec:
         - "--datadir=/data"
         - "--graffiti='Pura vida'"
         - "--beacon-rest-api-provider=http://prysm-beacon:3500"
-        - "--beacon-rpc-provider=ws://prysm-beacon:4000"
+        - "--beacon-rpc-provider=prysm-beacon:4000"
         - "--validators-external-signer-url=http://web3signer:9000"
-        - "--enable-beacon-rest-api"
+        - "--validators-external-signer-public-keys=${VALIDATOR_PUBLIC_KEY}"
+        - "--suggested-fee-recipient=${FEE_RECIPIENT}"
+        - "--verbosity=trace"
       volumes:
       - name: jwt-prysm-consensus
         secret:

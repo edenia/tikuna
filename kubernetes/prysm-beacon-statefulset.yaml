@@ -25,10 +25,10 @@ spec:
         resources:
           requests:
             memory: "5G"
-            cpu: "0.5"
-          limits:
-            memory: "10G"
             cpu: "1"
+          limits:
+            memory: "16G"
+            cpu: "2"
         envFrom:
         ports:
         - protocol: TCP
@@ -57,6 +57,8 @@ spec:
         - "--enable-debug-rpc-endpoints"
         - "--checkpoint-sync-url=https://beaconstate.ethstaker.cc"
         - "--genesis-beacon-api-url=https://beaconstate.ethstaker.cc"
+        - "--suggested-fee-recipient=${FEE_RECIPIENT}"
+        - "--subscribe-all-subnets"
       volumes:
       - name: jwt-prysm-consensus
         secret:

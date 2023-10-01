@@ -2,11 +2,18 @@ import docker
 import re
 import json
 import requests
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 client = docker.from_env()
 
 indices = (6,7,8,9,10)
 ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+
+TIKUNA_SERVER_URL = os.environ.get("TIKUNA_SERVER_URL")
 
 dkg = client.containers.get("prysm-beacon").logs(stream = True, follow = True, tail = 10)
 try:
@@ -25,8 +32,9 @@ try:
                 jsonString = json.dumps(log_list)
                 log_list = []
                 print("Sending log request...")
+                print(TIKUNA_SERVER_URL)
                 try:
-                    r = requests.post('http://localhost:4444/evaluate', json=jsonString)
+                    r = requests.post(TIKUNA_SERVER_URL, json=jsonString)
                     print(f"Status Code: {r.status_code}, Response: {r}")
                 except:
                     print("Connection error!")

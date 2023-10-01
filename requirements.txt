@@ -22,3 +22,4 @@ ipyfilechooser
 flask
 pylertalertmanager
 web3
+python-dotenv

@@ -16,4 +16,4 @@ USER root
 RUN chown -R tikuna:tikuna /home/tikuna/app
 USER tikuna
 
-CMD [ "python3", "analysis/ethereum_lstm.py"]
+CMD ["python", "app.py"]

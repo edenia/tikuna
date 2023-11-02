@@ -3,6 +3,9 @@ import re
 import json
 import requests
 import os
+import threading
+import logging
+
 from os.path import join, dirname
 from dotenv import load_dotenv
 from threading import Thread, Event
@@ -17,9 +20,10 @@ ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 TIKUNA_SERVER_URL = os.environ.get("TIKUNA_SERVER_URL")
 
 class LogSensor(threading.Thread):
-    
-    def __init__(self, client):
-        self.dkg = client.containers.get(client).logs(stream = True, follow = True, tail = 10)
+
+    def __init__(self, node_name):
+        super(LogSensor, self).__init__()
+        self.dkg = client.containers.get(node_name).logs(stream = True, follow = True, tail = 10)
 
     def start_data_stream(self):
         try:
@@ -27,7 +31,7 @@ class LogSensor(threading.Thread):
             logs_added = 0
             log_list = []
             while True:
-                line = next(dkg).decode("utf-8")
+                line = next(self.dkg).decode("utf-8")
                 if "Tikuna log" in line and "removed" in line:
                     line = ansi_escape.sub('', line)
                     words = line.split()

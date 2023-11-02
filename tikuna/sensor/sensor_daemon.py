@@ -4,7 +4,7 @@ import socket
 
 from daemon import Daemon
 from queue import Queue, Empty
-from tikuna.sensor.log_sensor import LogSensor
+from log_sensor import LogSensor
 
 # The tikuna daemon service that collects security
 # monitoring information.
@@ -21,10 +21,11 @@ class SensorDaemon(Daemon):
         logging.basicConfig(filename=log_file,
                             level=logging.INFO)
         logging.info('Creating tikuna client services...')
-        log_sensor_service = tikunaSensors(None)
+        log_sensor_service = LogSensor("prysm-beacon")
         # Start the services.
         logging.info('Starting the tikuna client services...')
-        log_sensor_service.start_sensors()
+        log_sensor_service.start()
+        logging.info("Sensors started.")
         logging.info('tikuna service client started...')
 
     def stop(self):

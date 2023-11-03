@@ -5,6 +5,7 @@ import requests
 import os
 import threading
 import logging
+import sys
 
 from os.path import join, dirname
 from dotenv import load_dotenv

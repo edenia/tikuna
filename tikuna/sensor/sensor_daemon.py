@@ -17,19 +17,29 @@ pid_file  = "/var/lib/tikuna/tikuna-sensor.pid"
 
 class SensorDaemon(Daemon):
 
+    def __init__(self, pidfile, stdin='/dev/null',
+                 stdout='/dev/null', stderr='/dev/null'):
+        super(Daemon, self).__init__()
+        self.pidfile = pidfile
+        self.stdin = stdin
+        self.stdout = stdout
+        self.stderr = stderr
+        self.log_sensor_service = None
+
     def run(self):
         logging.basicConfig(filename=log_file,
                             level=logging.INFO)
         logging.info('Creating tikuna client services...')
-        log_sensor_service = LogSensor("prysm-beacon")
+        self.log_sensor_service = LogSensor("prysm-beacon")
         # Start the services.
         logging.info('Starting the tikuna client services...')
-        log_sensor_service.start()
+        self.log_sensor_service.start()
         logging.info("Sensors started.")
         logging.info('tikuna service client started...')
 
     def stop(self):
-        # TODO: do something here?
+        if self.log_sensor_service is not None:
+            self.log_sensor_service.stop()
         logging.info('Service tikuna stopped ...')
 
 if __name__ == "__main__":

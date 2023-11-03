@@ -29,18 +29,12 @@ class SensorDaemon(Daemon):
     def run(self):
         logging.basicConfig(filename=log_file,
                             level=logging.INFO)
-        logging.info('Creating tikuna client services...')
+        logging.info('Creating Tikuna client service...')
         self.log_sensor_service = LogSensor("prysm-beacon")
         # Start the services.
-        logging.info('Starting the tikuna client services...')
+        logging.info('Starting the Tikuna client service...')
         self.log_sensor_service.start()
-        logging.info("Sensors started.")
-        logging.info('tikuna service client started...')
-
-    def stop(self):
-        if self.log_sensor_service is not None:
-            self.log_sensor_service.stop()
-        logging.info('Service tikuna stopped ...')
+        logging.info('Tikuna service client started...')
 
 if __name__ == "__main__":
     daemon = SensorDaemon( pid_file,
@@ -48,10 +42,13 @@ if __name__ == "__main__":
                             stderr=log_file)
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
+            logging.info('Starting Tikuna sensor service...')
             daemon.start()
         elif 'stop' == sys.argv[1]:
+            logging.info('Stoping Tikuna sensor service...')
             daemon.stop()
         elif 'restart' == sys.argv[1]:
+            logging.info('Restarting Tikuna sensor service...')
             daemon.restart()
         else:
             print("Unknown command")

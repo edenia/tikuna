@@ -59,4 +59,4 @@ class LogSensor(threading.Thread):
         self.start_data_stream()
 
     def stop(self):
-        pass
+        sys.exit(0)

@@ -1,5 +1,11 @@
 import sys, os, time, atexit
+import socket
 from signal import SIGTERM
+
+data_path = "/var/lib/tikuna/data"
+log_path  = "/var/log/tikuna/"
+log_file  = "%s/%s-tikuna-sensor.log" % (log_path, socket.gethostname())
+pid_file  = "/var/lib/tikuna/tikuna-sensor.pid"
 
 # A base and generic class for creating Linux deamons
 
@@ -8,8 +14,8 @@ class Daemon:
     def __init__(self, pidfile, stdin='/dev/null',
                  stdout='/dev/null', stderr='/dev/null'):
         self.stdin = stdin
-        self.stdout = stdout
-        self.stderr = stderr
+        self.stdout = log_file
+        self.stderr = log_file
         self.pidfile = pidfile
 
     def daemonize(self):

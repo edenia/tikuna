@@ -22,8 +22,8 @@ class SensorDaemon(Daemon):
         super(Daemon, self).__init__()
         self.pidfile = pidfile
         self.stdin = stdin
-        self.stdout = stdout
-        self.stderr = stderr
+        self.stdout = log_file
+        self.stderr = log_file
         self.log_sensor_service = None
 
     def run(self):

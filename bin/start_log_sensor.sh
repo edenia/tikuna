@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 tikuna/sensor/sensor_daemon.py ${1}
+python3 /usr/bin/tikuna/tikuna/sensor/sensor_daemon.py ${1}

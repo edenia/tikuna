@@ -2,3 +2,6 @@ data
 .env*
 venv*
 *_env
+.ipynb_checkpoints/
+tikuna_model_data/
+nohup.out
